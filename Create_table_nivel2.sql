@@ -14,9 +14,10 @@ CREATE TABLE lectores(
     CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ex) REFERENCES representantes (id_representante),
     CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector),
     CONSTRAINT ck_arcorepresentantelector CHECK ((id_rep_ex IS NOT NULL AND id_rep_in IS NULL)OR(id_rep_in IS NOT NULL AND id_rep_ex IS NULL)),
-    CONSTRAINT ck_minimoedad_lector CHECK (f_nacimiento <= DATE '2019-12-31'),
-    CONSTRAINT ck_edadrepresentado CHECk ((f_nacimiento >= DATE '2008-01-01')AND (id_rep_in IS NULL OR id_rep_ex IS NULL))
+    CONSTRAINT ck_minimoedad_lector CHECK (f_nacimiento <= TO_DATE ('2019-12-31','YYYY-MM-DD')),
+    CONSTRAINT ck_edadrepresentado CHECk ((f_nacimiento <= TO_DATE( '2008-01-01', 'YYYY-MM-DD') ) OR (id_rep_in IS NOT NULL OR id_rep_ex IS NOT NULL))
 );
+
 
 CREATE TABLE libros (
     ISBN NUMBER(13) CONSTRAINT pk_libro PRIMARY KEY,
@@ -25,7 +26,7 @@ CREATE TABLE libros (
     n_pagina NUMBER (4) CONSTRAINT nn_npaginaslibro NOT NULL CONSTRAINT ck_numpaginas CHECK (n_pagina > 0),
     sipnopsis VARCHAR2(300) CONSTRAINT nn_sipnosislibro NOT NULL,
     tema VARCHAR2(100) CONSTRAINT nn_temalibro NOT NULL,
-    tipo_narrativa VARCHAR2(2) CONSTRAINT nn_narrativalibro NOT NULL CONSTRAINT ck_tiponarrativa CHECK (tipo_narrativa in ('NO','CU','MI','LE','FA','ER')),
+    tipo_narrativa VARCHAR2(2) CONSTRAINT nn_narrativalibro NOT NULL CONSTRAINT ck_tiponarrativa CHECK (tipo_narrativa in ('NO','CU','MI','LE','FA','EP')),
     id_paislibro NUMBER(3) CONSTRAINT nn_idpaislibro NOT NULL,
     id_anterior NUMBER(13) CONSTRAINT u_libro UNIQUE,
     
