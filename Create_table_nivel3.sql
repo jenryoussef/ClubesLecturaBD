@@ -1,5 +1,5 @@
 CREATE TABLE preferencias(
-    id_lector NUMBER(3) NOT NULL,
+    id_lector NUMBER(2) NOT NULL,
     ISBN NUMBER(13) NOT NULL,
     orden number(1) CONSTRAINT nn_ordenpref NOT NULL CONSTRAINT ck_ordenpref CHECK (orden in(1,2,3)),
     CONSTRAINT pk_preferencias PRIMARY KEY (id_lector,ISBN),
@@ -8,7 +8,7 @@ CREATE TABLE preferencias(
 );
 
 CREATE TABLE autorias(
-    id_autor NUMBER(3) NOT NULL,
+    id_autor NUMBER(2) NOT NULL,
     ISBN NUMBER(13) NOT NULL,
     CONSTRAINT pk_autoria PRIMARY KEY (id_autor, ISBN),
     CONSTRAINT fk_idautoautoria FOREIGN KEY (id_autor) REFERENCES autores(id_autor),

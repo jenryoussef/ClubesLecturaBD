@@ -1,5 +1,5 @@
 CREATE TABLE lectores(
-    id_lector NUMBER(3) CONSTRAINT pk_lector PRIMARY KEY,
+    id_lector NUMBER(2) CONSTRAINT pk_lector PRIMARY KEY,
     primer_nombre VARCHAR2(20) CONSTRAINT nn_pnombre_lector NOT NULL,
     primer_apellido VARCHAR2(20) CONSTRAINT nn_papellido_lector NOT NULL,
     segundo_apellido VARCHAR2(20) CONSTRAINT nn_sapellido_lector NOT NULL,
@@ -8,8 +8,8 @@ CREATE TABLE lectores(
     doc_identidad NUMBER(9) CONSTRAINT nn_doc_identidad NOT NULL,
     id_paislector NUMBER(3) CONSTRAINT nn_pais_lector NOT NULL ,
     segundo_nombre VARCHAR2(20),
-    id_rep_ex NUMBER(3),
-    id_rep_in NUMBER(3),
+    id_rep_ex NUMBER(2),
+    id_rep_in NUMBER(2),
     CONSTRAINT fk_pais_lector FOREIGN KEY (id_paislector) REFERENCES paises (id_pais),
     CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ex) REFERENCES representantes (id_representante),
     CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector),
@@ -42,4 +42,5 @@ CREATE TABLE ciudades (
     CONSTRAINT pk_ciudades PRIMARY KEY(id_paisciudad,id_ciudad),
     CONSTRAINT fk_paisciudad FOREIGN KEY (id_paisciudad) REFERENCES paises (id_pais)
 );
+
 
