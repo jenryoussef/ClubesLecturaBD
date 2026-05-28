@@ -11,7 +11,7 @@ CREATE TABLE representantes (
     primer_nombre VARCHAR2(20) CONSTRAINT nn_primer_nombre_repr NOT NULL,
     primer_apellido VARCHAR2(20) CONSTRAINT nn_primer_apellido_repr NOT NULL,
     segundo_apellido VARCHAR2(20) CONSTRAINT nn_segundo_apellido_repr NOT NULL,
-    doc_identidad NUMBER(9) CONSTRAINT nn_doc_identidad_repr NOT NULL CONSTRAINT check_doc_identidad_repr Check(doc_identidad > 0),
+    doc_identidad NUMBER(9) CONSTRAINT nn_doc_identidad_repr NOT NULL,
     segundo_nombre VARCHAR2(20)
 );
 
@@ -24,12 +24,12 @@ CREATE TABLE instituciones (
 
 CREATE TABLE idiomas (
     id_idioma NUMBER(2) CONSTRAINT pk_idioma PRIMARY KEY,
-    nombre VARCHAR2(20) CONSTRAINT nn_nombre_idioma NOT NULL CONSTRAINT u_nombre_idioma UNIQUE
+    nombre VARCHAR2(20) CONSTRAINT nn_nombre_idioma NOT NULL
 );
 
 CREATE TABLE paises (
     id_pais NUMBER(3) CONSTRAINT pk_pais PRIMARY KEY,
-    nombre VARCHAR2(50) CONSTRAINT nn_nombre_pais NOT NULL CONSTRAINT u_nombre_pais UNIQUE,
+    nombre VARCHAR2(50) CONSTRAINT nn_nombre_pais NOT NULL,
     moneda VARCHAR2(3) CONSTRAINT nn_moneda_pais NOT NULL,
     nacionalidad VARCHAR2(20) CONSTRAINT nn_nacionalidad NOT NULL
 );
