@@ -1,5 +1,5 @@
 CREATE TABLE lectores(
-    id_lector NUMBER(8) CONSTRAINT pk_lector PRIMARY KEY,
+    id_lector NUMBER(3) CONSTRAINT pk_lector PRIMARY KEY,
     primer_nombre VARCHAR2(20) CONSTRAINT nn_pnombre_lector NOT NULL,
     primer_apellido VARCHAR2(20) CONSTRAINT nn_papellido_lector NOT NULL,
     segundo_apellido VARCHAR2(20) CONSTRAINT nn_sapellido_lector NOT NULL,
@@ -8,14 +8,13 @@ CREATE TABLE lectores(
     doc_identidad NUMBER(9) CONSTRAINT nn_doc_identidad NOT NULL,
     id_paislector NUMBER(3) CONSTRAINT nn_pais_lector NOT NULL ,
     segundo_nombre VARCHAR2(20),
-    id_rep_ex NUMBER(8),
-    id_rep_in NUMBER(8),
+    id_rep_ex NUMBER(3),
+    id_rep_in NUMBER(3),
     CONSTRAINT fk_pais_lector FOREIGN KEY (id_paislector) REFERENCES paises (id_pais),
     CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ex) REFERENCES representantes (id_representante),
     CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector),
-    CONSTRAINT ck_arcorepresentantelector CHECK ((id_rep_ex IS NOT NULL AND id_rep_in IS NULL)OR(id_rep_in IS NOT NULL AND id_rep_ex IS NULL)),
-    CONSTRAINT ck_minimoedad_lector CHECK (f_nacimiento <= TO_DATE ('2019-12-31','YYYY-MM-DD')),
-    CONSTRAINT ck_edadrepresentado CHECk ((f_nacimiento <= TO_DATE( '2008-01-01', 'YYYY-MM-DD') ) OR (id_rep_in IS NOT NULL OR id_rep_ex IS NOT NULL))
+    CONSTRAINT ck_arcorepresentantelector CHECK ((id_rep_ex IS NOT NULL AND id_rep_in IS NULL)OR(id_rep_in IS NOT NULL AND id_rep_ex IS NULL))
+    
 );
 
 
@@ -43,3 +42,4 @@ CREATE TABLE ciudades (
     CONSTRAINT pk_ciudades PRIMARY KEY(id_paisciudad,id_ciudad),
     CONSTRAINT fk_paisciudad FOREIGN KEY (id_paisciudad) REFERENCES paises (id_pais)
 );
+

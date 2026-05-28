@@ -1,5 +1,5 @@
 CREATE TABLE preferencias(
-    id_lector NUMBER(8) NOT NULL,
+    id_lector NUMBER(3) NOT NULL,
     ISBN NUMBER(13) NOT NULL,
     orden number(1) CONSTRAINT nn_ordenpref NOT NULL CONSTRAINT ck_ordenpref CHECK (orden in(1,2,3)),
     CONSTRAINT pk_preferencias PRIMARY KEY (id_lector,ISBN),
@@ -8,15 +8,15 @@ CREATE TABLE preferencias(
 );
 
 CREATE TABLE autorias(
-    id_autor NUMBER(8) NOT NULL,
+    id_autor NUMBER(3) NOT NULL,
     ISBN NUMBER(13) NOT NULL,
     CONSTRAINT pk_autoria PRIMARY KEY (id_autor, ISBN),
     CONSTRAINT fk_idautoautoria FOREIGN KEY (id_autor) REFERENCES autores(id_autor),
     CONSTRAINT fk_isbnautoria FOREIGN KEY (ISBN) REFERENCES libros(ISBN)
-)
+);
 
 CREATE TABLE clubes (
-    id_club NUMBER(8) CONSTRAINT pk_clubes PRIMARY KEY,
+    id_club NUMBER(3) CONSTRAINT pk_clubes PRIMARY KEY,
     nombre VARCHAR2(60) CONSTRAINT nn_nombreclub NOT NULL,
     descripcion VARCHAR2(200) CONSTRAINT nn_descripcionclub NOT NULL,
     cod_postal VARCHAR2(200) CONSTRAINT nn_codpostalclub NOT NULL,
