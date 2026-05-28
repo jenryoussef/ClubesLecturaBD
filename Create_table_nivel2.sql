@@ -1,5 +1,5 @@
 CREATE TABLE lectores(
-    id_lector NUMBER(2) CONSTRAINT pk_lector PRIMARY KEY,
+    id_lector NUMBER(3) CONSTRAINT pk_lector PRIMARY KEY,
     primer_nombre VARCHAR2(20) CONSTRAINT nn_pnombre_lector NOT NULL,
     primer_apellido VARCHAR2(20) CONSTRAINT nn_papellido_lector NOT NULL,
     segundo_apellido VARCHAR2(20) CONSTRAINT nn_sapellido_lector NOT NULL,
