@@ -19,7 +19,7 @@ CREATE TABLE clubes (
     id_club NUMBER(3) CONSTRAINT pk_clubes PRIMARY KEY,
     nombre VARCHAR2(60) CONSTRAINT nn_nombreclub NOT NULL,
     descripcion VARCHAR2(200) CONSTRAINT nn_descripcionclub NOT NULL,
-    cod_postal VARCHAR2(200) CONSTRAINT nn_codpostalclub NOT NULL,
+    cod_postal NUMBER(5) CONSTRAINT nn_codpostalclub NOT NULL,
     direccion VARCHAR2(200) CONSTRAINT nn_direccionclub NOT NULL,
     id_pais NUMBER(3) CONSTRAINT nn_paisclub NOT NULL,
     id_ciudad NUMBER(6) CONSTRAINT nn_ciudadclub NOT NULL,
