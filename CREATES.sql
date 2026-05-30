@@ -291,3 +291,114 @@ CREATE TABLE INASISTENCIAS(
 );
 
 
+
+
+
+
+
+
+
+
+
+--*******************************************************                  INSERTS                      ***********************************************************
+
+
+                                                -- autores
+                                        
+                                        
+CREATE SEQUENCE seq_autores
+START WITH 1
+INCREMENT BY 1;
+
+
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'CHARLES', 'BAUDELAIRE', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'ISAAC', 'ASIMOV', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'ROBERTO', 'BOLAÑO', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'WILLIAM HOWARD', 'GASS', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'INIO', 'ASANO', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'LUCY', 'ELLMAN', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'DON', 'DELILO', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'TATSUKI', 'FUJIMOTO', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'HARUKI', 'MURAKAMI', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'MIRCEA', 'CĂRTĂRESCU', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'KYOKO', 'OKAZAKI', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'JOHN', 'STEINBECK', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'FIODOR', 'DOSTOYEVSKI', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'MARGUERITE', 'YOUNG', NULL);
+INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'RACHEL', 'INGALLS', NULL);
+
+                                        --           representantes
+                                    
+                            
+CREATE SEQUENCE seq_representantes
+START WITH 1
+INCREMENT BY 1;
+
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'PEDRO', 'PÉREZ', 'GÓMEZ', 14523890, 'ANTONIO');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'MARÍA', 'RODRÍGUEZ', 'SILVA', 18234567, 'ELENA');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'CARLOS', 'MENDOZA', 'CASTILLO', 11987432, NULL);
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'ANA', 'MARTÍNEZ', 'LOZANO', 20456123, 'BEATRIZ');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'LUIS', 'GONZÁLEZ', 'HERNÁNDEZ', 15678901, 'ALBERTO');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'CARMEN', 'SÁNCHEZ', 'RAMÍREZ', 9876543, 'TERESA');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'JORGE', 'TORRES', 'FLORES', 22345678, NULL);
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'DIANA', 'DÍAZ', 'MORALES', 16123456, 'VALENTINA');
+INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'FRANCISCO', 'GUTIÉRREZ', 'REYES', 13987654, 'JOSÉ');
+
+
+                                                -- instituciones
+                                                
+CREATE SEQUENCE seq_instituciones
+START WITH 1
+INCREMENT BY 1;
+
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'BIBLIOTECA NACIONAL DE VENEZUELA', 'BI', 'BIBLIOTECA PRINCIPAL DE VENEZUELA, UBICADA EN CARACAS.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'UNIVERSIDAD CENTRAL DE VENEZUELA', 'UN', 'PRINCIPAL INSTITUCIÓN DE EDUCACIÓN SUPERIOR EN CARACAS.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'BIBLIOTHÈQUE NATIONALE DE FRANCE', 'BI', 'BIBLIOTECA NACIONAL FRANCESA DEPOSITARIA DEL PATRIMONIO UBICADA EN PARÍS.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'SORBONNE UNIVERSITÉ', 'UN', 'PRESTIGIOSA UNIVERSIDAD PÚBLICA UBICADA EN PARÍS.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'BIBLIOTECA NACIONAL DE ESPAÑA', 'BI', 'MAYOR CENTRO BIBLIOTECARIO DE ESPAÑA, UBICADO EN MADRID.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'UNIVERSIDAD COMPLUTENSE DE MADRID', 'UN', 'UNIVERSIDAD PÚBLICA DE GRAN TRAYECTORIA EN MADRID.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'NEW YORK PUBLIC LIBRARY', 'BI', 'SISTEMA DE BIBLIOTECAS PÚBLICAS DE LA CIUDAD DE NUEVA YORK.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'HARVARD UNIVERSITY', 'UN', 'INSTITUCIÓN PRIVADA DE EDUCACIÓN SUPERIOR EN MASSACHUSETTS.');
+INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'CENTRO CULTURAL DE LAS ARTES', 'OT', 'ESPACIO DESTINADO A LA DIFUSIÓN ARTÍSTICA Y EVENTOS MULTIDISCIPLINARIOS.');
+
+
+
+--                                                          idiomas
+CREATE SEQUENCE seq_idiomas
+START WITH 1
+INCREMENT BY 1;
+
+
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'ESPAÑOL');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'INGLÉS');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'FRANCÉS');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'JAPONÉS');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'RUMANO');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'RUSO');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'ITALIANO');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'ALEMÁN');
+INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'PORTUGUÉS');
+
+
+--                                                  paises
+CREATE SEQUENCE seq_paises
+START WITH 1
+INCREMENT BY 1;
+
+
+INSERT INTO paises VALUES (1, 'FRANCIA', 'EUR', 'FRANCESA');
+INSERT INTO paises VALUES (2, 'ESTADOS UNIDOS', 'USD', 'ESTADOUNIDENSE');
+INSERT INTO paises VALUES (3, 'JAPÓN', 'JPY', 'JAPONESA');
+INSERT INTO paises VALUES (4, 'VENEZUELA', 'VES', 'VENEZOLANA');
+INSERT INTO paises VALUES (5, 'ESPAÑA', 'EUR', 'ESPAÑOLA');
+INSERT INTO paises VALUES (6, 'CHILE', 'CLP', 'CHILENA');
+INSERT INTO paises VALUES (7, 'REINO UNIDO', 'GBP', 'BRITÁNICA');
+INSERT INTO paises VALUES (8, 'RUMANIA', 'RON', 'RUMANA');
+INSERT INTO paises VALUES (9, 'RUSIA', 'RUB', 'RUSA');
+
+
+
+
+
+
+
