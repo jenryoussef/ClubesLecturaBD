@@ -304,12 +304,7 @@ CREATE TABLE INASISTENCIAS(
 
 
                                                 -- autores
-                                        
-                                        
-CREATE SEQUENCE seq_autores
-START WITH 1
-INCREMENT BY 1;
-
+                                    
 
 INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'CHARLES', 'BAUDELAIRE', NULL);
 INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'ISAAC', 'ASIMOV', NULL);
@@ -328,11 +323,11 @@ INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'MARGUERITE', 'YOUNG', NULL);
 INSERT INTO autores VALUES (seq_autores.NEXTVAL, 'RACHEL', 'INGALLS', NULL);
 
                                         --           representantes
-                                    
-                            
+                                        
 CREATE SEQUENCE seq_representantes
 START WITH 1
 INCREMENT BY 1;
+                 
 
 INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'PEDRO', 'PÉREZ', 'GÓMEZ', 14523890, 'ANTONIO');
 INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'MARÍA', 'RODRÍGUEZ', 'SILVA', 18234567, 'ELENA');
@@ -346,10 +341,7 @@ INSERT INTO representantes VALUES (seq_representantes.NEXTVAL, 'FRANCISCO', 'GUT
 
 
                                                 -- instituciones
-                                                
-CREATE SEQUENCE seq_instituciones
-START WITH 1
-INCREMENT BY 1;
+                                        
 
 INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'BIBLIOTECA NACIONAL DE VENEZUELA', 'BI', 'BIBLIOTECA PRINCIPAL DE VENEZUELA, UBICADA EN CARACAS.');
 INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'UNIVERSIDAD CENTRAL DE VENEZUELA', 'UN', 'PRINCIPAL INSTITUCIÓN DE EDUCACIÓN SUPERIOR EN CARACAS.');
@@ -364,10 +356,6 @@ INSERT INTO instituciones VALUES (seq_instituciones.NEXTVAL, 'CENTRO CULTURAL DE
 
 
 --                                                          idiomas
-CREATE SEQUENCE seq_idiomas
-START WITH 1
-INCREMENT BY 1;
-
 
 INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'ESPAÑOL');
 INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'INGLÉS');
@@ -381,9 +369,6 @@ INSERT INTO idiomas VALUES (seq_idiomas.NEXTVAL, 'PORTUGUÉS');
 
 
 --                                                  paises
-CREATE SEQUENCE seq_paises
-START WITH 1
-INCREMENT BY 1;
 
 
 INSERT INTO paises VALUES (1, 'FRANCIA', 'EUR', 'FRANCESA');
