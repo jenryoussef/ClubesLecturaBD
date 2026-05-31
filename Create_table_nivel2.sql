@@ -12,11 +12,10 @@ CREATE TABLE lectores(
     id_rep_in NUMBER(2),
     CONSTRAINT fk_pais_lector FOREIGN KEY (id_paislector) REFERENCES paises (id_pais),
     CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ex) REFERENCES representantes (id_representante),
-    CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector),
-    CONSTRAINT ck_arcorepresentantelector CHECK ((id_rep_ex IS NOT NULL AND id_rep_in IS NULL)OR(id_rep_in IS NOT NULL AND id_rep_ex IS NULL))
+    CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector)
+    
     
 );
-
 
 CREATE TABLE libros (
     ISBN NUMBER(13) CONSTRAINT pk_libro PRIMARY KEY,
