@@ -47,9 +47,9 @@ CREATE TABLE lectores(
     id_rep_ex NUMBER(2),
     id_rep_in NUMBER(3),
     CONSTRAINT fk_pais_lector FOREIGN KEY (id_pais) REFERENCES paises(id_pais),
-    CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ext) REFERENCES representantes(id_representante),
-    CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_int) REFERENCES lectores (id_lector),
-    CONSTRAINT ck_arcorepresentantelector CHECK (id_rep_ext IS NULL or id_rep_int IS NULL)
+    CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ex) REFERENCES representantes(id_representante),
+    CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_in) REFERENCES lectores (id_lector),
+    CONSTRAINT ck_arcorepresentantelector CHECK (id_rep_ex IS NULL or id_rep_in IS NULL)
 );
 
 CREATE TABLE libros (
