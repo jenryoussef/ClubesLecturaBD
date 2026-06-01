@@ -16,7 +16,7 @@ INSERT INTO autores(id_autor,nombre,apellido,seudonimo) VALUES (12,'JOHN','STEIN
 INSERT INTO autores(id_autor,nombre,apellido,seudonimo) VALUES (13,'FIODOR','DOSTOYEVSKI',NULL);
 INSERT INTO autores(id_autor,nombre,apellido,seudonimo) VALUES (14,'MARGUERITE','YOUNG',NULL);
 INSERT INTO autores(id_autor,nombre,apellido,seudonimo) VALUES (15,'RACHEL','INGALLS',NULL);
-
+COMMIT;
 --Paises
 INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (1,'VENEZUELA','BS','VENEZOLANO-NA');
 INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (2,'FRANCIA','EUR','FRANCES-SA');
@@ -27,7 +27,7 @@ INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (6,'JAPON','JPY','
 INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (7,'REINO UNIDO','GBP','BRITANICO-CA');
 INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (8,'RUMANIA','RON','RUMANO-NA');
 INSERT INTO paises(id_pais,nombre,moneda,nacionalidad) VALUES (10,'RUSIA','RUB','RUSO-SA');
-
+COMMIT;
 --Representantes
 
 INSERT INTO representantes (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad)
@@ -38,14 +38,14 @@ INSERT INTO representantes (id_representante, primer_nombre, primer_apellido, se
 VALUES (3,'FIONA','APPLE','MCAFFE','MAGGART',2030040);
 INSERT INTO representantes (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad)
 VALUES (4,'SOFIA','CARMINA',NULL,'COPPOLA',12120320);
-
+COMMIT;
 --Instituciones
 
 INSERT INTO instituciones (id_institucion,nombre,tipo,descripcion) VALUES(1,'UCAB','UN','Es una universidad primera con sede en Caracas y Puerto Ordaz');
 INSERT INTO instituciones (id_institucion,nombre,tipo,descripcion) VALUES(2,'BNF','BI','La Blibioteca Nacional de Francia es el deposito nacional de todo lo publicado en Francia');
 INSERT INTO instituciones (id_institucion,nombre,tipo,descripcion) VALUES(3,'RABASF','BI','La Real Academia de las Bellas Artes de San Fernando es una institucion integrada en el instituto de España');
 INSERT INTO instituciones (id_institucion,nombre,tipo,descripcion) VALUES(4,'Yale','UN','es una prestigiosa institución privada de investigación perteneciente a la Ivy League, ubicada en New Haven, Connecticut, Estados Unidos');
-
+COMMIT;
 --idiomas
 
 INSERT INTO idiomas (id_idioma,nombre) VALUES (1,'ESPAÑOL');
@@ -56,7 +56,7 @@ INSERT INTO idiomas (id_idioma,nombre) VALUES (5,'RUMANO');
 INSERT INTO idiomas (id_idioma,nombre) VALUES (6,'RUSO');
 INSERT INTO idiomas (id_idioma,nombre) VALUES (7,'ALEMAN');
 INSERT INTO idiomas (id_idioma,nombre) VALUES (8,'CHINO');
-
+COMMIT;
 
 --NIVEL 2 
 
@@ -94,7 +94,7 @@ INSERT INTO libros (ISBN,titulo,ano_publicacion,n_pagina,sipnopsis, tema,tipo_na
 VALUES (1301417231414,'SEÑORITA MACINTOSH, MI QUERIDA',TO_DATE('1965','YYYY'),1189,'MISS MACINTOSH, MY DARLING ES UNA NOVELA DE MARGUERITE YOUNG. ELLA LA HA DESCRITO COMO UNA EXPLORACION DE LAS ILUSIONES, LAS ALUCINACIONES Y LOS ERRORES DE JUICIO EN LAS VIDAS INDIVIDUALES,SIENDO EL ESCENARIO CENTRAL DE LA NOVELA EL PARAISO DE UN ADICTO AL OPIO','NOVELA PSICOLIGICA Y UNA EPOPEYA PICARESCA','NO',4,NULL);
 INSERT INTO libros (ISBN,titulo,ano_publicacion,n_pagina,sipnopsis, tema,tipo_narrativa, id_paislibro,id_anterior) 
 VALUES (1301417231515,'LA SEÑORA CALIBAN',TO_DATE('1982','YYYY'),128,'LA SEÑORA CALIBAN ES UNA NOVELA CORTA DE RACHEL INGALLS QUE NARRA LA HISTORIA DE DOROTHY, UN AMA DE CASA SOLITARIA ATRAPADA EN UN MATRIMONIO INFELIZ TRAS LA PERDIDA DE UN HIJO','NOVELA CORTA DE FANTASIA, SATIRA SOCIAL Y ROMANCE','NO',4,NULL);
-
+COMMIT;
 
 --Ciudades
 
@@ -105,7 +105,7 @@ INSERT INTO ciudades(id_paisciudad,id_ciudad,nombre) VALUES (3,4,'MADRID');
 INSERT INTO ciudades(id_paisciudad,id_ciudad,nombre) VALUES (3,5,'BARCELONA');
 INSERT INTO ciudades(id_paisciudad,id_ciudad,nombre) VALUES (4,6,'NEW HAVEN');
 INSERT INTO ciudades(id_paisciudad,id_ciudad,nombre) VALUES (4,7,'SAN FRANCISCO');
-
+COMMIT;
 --Lectores
 
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_paislector,segundo_nombre,id_rep_ex,id_rep_in)
@@ -155,3 +155,48 @@ VALUES(15,'MARTIN','SCORCESE','MOVIEGUY',TO_DATE('01-03-2010','DD-MM-YYYY'),'TAX
 
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_paislector,segundo_nombre,id_rep_ex,id_rep_in)
 VALUES(16,'FRANCIS','FORD','COPPOLA',TO_DATE('09-03-2010','DD-MM-YYYY'),'APOCALYPSENOW@GMAIL.COM',2321456,4,NULL,4,NULL);
+
+COMMIT;
+
+--Nivel 3
+
+--Clubes
+
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(1,'SPOILERS ANONIMOS','SPOILERS ANONIMOS ES UN CLUB DE LECTURA PARA PERSONAS DE TODAS LAS EDADES E INTERESES LITERARIOS',1060,'ALTAMARIA 4TA TRANSVERSAL',1,1,'S',NULL);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(2,'VIVIR ENTRE LINEAS','VIVIR ENTRE LINEAS EXISTE PARA CULTIVAR LA LECTURA EN LOS ESTUDIANTES DE LA UCAB',1020,'AV TEHERAN, MONTALBAN',1,1,'N',1);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(3,'LOS TAPA DURA','UNA COMUNIDAD DE LECTORES DE BURDEOS QUE HABRE SUS PUERTAS A CUALQUIER INTERESADO',33000,'CA COUR DES AIDES',2,3,'S',NULL);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(4,'PLUMA EN EL TINTERO','LA BNF PROVEE A LA COMUNIDA PARISIENSE CON UN CLUB DE LECTURA QUE HACE USO DE SU GRAN COLECCION DE LIBROS',75013,'QUAI FRANCOIS MAURIAC',2,2,'N',2);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(5,'NO JUZGUES POR LA PORTADA','QUEREMOS PROMOVER LA LECTURA A CUALQUIER TIPO DE PERSONA',08001,'MUNICIPIO BARCELONA AV MANOLO',3,5,'S',NULL);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(6,'LECTORES DESDE CERO','CLUB PATROCINADO POR LA RABASF PARA LA FOMENTACION DE LA LECTURA',28014,'CALLE DE ALCALA N13',3,4,'N',3);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(7,'EFECTO PAPEL','YALE FORMO ESTE CLUB DE LECTURA PARA EL ALUMNADO Y GRADUADOS DE LA UNIVERSIDAD',06520,'149 ELM STREET',4,6,'N',4);
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(8,'LECTORES DE AYER','TRAYENDO LA LECTURA A DISTINTAS GENERACIONES EN SAN FRANCISCO',4004,'LOMBARD STREET 14ST VIEW',4,7,'N',NULL);
+COMMIT;
+
+--autorias
+
+INSERT INTO autorias(id_autor,ISBN) VALUES (1,3783353412011);
+INSERT INTO autorias(id_autor,ISBN) VALUES (2,1301534123022);
+INSERT INTO autorias(id_autor,ISBN) VALUES (2,1301534123033);
+INSERT INTO autorias(id_autor,ISBN) VALUES (3,7805341235044);
+INSERT INTO autorias(id_autor,ISBN) VALUES (4,1301534748055);
+INSERT INTO autorias(id_autor,ISBN) VALUES (5,4581417235066);
+INSERT INTO autorias(id_autor,ISBN) VALUES (6,5024441735066);
+INSERT INTO autorias(id_autor,ISBN) VALUES (7,1301417235077);
+INSERT INTO autorias(id_autor,ISBN) VALUES (8,4581417235088);
+INSERT INTO autorias(id_autor,ISBN) VALUES (9,4581414095099);
+INSERT INTO autorias(id_autor,ISBN) VALUES (10,5944012351010);
+INSERT INTO autorias(id_autor,ISBN) VALUES (11,4581417251111);
+INSERT INTO autorias(id_autor,ISBN) VALUES (12,1301417231212);
+INSERT INTO autorias(id_autor,ISBN) VALUES (13,4617417231313);
+INSERT INTO autorias(id_autor,ISBN) VALUES (14,1301417231414);
+INSERT INTO autorias(id_autor,ISBN) VALUES (15,1301417231515);
+
+COMMIT;
