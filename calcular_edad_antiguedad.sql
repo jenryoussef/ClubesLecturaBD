@@ -6,4 +6,3 @@ BEGIN
     RETURN TRUNC(MONTHS_BETWEEN(fecha2, fecha1) / 12);
 END calcular_edad_antiguedad;
 /
-/
