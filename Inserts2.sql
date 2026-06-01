@@ -42,7 +42,7 @@ INSERT INTO libros (ISBN,titulo,ano_publicacion,n_paginas,sinopsis, tema,tipo_na
 VALUES (1301417231212,'AL ESTE DEL EDEN',TO_DATE('1952','YYYY'),688,'Al este del Edén es una novela clásica de John Steinbeck que entrelaza las sagas de las familias Trask y Hamilton en el valle de Salinas, California, entre la Guerra de Secesión y la Primera Guerra Mundial.','NOVELA DRAMATICA Y PSICOLOGICA','NO',4,NULL);
 COMMIT;
 INSERT INTO libros (ISBN,titulo,ano_publicacion,n_paginas,sinopsis, tema,tipo_narrativa, id_pais,id_anterior) 
-VALUES (4617417231313,'LOS HERMANOS KARAMAZOV',TO_DATE('1880','YYYY'),1232,'La obra cumbre de Fiódor Dostoyevski es una tragedia filosófica que gira en torno al asesinato del terrateniente Fiódor Karamázov.','NOVELA FILOSOFICA Y PSICOLOGICA','NO',10,NULL);
+VALUES (4617417231313,'LOS HERMANOS KARAMAZOV',TO_DATE('1880','YYYY'),1232,'La obra cumbre de Fiódor Dostoyevski es una tragedia filosófica que gira en torno al asesinato del terrateniente Fiódor Karamázov.','NOVELA FILOSOFICA Y PSICOLOGICA','NO',9,NULL);
 COMMIT;
 INSERT INTO libros (ISBN,titulo,ano_publicacion,n_paginas,sinopsis, tema,tipo_narrativa, id_pais,id_anterior) 
 VALUES (1301417231414,'SEÑORITA MACINTOSH, MI QUERIDA',TO_DATE('1965','YYYY'),1189,'Miss MacIntosh, My Darling es una novela de Marguerite Young. La autora la describió como una exploración de las ilusiones, las alucinaciones y los errores de juicio en las vidas individuales, teniendo como escenario central el paraíso de un adicto al opio.','NOVELA PSICOLIGICA Y UNA EPOPEYA PICARESCA','NO',4,NULL);
@@ -66,4 +66,68 @@ COMMIT;
 INSERT INTO ciudades(id_pais,id_ciudad,nombre) VALUES (4,6,'NEW HAVEN');
 COMMIT;
 INSERT INTO ciudades(id_pais,id_ciudad,nombre) VALUES (4,7,'SAN FRANCISCO');
+COMMIT;
+
+--Nivel 3
+
+--Clubes
+
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'SPOILERS ANONIMOS','SPOILERS ANONIMOS ES UN CLUB DE LECTURA PARA PERSONAS DE TODAS LAS EDADES E INTERESES LITERARIOS',1060,'ALTAMARIA 4TA TRANSVERSAL',1,1,'S',NULL);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'VIVIR ENTRE LINEAS','VIVIR ENTRE LINEAS EXISTE PARA CULTIVAR LA LECTURA EN LOS ESTUDIANTES DE LA UCAB',1020,'AV TEHERAN, MONTALBAN',1,1,'N',1);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'LOS TAPA DURA','UNA COMUNIDAD DE LECTORES DE BURDEOS QUE HABRE SUS PUERTAS A CUALQUIER INTERESADO',33000,'CA COUR DES AIDES',2,3,'S',NULL);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'PLUMA EN EL TINTERO','LA BNF PROVEE A LA COMUNIDA PARISIENSE CON UN CLUB DE LECTURA QUE HACE USO DE SU GRAN COLECCION DE LIBROS',75013,'QUAI FRANCOIS MAURIAC',2,2,'N',2);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'NO JUZGUES POR LA PORTADA','QUEREMOS PROMOVER LA LECTURA A CUALQUIER TIPO DE PERSONA',08001,'MUNICIPIO BARCELONA AV MANOLO',3,5,'S',NULL);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'LECTORES DESDE CERO','CLUB PATROCINADO POR LA RABASF PARA LA FOMENTACION DE LA LECTURA',28014,'CALLE DE ALCALA N13',3,4,'N',3);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'EFECTO PAPEL','YALE FORMO ESTE CLUB DE LECTURA PARA EL ALUMNADO Y GRADUADOS DE LA UNIVERSIDAD',06520,'149 ELM STREET',4,6,'N',4);
+COMMIT;
+INSERT INTO clubes(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
+VALUES(s_club.nextval,'LECTORES DE AYER','TRAYENDO LA LECTURA A DISTINTAS GENERACIONES EN SAN FRANCISCO',4004,'LOMBARD STREET 14ST VIEW',4,7,'N',NULL);
+COMMIT;
+
+--autorias
+
+INSERT INTO autorias(id_autor,ISBN) VALUES (1,3783353412011);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (2,1301534123022);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (2,1301534123033);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (3,7805341235044);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (4,1301534748055);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (5,4581417235066);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (6,5024441735066);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (7,1301417235077);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (8,4581417235088);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (9,4581414095099);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (10,5944012351010);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (11,4581417251111);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (12,1301417231212);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (13,4617417231313);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (14,1301417231414);
+COMMIT;
+INSERT INTO autorias(id_autor,ISBN) VALUES (15,1301417231515);
 COMMIT;
