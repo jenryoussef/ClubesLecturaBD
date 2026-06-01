@@ -42,11 +42,11 @@ CREATE TABLE lectores(
     f_nacimiento DATE NOT NULL,
     email VARCHAR2(50) NOT NULL CONSTRAINT u_email_lector UNIQUE,
     doc_identidad NUMBER(9) NOT NULL,
-    id_paislector NUMBER(2) NOT NULL ,
+    id_pais NUMBER(2) NOT NULL ,
     segundo_nombre VARCHAR2(20),
-    id_rep_ext NUMBER(2),
-    id_rep_int NUMBER(3),
-    CONSTRAINT fk_pais_lector FOREIGN KEY (id_paislector) REFERENCES paises(id_pais),
+    id_rep_ex NUMBER(2),
+    id_rep_in NUMBER(3),
+    CONSTRAINT fk_pais_lector FOREIGN KEY (id_pais) REFERENCES paises(id_pais),
     CONSTRAINT fk_id_repexterno FOREIGN KEY (id_rep_ext) REFERENCES representantes(id_representante),
     CONSTRAINT fk_id_repinter FOREIGN KEY (id_rep_int) REFERENCES lectores (id_lector),
     CONSTRAINT ck_arcorepresentantelector CHECK (id_rep_ext IS NULL or id_rep_int IS NULL)
@@ -60,9 +60,9 @@ CREATE TABLE libros (
     sinopsis VARCHAR2(300) NOT NULL,
     tema VARCHAR2(100) NOT NULL,
     tipo_narrativa VARCHAR2(2) NOT NULL CONSTRAINT ck_tiponarrativa CHECK (tipo_narrativa in ('NO','CU','MI','LE','FA','EP')),
-    id_paislibro NUMBER(2) NOT NULL,
+    id_pais NUMBER(2) NOT NULL,
     id_anterior NUMBER(13) CONSTRAINT u_libro UNIQUE,
-    CONSTRAINT fk_paislibro FOREIGN KEY (id_paislibro) REFERENCES paises (id_pais),
+    CONSTRAINT fk_paislibro FOREIGN KEY (id_pais) REFERENCES paises (id_pais),
     CONSTRAINT fk_anteriorlibro FOREIGN KEY (id_anterior) REFERENCES libros (ISBN)
 );
 
