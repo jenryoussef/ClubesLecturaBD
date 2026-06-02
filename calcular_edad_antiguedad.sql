@@ -3,7 +3,14 @@ CREATE OR REPLACE FUNCTION calcular_edad_antiguedad(
     fecha2 IN DATE DEFAULT SYSDATE
 ) RETURN NUMBER IS
 BEGIN
-    
-    RETURN TRUNC(MONTHS_BETWEEN(fecha2, fecha1) / 12);
+    RETURN TRUNC(MONTHS_BETWEEN(NVL(fecha2, SYSDATE), fecha1) / 12);
 END calcular_edad_antiguedad;
 /
+
+SELECT L.ID_LECTOR, L.F_NACIMIENTO, calcular_edad_antiguedad(L.F_NACIMIENTO) EDAD
+FROM LECTORES L
+WHERE L.ID_LECTOR = &id_lector;
+
+SELECT L.ID_LECTOR, L.ID_CLUB, L.F_ING_CLUB, L.F_RETIRO, calcular_edad_antiguedad(L.F_ING_CLUB, L.F_RETIRO) ANTIGUEDAD 
+FROM HIST_MEMBRESIAS L 
+WHERE L.ID_LECTOR = &id_lector;
