@@ -181,6 +181,39 @@ INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (27,1301417231212,3); COMM
 INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (28,4581417235088,1); COMMIT;
 INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (28,4581414095099,2); COMMIT;
 INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (28,1301417231515,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (29,4581417235088,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (29,4581417235066,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (29,4581414095099,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (30,4581417235088,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (30,4581417251111,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (30,4581417235066,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (31,4581417235066,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (31,4581414095099,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (31,4581417235088,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (32,4581417251111,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (32,4581417235088,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (32,4581417235066,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (33,4581417235066,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (33,4581414095099,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (33,4581417251111,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (34,4581414095099,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (34,4581417235066,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (34,1301534123022,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (35,7805341235044,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (35,4617417231313,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (35,1301417231212,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (36,4581417251111,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (36,4581417235066,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (36,4581414095099,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (37,4581417235066,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (37,4581414095099,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (37,4581417251111,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (38,1301417231212,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (38,4617417231313,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (38,3783353412011,3); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (39,1301417231212,1); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (39,5944012351010,2); COMMIT;
+INSERT INTO preferencias(id_lector,ISBN,orden) VALUES (39,5024441735066,3); COMMIT;
 
 INSERT INTO asociaciones(id_club,id_socio,descripcion) VALUES (1,3,'COLABORACION ENTRE SPOILERS ANONIMOS Y LOS TAPA DURA PARA INTERCAMBIO DE LIBROS Y LECTORES'); COMMIT;
 INSERT INTO asociaciones(id_club,id_socio,descripcion) VALUES (1,5,'ALIANZA ENTRE SPOILERS ANONIMOS Y NO JUZGUES POR LA PORTADA PARA FOMENTAR LA LECTURA EN ESPAÑOL'); COMMIT;
@@ -228,6 +261,18 @@ INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (
 INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (34,6,9994001,26,NULL); COMMIT;
 INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (1,415,8884001,27,NULL); COMMIT;
 INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (1,503,7774001,28,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555001,29,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555002,30,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555003,31,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555004,32,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555005,33,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555006,34,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555007,35,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555008,36,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555009,37,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555010,38,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555011,38,NULL); COMMIT;
+INSERT INTO telefonos(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555012,39,NULL); COMMIT;
 
 INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,1,NULL,1); COMMIT;  -- SPOILERS: ESP
 INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,2,NULL,2); COMMIT;  -- VIVIR: ESP
@@ -279,6 +324,17 @@ INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,46,25,NULL); C
 INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,47,26,NULL); COMMIT; -- español
 INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (3,48,27,NULL); COMMIT; -- ingles
 INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (3,49,28,NULL); COMMIT; -- ingles
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,50,29,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,51,30,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,52,31,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,53,32,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,54,33,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,55,34,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,56,35,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,57,36,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,58,37,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,59,38,NULL); COMMIT;
+INSERT INTO habla(id_idioma,id_habla,id_lector,id_club) VALUES (1,60,39,NULL); COMMIT;
 
 INSERT INTO grupos_lectura(id_club,id_grupo,tipo,dia,hora,f_creacion) VALUES (1,1,'A',2,TO_DATE('18:00','HH24:MI'),TO_DATE('01/01/2020','DD/MM/YYYY')); COMMIT;
 INSERT INTO grupos_lectura(id_club,id_grupo,tipo,dia,hora,f_creacion) VALUES (1,2,'J',3,TO_DATE('17:30','HH24:MI'),TO_DATE('01/01/2020','DD/MM/YYYY')); COMMIT;
@@ -341,6 +397,17 @@ INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,m
 INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,22,TO_DATE('01/03/2016','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,27,TO_DATE('01/03/2016','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,28,TO_DATE('01/03/2016','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,29,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,30,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,31,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,32,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,33,TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,34,TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,35,TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,36,TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,37,TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,38,TO_DATE('01/02/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO hist_membresias(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,39,TO_DATE('01/02/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 
 INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),1,TO_DATE('28/02/2021','DD/MM/YYYY')); COMMIT;
 INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),2,TO_DATE('28/02/2022','DD/MM/YYYY')); COMMIT;
@@ -370,6 +437,12 @@ INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES 
 INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (5,21,TO_DATE('20/01/2022','DD/MM/YYYY'),1,TO_DATE('19/01/2023','DD/MM/YYYY')); COMMIT;
 INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (5,25,TO_DATE('20/01/2022','DD/MM/YYYY'),1,TO_DATE('19/01/2023','DD/MM/YYYY')); COMMIT;
 INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (5,26,TO_DATE('20/01/2022','DD/MM/YYYY'),1,TO_DATE('19/01/2023','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,29,TO_DATE('15/01/2025','DD/MM/YYYY'),1,TO_DATE('14/01/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,30,TO_DATE('15/01/2025','DD/MM/YYYY'),1,TO_DATE('14/01/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,33,TO_DATE('20/01/2025','DD/MM/YYYY'),1,TO_DATE('19/01/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,34,TO_DATE('20/01/2025','DD/MM/YYYY'),1,TO_DATE('19/01/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,38,TO_DATE('01/02/2025','DD/MM/YYYY'),1,TO_DATE('31/01/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO pagos_membresia(id_club,id_lector,f_ing_club,id_pago,f_pago) VALUES (1,39,TO_DATE('01/02/2025','DD/MM/YYYY'),1,TO_DATE('31/01/2026','DD/MM/YYYY')); COMMIT;
 
 INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,3,TO_DATE('20/04/2020','DD/MM/YYYY'),TO_DATE('20/04/2020','DD/MM/YYYY'),NULL); COMMIT;
@@ -398,6 +471,17 @@ INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_in
 INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,22,TO_DATE('01/03/2016','DD/MM/YYYY'),TO_DATE('01/03/2016','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,27,TO_DATE('01/03/2016','DD/MM/YYYY'),TO_DATE('01/03/2016','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,28,TO_DATE('01/03/2016','DD/MM/YYYY'),TO_DATE('01/03/2016','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,30,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,31,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,32,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,34,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,35,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,36,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,37,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,38,TO_DATE('01/02/2025','DD/MM/YYYY'),TO_DATE('01/02/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO hist_asignaciones(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,39,TO_DATE('01/02/2025','DD/MM/YYYY'),TO_DATE('01/02/2025','DD/MM/YYYY'),NULL); COMMIT;
 
 INSERT INTO obras_actuadas(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,1,'LA NOCHE DE LOS CRIMENES',90,'ADAPTACION TEATRAL DEL LIBRO LOS HERMANOS KARAMAZOV','S',15); COMMIT;
 INSERT INTO obras_actuadas(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,2,'EL ULTIMO MISTERIO',75,'OBRA BASADA EN EL LIBRO 2666 DE ROBERTO BOLANO','N',10); COMMIT;
@@ -498,6 +582,53 @@ INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb
 VALUES (5,4,1301417231212,TO_DATE('03/04/2024','DD/MM/YYYY'),'S',5,5,4,25,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (5,4,1301417231212,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',5,5,4,25,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),'STEINBECK RETRATA LA COMPLEJIDAD DEL SER HUMANO CON MAESTRÍA. EL BIEN Y EL MAL COMO FUERZAS ETERNAS.',5,'S'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,1,4617417231313,TO_DATE('04/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,1,4617417231313,TO_DATE('18/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,1,4617417231313,TO_DATE('25/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'CIERRE DEL BLOQUE DE LECTURA DE MAYO SOBRE KARAMAZOV.',5,'S'); COMMIT;
+
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,4,5944012351010,TO_DATE('07/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,4,5944012351010,TO_DATE('21/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,4,5944012351010,TO_DATE('28/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),'AVANCE SIGNIFICATIVO EN SOLENOIDE.',4,'S'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,5,1301417231212,TO_DATE('01/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,5,1301417231212,TO_DATE('08/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,5,1301417231212,TO_DATE('15/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,5,1301417231212,TO_DATE('22/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),'DEBATE SOBRE EL CONFLICTO ENTRE BIEN Y MAL.',5,'S'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('05/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('19/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('26/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'CIERRE DE MAYO SOBRE SOLANIN.',4,'S'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,3,4581417235088,TO_DATE('06/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,3,4581417235088,TO_DATE('13/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,3,4581417235088,TO_DATE('20/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,3,4581417235088,TO_DATE('27/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'LOS NINOS VALORARON LA AMISTAD EN LOOK BACK.',5,'S'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('09/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+INSERT INTO cal_reuniones(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
+VALUES (1,2,4581417235066,TO_DATE('16/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'CIERRE DEL BIMESTRE MAY-JUN.',4,'S'); COMMIT;
 
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,1,3,TO_DATE('20/04/2020','DD/MM/YYYY'),TO_DATE('20/04/2020','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('05/01/2024','DD/MM/YYYY')); COMMIT;
@@ -516,10 +647,30 @@ VALUES (4,4,3,7,TO_DATE('15/07/2018','DD/MM/YYYY'),TO_DATE('15/07/2018','DD/MM/Y
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (5,5,1,12,TO_DATE('25/04/2021','DD/MM/YYYY'),TO_DATE('25/04/2021','DD/MM/YYYY'),5,1,7805341235044,TO_DATE('20/03/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (7,7,1,16,TO_DATE('20/11/2015','DD/MM/YYYY'),TO_DATE('20/11/2015','DD/MM/YYYY'),7,1,1301417235077,TO_DATE('14/11/2023','DD/MM/YYYY'));
+VALUES (7,7,1,16,TO_DATE('20/11/2015','DD/MM/YYYY'),TO_DATE('20/11/2015','DD/MM/YYYY'),7,1,1301417235077,TO_DATE('14/11/2023','DD/MM/YYYY')); COMMIT;
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,4,23,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('10/04/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (5,5,4,26,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),5,4,1301417231212,TO_DATE('03/04/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,1,18,TO_DATE('10/03/2021','DD/MM/YYYY'),TO_DATE('10/03/2021','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('19/01/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,1,3,TO_DATE('20/04/2020','DD/MM/YYYY'),TO_DATE('20/04/2020','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,1,4,TO_DATE('10/05/2020','DD/MM/YYYY'),TO_DATE('10/05/2020','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,1,18,TO_DATE('10/03/2021','DD/MM/YYYY'),TO_DATE('10/03/2021','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,4,23,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),1,5,1301417231212,TO_DATE('15/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,2,34,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,2,35,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,2,34,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO inasistencias(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
+VALUES (1,1,2,34,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('09/06/2026','DD/MM/YYYY')); COMMIT;

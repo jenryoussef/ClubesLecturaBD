@@ -60,6 +60,9 @@ COMMIT;
 INSERT INTO representantes (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad)
 VALUES (S_REPRESENTANTE.nextval,'SOFIA','CARMINA',NULL,'COPPOLA',12120320);
 COMMIT;
+INSERT INTO representantes (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad)
+VALUES (S_REPRESENTANTE.nextval, 'ELENA', 'RUIZ', 'MARIA', 'PAREDES', 28450123);
+COMMIT;
 
 INSERT INTO instituciones (id_institucion,nombre,tipo,descripcion) VALUES(S_INSTITUCION.nextval,'UCAB','UN','Es una universidad primera con sede en Caracas y Puerto Ordaz');
 COMMIT;
@@ -124,16 +127,16 @@ INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_
 VALUES(S_LECTOR.nextval,'MANOLO','SANSFINAL','FANTASY',TO_DATE('31-01-1997','DD-MM-YYYY'),'FF7@GMAIL.COM',7777721,3,NULL,NULL,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
-VALUES(S_LECTOR.nextval,'PAUL','THOMAS','ANDERSON',TO_DATE('31-01-2016','DD-MM-YYYY'),'PUNCHDRUNKLOVE@GMAIL.COM',18982122,4,NULL,3,NULL);
+VALUES(S_LECTOR.nextval,'PAUL','THOMAS','ANDERSON',TO_DATE('31-01-1999','DD-MM-YYYY'),'PUNCHDRUNKLOVE@GMAIL.COM',18982122,4,NULL,3,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
 VALUES(S_LECTOR.nextval,'QUENTIN','TARANTINO','SANTOS',TO_DATE('12-11-2017','DD-MM-YYYY'),'IDEATHIEF@GMAIL.COM',15968323,4,'MANBABY',3,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
-VALUES(S_LECTOR.nextval,'MARTIN','SCORCESE','MOVIEGUY',TO_DATE('01-03-2010','DD-MM-YYYY'),'TAXIDRIVER@GMAIL.COM',32203421,4,NULL,2,NULL);
+VALUES(S_LECTOR.nextval,'MARTIN','SCORCESE','MOVIEGUY',TO_DATE('01-03-1997','DD-MM-YYYY'),'TAXIDRIVER@GMAIL.COM',32203421,4,NULL,2,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
-VALUES(S_LECTOR.nextval,'FRANCIS','FORD','COPPOLA',TO_DATE('09-03-2010','DD-MM-YYYY'),'APOCALYPSENOW@GMAIL.COM',2321456,4,NULL,4,NULL);
+VALUES(S_LECTOR.nextval,'FRANCIS','FORD','COPPOLA',TO_DATE('09-03-1995','DD-MM-YYYY'),'APOCALYPSENOW@GMAIL.COM',2321456,4,NULL,4,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
 VALUES(S_LECTOR.nextval,'ANDREI','TARKOVSKY','ARSENYEVICH',TO_DATE('04-04-1932','DD-MM-YYYY'),'ANDREI.TARKOVSKY@GMAIL.COM',44201312,9,NULL,NULL,NULL);
@@ -157,7 +160,7 @@ INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_
 VALUES(S_LECTOR.nextval,'AGNES','VARDA','ARLETTE',TO_DATE('30-05-1928','DD-MM-YYYY'),'AGNES.VARDA@GMAIL.COM',99802112,2,'ARLETTE',NULL,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
-VALUES(S_LECTOR.nextval,'CHANTAL','AKERMAN','ANNE',TO_DATE('06-06-1950','DD-MM-YYYY'),'CHANTAL.AKERMAN@GMAIL.COM',11902212,2,'ANNE',NULL,NULL);
+VALUES(S_LECTOR.nextval,'CHANTAL','AKERMAN','ANNE',TO_DATE('06-06-2005','DD-MM-YYYY'),'CHANTAL.AKERMAN@GMAIL.COM',11902212,2,'ANNE',NULL,NULL);
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
 VALUES(S_LECTOR.nextval,'PEDRO','ALMODOVAR','CABALLERO',TO_DATE('25-09-1949','DD-MM-YYYY'),'PEDRO.ALMODOVAR@GMAIL.COM',22102312,3,NULL,NULL,NULL);
@@ -170,4 +173,37 @@ VALUES(S_LECTOR.nextval,'JOHN','CASSAVETES','NICHOLAS',TO_DATE('09-12-1929','DD-
 COMMIT;
 INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
 VALUES(S_LECTOR.nextval,'KELLY','REICHARDT','ANN',TO_DATE('05-09-1964','DD-MM-YYYY'),'KELLY.REICHARDT@GMAIL.COM',55402612,4,'ANN',NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'VALENTINA','RUIZ','PAREDES',TO_DATE('14/03/2016','DD/MM/YYYY'),'VALENTINA.RUIZ@CORREO.COM',40110001,1,'MARIA',1,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'MATEO','LINARES','GOMEZ',TO_DATE('22/07/2015','DD/MM/YYYY'),'MATEO.LINARES@CORREO.COM',40110002,1,NULL,1,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'ISABELLA','MENDOZA','SILVA',TO_DATE('05/11/2014','DD/MM/YYYY'),'ISABELLA.MENDOZA@CORREO.COM',40110003,1,NULL,2,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'DIEGO','SALAZAR','TORRES',TO_DATE('18/01/2017','DD/MM/YYYY'),'DIEGO.SALAZAR@CORREO.COM',40110004,1,'ANDRES',2,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'CAMILA','ORTEGA','VEGA',TO_DATE('30/08/2008','DD/MM/YYYY'),'CAMILA.ORTEGA@CORREO.COM',40110005,1,NULL,NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'ANDRES','PEREZ','MOLINA',TO_DATE('12/04/2006','DD/MM/YYYY'),'ANDRES.PEREZ@CORREO.COM',40110006,1,NULL,NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'LAURA','MOLINA','DIAZ',TO_DATE('25/09/2004','DD/MM/YYYY'),'LAURA.MOLINA@CORREO.COM',40110007,1,NULL,NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'NICOLAS','VEGA','ROJAS',TO_DATE('03/02/2010','DD/MM/YYYY'),'NICOLAS.VEGA@CORREO.COM',40110008,1,NULL,5,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'SOFIA','HERRERA','CASTRO',TO_DATE('17/06/2009','DD/MM/YYYY'),'SOFIA.HERRERA@CORREO.COM',40110009,1,NULL,NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'ROSA','MENDEZ','FLORES',TO_DATE('10/05/1978','DD/MM/YYYY'),'ROSA.MENDEZ@CORREO.COM',40110010,1,NULL,NULL,NULL);
+COMMIT;
+INSERT INTO lectores(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in)
+VALUES(S_LECTOR.nextval,'JORGE','CASTILLO','RAMIREZ',TO_DATE('28/12/1975','DD/MM/YYYY'),'JORGE.CASTILLO@CORREO.COM',40110011,1,'LUIS',NULL,NULL);
 COMMIT;
