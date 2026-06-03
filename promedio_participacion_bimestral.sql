@@ -19,7 +19,8 @@ BEGIN
           AND BIMESTRE  = p_bimestre;
     EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            v_total_reuniones := 0;
+            RAISE_APPLICATION_ERROR(-20000,'No se ha reunido en este bimestre');
+            --v_total_reuniones := 0;
     END;
 
     
@@ -52,6 +53,6 @@ BEGIN
 END;
 
 SELECT primer_nombre, primer_apellido, 
-       f_promedio_participacion(id_lector, 2026, 3) AS porc_participacion
+       f_promedio_participacion(id_lector, 2022, 3) AS porc_participacion
 FROM lectores
 WHERE id_lector = 34;
