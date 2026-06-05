@@ -1,15 +1,9 @@
 CREATE SEQUENCE S_AUTOR INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_REPRESENTANTE INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_INSTITUCION INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_IDIOMA INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_PAIS INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_LECTOR INCREMENT BY 1 START WITH 1;
-
 CREATE SEQUENCE S_CLUB INCREMENT BY 1 START WITH 1;
 
 CREATE TABLE autores (
@@ -54,7 +48,7 @@ CREATE TABLE lectores(
     primer_apellido VARCHAR2(20) NOT NULL,
     segundo_apellido VARCHAR2(20) NOT NULL,
     f_nacimiento DATE NOT NULL,
-    email VARCHAR2(50) NOT NULL CONSTRAINT u_email_lector UNIQUE,
+    email VARCHAR2(50) NOT NULL,
     doc_identidad NUMBER(9) NOT NULL,
     id_pais NUMBER(2) NOT NULL ,
     segundo_nombre VARCHAR2(20),
@@ -304,6 +298,10 @@ CREATE TABLE INASISTENCIAS(
     CONSTRAINT PK_INASISTENCIA PRIMARY KEY(ID_CLUB_GRUPO, ID_CLUB_MEMB, ID_GRUPO_ASIG, ID_LECTOR, F_ING_CLUB, F_ING_GRUPO, ID_CLUB_CAL, ID_GRUPO_CAL, ISBN, F_REUNION)
 );
 
+CREATE INDEX I_NOMBRE_LIBRO ON LIBROS(TITULO);
+CREATE INDEX I_NOMBRE_CLUB ON CLUBES(NOMBRE);
+CREATE INDEX I_FK_CLUB_INSTITUCION ON CLUBES(ID_INSTITUCION);
+
 CREATE OR REPLACE VIEW V_INASISTENCIAS_BIMESTRE AS SELECT ID_CLUB_MEMB ID_CLUB, ID_LECTOR,
     EXTRACT(YEAR FROM F_REUNION) ANIO,
     CEIL(EXTRACT(MONTH FROM F_REUNION)/2) BIMESTRE,
@@ -336,9 +334,96 @@ WHERE h.id_lector = l.id_lector
   AND h.id_club = c.id_club 
   AND h.f_retiro IS NULL;
   
-CREATE OR REPLACE VIEW vista_miembros_retirados (id_club, id_lector, f_ing_club, f_sol_retiro, f_retiro, motivo_retiro) AS 
+CREATE OR REPLACE VIEW vista_miembros_retirados(id_club, id_lector, f_ing_club, f_sol_retiro, f_retiro, motivo_retiro) AS 
 SELECT c.id_club, l.id_lector, h.f_ing_club, h.f_sol_retiro, h.f_retiro, h.motivo_retiro
 FROM hist_membresias h, lectores l, clubes c
 WHERE h.id_lector = l.id_lector 
   AND h.id_club = c.id_club 
   AND h.f_retiro IS NOT NULL;
+  
+CREATE OR REPLACE FUNCTION Conversion_monetaria(
+    monto_local IN NUMBER,                               
+    tasa IN NUMBER,             ----tasa local -> USD
+    moneda_local IN VARCHAR2
+) RETURN NUMBER IS
+BEGIN
+    IF monto_local < 0 then
+        raise_application_error(-20000, 'ERROR. El monto a convertir no debe ser negativo');
+    end if;
+    IF tasa <= 0 then
+        raise_application_error(-20000, 'ERROR. La tasa de conversión debe ser positiva');
+    end if;
+    IF moneda_local = '$' OR moneda_local = 'USD' then
+        DBMS_OUTPUT.PUT_LINE('La moneda local ya esta en dolares, la conversion retorna el mismo monto');
+        RETURN(monto_local);
+    ELSE
+        RETURN(monto_local / tasa);
+    END IF;
+END Conversion_monetaria;
+/
+
+CREATE OR REPLACE FUNCTION calcular_edad_antiguedad(
+    fecha1 IN DATE, 
+    fecha2 IN DATE DEFAULT SYSDATE
+) RETURN NUMBER IS
+BEGIN
+    RETURN TRUNC(MONTHS_BETWEEN(NVL(fecha2, SYSDATE), fecha1) / 12);
+END calcular_edad_antiguedad;
+/
+
+CREATE OR REPLACE FUNCTION PCT_PARTICIPACION_MENSUAL_TIPO(
+    P_ID_CLUB IN NUMBER,
+    P_TIPO    IN VARCHAR2,
+    P_FECHA   IN DATE DEFAULT SYSDATE
+) RETURN NUMBER IS
+    V_F_INICIO  DATE;
+    V_F_FIN     DATE;
+    V_RESULTADO NUMBER;
+BEGIN
+    V_F_INICIO := TRUNC(P_FECHA, 'MM');
+    V_F_FIN    := LAST_DAY(P_FECHA);
+
+    SELECT ROUND(AVG(
+        (1 - NVL(INASIST.TOTAL, 0) / 
+            (REUN.TOTAL * MIEM.TOTAL)
+        ) * 100
+    ), 2)
+    INTO V_RESULTADO
+    FROM GRUPOS_LECTURA GL,
+       
+        -- Reuniones realizadas por grupo en el mes
+        (SELECT ID_CLUB, ID_GRUPO, COUNT(*) TOTAL
+         FROM CAL_REUNIONES
+         WHERE REALIZADA = 'S'
+             AND F_REUNION BETWEEN V_F_INICIO AND V_F_FIN
+         GROUP BY ID_CLUB, ID_GRUPO) REUN,
+         
+        -- Miembros activos por grupo en el mes
+        (SELECT ID_CLUB_GRUPO, ID_GRUPO, COUNT(*) TOTAL
+         FROM HIST_ASIGNACIONES
+         WHERE F_ING_GRUPO <= V_F_FIN
+             AND (F_FIN_GRUPO IS NULL OR F_FIN_GRUPO >= V_F_INICIO)
+         GROUP BY ID_CLUB_GRUPO, ID_GRUPO) MIEM,
+         
+        -- Inasistencias por grupo en el mes
+        (SELECT ID_CLUB_CAL, ID_GRUPO_CAL, COUNT(*) TOTAL
+         FROM INASISTENCIAS
+         WHERE F_REUNION BETWEEN V_F_INICIO AND V_F_FIN
+         GROUP BY ID_CLUB_CAL, ID_GRUPO_CAL) INASIST
+         
+    WHERE GL.ID_CLUB  = P_ID_CLUB
+        AND GL.TIPO   = P_TIPO
+        AND GL.ID_CLUB  = REUN.ID_CLUB
+        AND GL.ID_GRUPO = REUN.ID_GRUPO
+        AND GL.ID_CLUB  = MIEM.ID_CLUB_GRUPO
+        AND GL.ID_GRUPO = MIEM.ID_GRUPO
+        AND GL.ID_CLUB  = INASIST.ID_CLUB_CAL (+)
+        AND GL.ID_GRUPO = INASIST.ID_GRUPO_CAL (+);
+
+    RETURN V_RESULTADO;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN RETURN NULL;
+    WHEN ZERO_DIVIDE   THEN RETURN NULL;
+END PCT_PARTICIPACION_MENSUAL_TIPO;
+/
