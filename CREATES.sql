@@ -357,7 +357,7 @@ BEGIN
         DBMS_OUTPUT.PUT_LINE('La moneda local ya esta en dolares, la conversion retorna el mismo monto');
         RETURN(monto_local);
     ELSE
-        RETURN(monto_local / tasa);
+        RETURN ROUND((monto_local / tasa), 2);
     END IF;
 END Conversion_monetaria;
 /
@@ -374,20 +374,17 @@ END calcular_edad_antiguedad;
 CREATE OR REPLACE FUNCTION PCT_PARTICIPACION_MENSUAL_TIPO(
     P_ID_CLUB IN NUMBER,
     P_TIPO    IN VARCHAR2,
-    P_FECHA   IN DATE DEFAULT SYSDATE
+    P_MES   IN NUMBER DEFAULT extract(month from sysdate),
+    P_ANIO IN NUMBER DEFAULT extract(year from sysdate)
 ) RETURN NUMBER IS
     V_F_INICIO  DATE;
     V_F_FIN     DATE;
     V_RESULTADO NUMBER;
 BEGIN
-    V_F_INICIO := TRUNC(P_FECHA, 'MM');
-    V_F_FIN    := LAST_DAY(P_FECHA);
-
-    SELECT ROUND(AVG(
-        (1 - NVL(INASIST.TOTAL, 0) / 
-            (REUN.TOTAL * MIEM.TOTAL)
-        ) * 100
-    ), 2)
+    V_F_INICIO := TO_DATE('01/' || TO_CHAR(P_MES, '09') || '/' || TO_CHAR(P_ANIO), 'dd/mm/yyyy');
+    V_F_FIN    := LAST_DAY(V_F_INICIO);
+    
+    SELECT ROUND(AVG((1 - NVL(INASIST.TOTAL, 0) / (REUN.TOTAL * MIEM.TOTAL)) * 100), 2)
     INTO V_RESULTADO
     FROM GRUPOS_LECTURA GL,
        
@@ -412,7 +409,7 @@ BEGIN
          GROUP BY ID_CLUB_CAL, ID_GRUPO_CAL) INASIST
          
     WHERE GL.ID_CLUB  = P_ID_CLUB
-        AND GL.TIPO   = P_TIPO
+        AND GL.TIPO   = upper(P_TIPO)
         AND GL.ID_CLUB  = REUN.ID_CLUB
         AND GL.ID_GRUPO = REUN.ID_GRUPO
         AND GL.ID_CLUB  = MIEM.ID_CLUB_GRUPO
@@ -426,4 +423,46 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN RETURN NULL;
     WHEN ZERO_DIVIDE   THEN RETURN NULL;
 END PCT_PARTICIPACION_MENSUAL_TIPO;
+/
+
+CREATE OR REPLACE FUNCTION F_PROMEDIO_PARTICIPACION(
+    p_idlector IN NUMBER,
+    p_idclub   IN NUMBER,
+    p_anio     IN NUMBER DEFAULT extract(year from sysdate),
+    p_bimestre IN NUMBER DEFAULT ceil(extract(month from sysdate)/2)
+) RETURN NUMBER IS
+    v_total_reuniones       NUMBER := 0;
+    v_total_inasistencias   NUMBER := 0;
+    v_porcentaje            NUMBER(5,2) := 0; 
+BEGIN
+    -- 1. Obtener el total de reuniones programadas para el lector en ese bimestre
+    BEGIN
+        SELECT TOTAL_REUNIONES
+        INTO v_total_reuniones
+        FROM V_REUNIONES_BIMESTRE
+        WHERE ID_CLUB = p_idclub
+          AND ID_LECTOR = p_idlector
+          AND ANIO      = p_anio
+          AND BIMESTRE  = p_bimestre;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20000,'No se ha reunido en este bimestre');
+            --v_total_reuniones := 0;
+    END;
+    
+    BEGIN
+        SELECT TOTAL_INASISTENCIAS
+        INTO v_total_inasistencias
+        FROM V_INASISTENCIAS_BIMESTRE
+        WHERE ID_CLUB = p_idclub
+          AND ID_LECTOR = p_idlector
+          AND ANIO      = p_anio
+          AND BIMESTRE  = p_bimestre;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            v_total_inasistencias := 0;
+    END;
+    v_porcentaje := ROUND(((v_total_reuniones - v_total_inasistencias) / v_total_reuniones) * 100, 2);
+    RETURN v_porcentaje;
+END;
 /

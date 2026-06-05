@@ -8,4 +8,4 @@ SELECT * FROM vista_miembros_retirados;
 
 SELECT L.ID_LECTOR, L.ID_CLUB, L.F_ING_CLUB, L.F_RETIRO, calcular_edad_antiguedad(L.F_ING_CLUB, L.F_RETIRO) ANTIGUEDAD 
 FROM HIST_MEMBRESIAS L 
-WHERE L.ID_LECTOR = &id_lector;
+WHERE L.id_club = &id_club AND L.ID_LECTOR = &id_lector;
