@@ -266,28 +266,28 @@ INSERT INTO ADFJ_CIUDADES(id_pais,id_ciudad,nombre) VALUES (4,1,'NEW HAVEN'); CO
 INSERT INTO ADFJ_CIUDADES(id_pais,id_ciudad,nombre) VALUES (4,2,'SAN FRANCISCO'); COMMIT;
 
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'SPOILERS ANONIMOS','SPOILERS ANONIMOS ES UN CLUB DE LECTURA PARA PERSONAS DE TODAS LAS EDADES E INTERESES LITERARIOS',1060,'ALTAMARIA 4TA TRANSVERSAL',1,1,'S',NULL);
+VALUES(ADFJ_S_CLUB.nextval,'SPOILERS ANONIMOS','Spoilers anónimos es un club para personas de todas las edades e intereses literarios',1060,'Altamira 4ta transversal',1,1,'S',NULL);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'VIVIR ENTRE LINEAS','VIVIR ENTRE LINEAS EXISTE PARA CULTIVAR LA LECTURA EN LOS ESTUDIANTES DE LA UCAB',1020,'AV TEHERAN, MONTALBAN',1,1,'N',1);
+VALUES(ADFJ_S_CLUB.nextval,'VIVIR ENTRE LINEAS','vivir entre líneas existe para fomentar la lectura de los estudiantes de la UCAB',1020,'Av. Teherán, Montalbán',1,1,'N',1);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'LOS TAPA DURA','UNA COMUNIDAD DE LECTORES DE BURDEOS QUE HABRE SUS PUERTAS A CUALQUIER INTERESADO',33000,'CA COUR DES AIDES',2,2,'S',NULL);
+VALUES(ADFJ_S_CLUB.nextval,'LOS TAPA DURA','Una comunidad de lectores de Burdeos que abre sus puertas a cualquier interesado',33000,'Ca Cour des Aides',2,2,'S',NULL);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'PLUMA EN EL TINTERO','LA BNF PROVEE A LA COMUNIDA PARISIENSE CON UN CLUB DE LECTURA QUE HACE USO DE SU GRAN COLECCION DE LIBROS',75013,'QUAI FRANCOIS MAURIAC',2,1,'N',2);
+VALUES(ADFJ_S_CLUB.nextval,'PLUMA EN EL TINTERO','La BNF provee a la comunidad parisense un club de lectura que hace uso de su gran colección de libros',75013,'Quai Francois Mauriac',2,1,'N',2);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'NO JUZGUES POR LA PORTADA','QUEREMOS PROMOVER LA LECTURA A CUALQUIER TIPO DE PERSONA',08001,'MUNICIPIO BARCELONA AV MANOLO',3,2,'S',NULL);
+VALUES(ADFJ_S_CLUB.nextval,'NO JUZGUES POR LA PORTADA','Queremos promover la lectura a cualquier tipo de persona',08001,'Municipio Barcelona, Av. Manolo',3,2,'S',NULL);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'LECTORES DESDE CERO','CLUB PATROCINADO POR LA RABASF PARA LA FOMENTACION DE LA LECTURA',28014,'CALLE DE ALCALA N13',3,1,'N',3);
+VALUES(ADFJ_S_CLUB.nextval,'LECTORES DESDE CERO','Club patrocinado por la RABASF para el fomento de la lectura',28014,'Calle de Alcalá N13',3,1,'N',3);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'EFECTO PAPEL','YALE FORMO ESTE CLUB DE LECTURA PARA EL ALUMNADO Y GRADUADOS DE LA UNIVERSIDAD',06520,'149 ELM STREET',4,1,'N',4);
+VALUES(ADFJ_S_CLUB.nextval,'EFECTO PAPEL','Yale formó este club de lectura para el alumnado y graduados de la universidad',06520,'149 Elm Street',4,1,'N',4);
 COMMIT;
 INSERT INTO ADFJ_CLUBES(id_club,nombre,descripcion,cod_postal,direccion,id_pais,id_ciudad,cuota_membr,id_institucion)
-VALUES(ADFJ_S_CLUB.nextval,'LECTORES DE AYER','TRAYENDO LA LECTURA A DISTINTAS GENERACIONES EN SAN FRANCISCO',4004,'LOMBARD STREET 14ST VIEW',4,2,'N',NULL);
+VALUES(ADFJ_S_CLUB.nextval,'LECTORES DE AYER','Trayendo la lectura a distintas generaciones de San Francisco',4004,'Lombard Street 14th view',4,2,'N',NULL);
 COMMIT;
 
 INSERT INTO ADFJ_AUTORIAS(id_autor,ISBN) VALUES (1,3783353412011); COMMIT;
@@ -425,15 +425,15 @@ INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,1301417231212,1);
 INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,5944012351010,2); COMMIT;
 INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,5024441735066,3); COMMIT;
 
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,3,'COLABORACION ENTRE SPOILERS ANONIMOS Y LOS TAPA DURA PARA INTERCAMBIO DE LIBROS Y LECTORES'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,5,'ALIANZA ENTRE SPOILERS ANONIMOS Y NO JUZGUES POR LA PORTADA PARA FOMENTAR LA LECTURA EN ESPAÑOL'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (3,4,'LOS TAPA DURA Y PLUMA EN EL TINTERO COMPARTEN RECURSOS Y COLECCIONES EN PARIS Y BURDEOS'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (5,6,'NO JUZGUES POR LA PORTADA Y LECTORES DESDE CERO PROMUEVEN LA LECTURA EN TODA ESPAÑA'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (7,8,'EFECTO PAPEL Y LECTORES DE AYER COLABORAN EN EL AMBITO ANGLOPARLANTE DE ESTADOS UNIDOS'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (2,6,'VIVIR ENTRE LINEAS Y LECTORES DESDE CERO INTERCAMBIAN EXPERIENCIAS ACADEMICAS EN ESPAÑOL'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,2,'SPOILERS ANONIMOS Y VIVIR ENTRE LINEAS SE APOYAN MUTUAMENTE EN VENEZUELA'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (4,8,'PLUMA EN EL TINTERO Y LECTORES DE AYER COMPARTEN OBRAS EN INGLES Y FRANCES'); COMMIT;
-INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (6,7,'LECTORES DESDE CERO Y EFECTO PAPEL COLABORAN EN INTERCAMBIO ACADEMICO INTERNACIONAL'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,3,'Colaboración entre Spoilers Anónimos y Los Tapa Dura para intercambio de libros y lectores'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,5,'Alianza entre Spoilers Anónimos y No Juzgues por la Portada para fomentar la lectura en español'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (3,4,'Los Tapa Dura y Pluma en el Tintero comparten recursos y colecciones entre París y Burdeos'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (5,6,'No Juzgues por la Portada y Lectores Desde Cero promueven la lectura en toda España'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (7,8,'Efecto Papel y Lectores de Ayer colaboran en el ámbito angloparlante de Estados Unidos'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (2,6,'Vivir Ente Líneas y Lectores Desde Cero intercambian experiencias académicas en español'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,2,'Spoilers Anónimos y Vivir entre Líneas se apoyan mutuamente en Venezuela'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (4,8,'Pluma en el Tintero y Lectores de Ayer comparten obras en inglés y francés'); COMMIT;
+INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (6,7,'Lectores Desde Cero y Efecto Papel colaboran en intercambio académico internacional'); COMMIT;
 
 INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,212,5551001,NULL,1); COMMIT;
 INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,212,5551002,NULL,2); COMMIT;
@@ -693,15 +693,15 @@ INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,38,TO_DATE('01/02/2025','DD/MM/YYYY'),TO_DATE('01/02/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,39,TO_DATE('01/02/2025','DD/MM/YYYY'),TO_DATE('01/02/2025','DD/MM/YYYY'),NULL); COMMIT;
 
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,1,'LA NOCHE DE LOS CRIMENES',90,'ADAPTACION TEATRAL DEL LIBRO LOS HERMANOS KARAMAZOV','S',15); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,2,'EL ULTIMO MISTERIO',75,'OBRA BASADA EN EL LIBRO 2666 DE ROBERTO BOLANO','N',10); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (4,1,'LES FLEURS DU MAL EN SCENE',60,'PUESTA EN ESCENA POETICA DE LAS FLORES DEL MAL','S',20); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (5,1,'EL LABERINTO DE KARAMAZOV',100,'VERSION ESPAÑOLA DE LOS HERMANOS KARAMAZOV','S',12); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (7,1,'WHITE NOISE ON STAGE',80,'THEATRICAL ADAPTATION OF WHITE NOISE BY DON DELILO','S',25); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (7,2,'FOUNDATION PLAY',110,'STAGE ADAPTATION OF FOUNDATION AND EARTH','N',18); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (8,1,'EAST OF EDEN LIVE',95,'THEATRICAL VERSION OF EAST OF EDEN','S',22); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (3,1,'LE TUNNEL EN SCENE',85,'ADAPTATION THEATRALE DU TUNNEL DE WILLIAM GASS','S',18); COMMIT;
-INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (2,1,'VOCES ENTRE LINEAS',70,'OBRA BASADA EN SAUCE CIEGO MUJER DORMIDA DE MURAKAMI','S',NULL); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,1,'LA NOCHE DE LOS CRIMENES',90,'Ada´tación teatral del libro Los Hermanos Karamazov','S',15); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,2,'EL ULTIMO MISTERIO',75,'Obra basada en el libro 2666 de Roberto Bolaño','N',10); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (4,1,'LES FLEURS DU MAL EN SCENE',60,'Puesta en escena poética de Las Flores del Mal','S',20); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (5,1,'EL LABERINTO DE KARAMAZOV',100,'Versión española de Los Hermanos Karamazov','S',12); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (7,1,'WHITE NOISE ON STAGE',80,'Adaptación teatral de Ruido Blanco de Don DeLillo','S',25); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (7,2,'FOUNDATION PLAY',110,'Adaptación teatral de Fundación y Tierra','N',18); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (8,1,'EAST OF EDEN LIVE',95,'Versión teatral de Al Este del Edén','S',22); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (3,1,'LE TUNNEL EN SCENE',85,'Adaptación teatral del tunel de William Gass','S',18); COMMIT;
+INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (2,1,'VOCES ENTRE LINEAS',70,'Obra basada en Sauce Ciego, Mujer Dormida de Murakami','S',NULL); COMMIT;
 
 INSERT INTO ADFJ_ADAPTACIONES(id_club,id_obra,isbn) VALUES (1,1,4617417231313); COMMIT; -- Karamazov
 INSERT INTO ADFJ_ADAPTACIONES(id_club,id_obra,isbn) VALUES (1,2,7805341235044); COMMIT; -- 2666
@@ -765,33 +765,33 @@ VALUES (1,1,4617417231313,TO_DATE('05/01/2024','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,1,4617417231313,TO_DATE('12/01/2024','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,1,4617417231313,TO_DATE('19/01/2024','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'OBRA FILOSOFICA Y PSICOLOGICA DE GRAN PROFUNDIDAD. EL GRUPO VALORO POSITIVAMENTE EL DESARROLLO DE LOS PERSONAJES.',5,'S'); COMMIT;
+VALUES (1,1,4617417231313,TO_DATE('19/01/2024','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'Obra silosófica y psicológica de gran profundidad. El grupo valoró positivamente el desarrollo de los personajes.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (4,1,3783353412011,TO_DATE('08/02/2024','DD/MM/YYYY'),'S',4,4,1,5,TO_DATE('05/06/2018','DD/MM/YYYY'),TO_DATE('05/06/2018','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (4,1,3783353412011,TO_DATE('15/02/2024','DD/MM/YYYY'),'S',4,4,1,5,TO_DATE('05/06/2018','DD/MM/YYYY'),TO_DATE('05/06/2018','DD/MM/YYYY'),'BAUDELAIRE EXPLORA LA DUALIDAD DEL SER HUMANO CON MAESTRIA. EL GRUPO ENCONTRO PARALELISMOS CON LA VIDA MODERNA.',4,'S'); COMMIT;
+VALUES (4,1,3783353412011,TO_DATE('15/02/2024','DD/MM/YYYY'),'S',4,4,1,5,TO_DATE('05/06/2018','DD/MM/YYYY'),TO_DATE('05/06/2018','DD/MM/YYYY'),'Baudelaire explora la dualidad del ser humano con maestría. El grupo encontró paralelismos con la vida moderna.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (5,1,7805341235044,TO_DATE('06/03/2024','DD/MM/YYYY'),'S',5,5,1,9,TO_DATE('12/02/2021','DD/MM/YYYY'),TO_DATE('12/02/2021','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (5,1,7805341235044,TO_DATE('13/03/2024','DD/MM/YYYY'),'S',5,5,1,9,TO_DATE('12/02/2021','DD/MM/YYYY'),TO_DATE('12/02/2021','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (5,1,7805341235044,TO_DATE('20/03/2024','DD/MM/YYYY'),'S',5,5,1,9,TO_DATE('12/02/2021','DD/MM/YYYY'),TO_DATE('12/02/2021','DD/MM/YYYY'),'BOLANO CONSTRUYE UNA OBRA MONUMENTAL. EL GRUPO DEBATIO EXTENSAMENTE SOBRE LOS CRIMENES DE SANTA TERESA Y SU SIMBOLISMO.',5,'S'); COMMIT;
+VALUES (5,1,7805341235044,TO_DATE('20/03/2024','DD/MM/YYYY'),'S',5,5,1,9,TO_DATE('12/02/2021','DD/MM/YYYY'),TO_DATE('12/02/2021','DD/MM/YYYY'),'Bolaño construye una obra monumental. El grupo debatió extensamente sobre los crímenes de Santa Teresa y su simbolismo.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (7,1,1301417235077,TO_DATE('07/11/2023','DD/MM/YYYY'),'S',7,7,1,13,TO_DATE('01/09/2015','DD/MM/YYYY'),TO_DATE('01/09/2015','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (7,1,1301417235077,TO_DATE('14/11/2023','DD/MM/YYYY'),'S',7,7,1,13,TO_DATE('01/09/2015','DD/MM/YYYY'),TO_DATE('01/09/2015','DD/MM/YYYY'),'DELILO ANTICIPA LA SOCIEDAD DE LA INFORMACION. EL GRUPO VALORO LA VIGENCIA DEL LIBRO EN LA ERA DIGITAL.',4,'S'); COMMIT;
+VALUES (7,1,1301417235077,TO_DATE('14/11/2023','DD/MM/YYYY'),'S',7,7,1,13,TO_DATE('01/09/2015','DD/MM/YYYY'),TO_DATE('01/09/2015','DD/MM/YYYY'),'DeLillo anticipa la sociedad de la información. El grupo valoró la vigencia del libro en la era digital.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (4,3,4581417235066,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',4,4,1,5,TO_DATE('05/06/2018','DD/MM/YYYY'),TO_DATE('05/06/2018','DD/MM/YYYY'),'LOS NIÑOS DISFRUTARON DEL MANGA. SE DESTACARON LOS TEMAS DE CRECIMIENTO PERSONAL Y AMISTAD.',4,'S'); COMMIT;
+VALUES (4,3,4581417235066,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',4,4,1,5,TO_DATE('05/06/2018','DD/MM/YYYY'),TO_DATE('05/06/2018','DD/MM/YYYY'),'Se disfrutó mucho del manga. Se destacaron los temas de crecimiento personal y amistad.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,4,5944012351010,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('17/04/2024','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),'CARTARESCU CONSTRUYE UN UNIVERSO ONÍRICO Y DENSO. EL GRUPO DESTACÓ LA RIQUEZA FILOSÓFICA Y LITERARIA DE LA OBRA.',5,'S'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('17/04/2024','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),'Cartarescu construye un universo onírico y denso. El grupo destacó la riqueza literaria y filosófica de la obra.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301534748055,TO_DATE('24/04/2024','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),'GASS LLEVA LA PROSA AL LIMITE. EL GRUPO DEBATIÓ INTENSAMENTE SOBRE LA NATURALEZA DEL LENGUAJE Y LA MEMORIA.',4,'S'); COMMIT;
+VALUES (1,5,1301534748055,TO_DATE('24/04/2024','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),'Gass lleva la prosa al límite. El grupo debatió intensamente sobre la naturaleza del lenguaje y la memoria.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (5,4,1301417231212,TO_DATE('03/04/2024','DD/MM/YYYY'),'S',5,5,4,25,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (5,4,1301417231212,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',5,5,4,25,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),'STEINBECK RETRATA LA COMPLEJIDAD DEL SER HUMANO CON MAESTRÍA. EL BIEN Y EL MAL COMO FUERZAS ETERNAS.',5,'S'); COMMIT;
+VALUES (5,4,1301417231212,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',5,5,4,25,TO_DATE('20/01/2022','DD/MM/YYYY'),TO_DATE('20/01/2022','DD/MM/YYYY'),'Steinback retrata la complejidad del ser humano con maestría. El bien y el mal como fuerzas eternas.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,1,4617417231313,TO_DATE('04/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -799,7 +799,7 @@ VALUES (1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,1,4617417231313,TO_DATE('18/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,1,4617417231313,TO_DATE('25/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'CIERRE DEL BLOQUE DE LECTURA DE MAYO SOBRE KARAMAZOV.',5,'S'); COMMIT;
+VALUES (1,1,4617417231313,TO_DATE('25/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'Se hizo un análisis profundo sobre la complejidad moral y dualidad de los personajes de Dostoyevski.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,4,5944012351010,TO_DATE('07/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -807,7 +807,7 @@ VALUES (1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DAT
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,4,5944012351010,TO_DATE('21/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('28/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),'AVANCE SIGNIFICATIVO EN SOLENOIDE.',4,'S'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('28/05/2026','DD/MM/YYYY'),'S',1,1,4,19,TO_DATE('15/06/2022','DD/MM/YYYY'),TO_DATE('15/06/2022','DD/MM/YYYY'),'El realismo de la obra fue discutido en profundiad con todos sus matices.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,5,1301417231212,TO_DATE('01/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -815,7 +815,7 @@ VALUES (1,5,1301417231212,TO_DATE('08/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DAT
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,5,1301417231212,TO_DATE('15/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301417231212,TO_DATE('22/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),'DEBATE SOBRE EL CONFLICTO ENTRE BIEN Y MAL.',5,'S'); COMMIT;
+VALUES (1,5,1301417231212,TO_DATE('22/05/2026','DD/MM/YYYY'),'S',1,1,5,24,TO_DATE('01/09/2022','DD/MM/YYYY'),TO_DATE('01/09/2022','DD/MM/YYYY'),'Se produjo un intersante debate sobre la dicotomía entre el bien y el mal.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('05/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -823,7 +823,7 @@ VALUES (1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DAT
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('19/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,2,4581417235066,TO_DATE('26/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'CIERRE DE MAYO SOBRE SOLANIN.',4,'S'); COMMIT;
+VALUES (1,2,4581417235066,TO_DATE('26/05/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'Se analizó la complejidad de la vida para los jóvenes adultos japoneses en el mundo contemporáneo.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,3,4581417235088,TO_DATE('06/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -831,13 +831,13 @@ VALUES (1,3,4581417235088,TO_DATE('13/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,3,4581417235088,TO_DATE('20/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,3,4581417235088,TO_DATE('27/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'LOS NINOS VALORARON LA AMISTAD EN LOOK BACK.',5,'S'); COMMIT;
+VALUES (1,3,4581417235088,TO_DATE('27/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('01/03/2020','DD/MM/YYYY'),TO_DATE('01/03/2020','DD/MM/YYYY'),'Se valoró especialmente el valor de la amistad reflejado en el libro.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('09/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,2,4581417235066,TO_DATE('16/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'CIERRE DEL BIMESTRE MAY-JUN.',4,'S'); COMMIT;
+VALUES (1,2,4581417235066,TO_DATE('16/06/2026','DD/MM/YYYY'),'S',1,1,2,33,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'Se hizo un breve detabate sobre la situación socioecónomica actual de Japón y sus implicaciones para los jóvenes japoneses.',4,'S'); COMMIT;
 
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,1,3,TO_DATE('20/04/2020','DD/MM/YYYY'),TO_DATE('20/04/2020','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('05/01/2024','DD/MM/YYYY')); COMMIT;
