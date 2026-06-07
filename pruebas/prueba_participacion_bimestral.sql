@@ -1,7 +1,7 @@
 /*SELECT id_lector, id_club, 
        adfj_f_promedio_participacion(id_lector, id_club) AS porc_participacion
 FROM adfj_hist_membresias
-WHERE id_club = 1 AND id_lector = 34;*/
+WHERE id_club = 1 AND id_lector = 30;*/
 
 SELECT * FROM adfj_v_inasistencias_bimestre;
 

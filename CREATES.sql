@@ -523,3 +523,120 @@ BEGIN
     RETURN v_porcentaje;
 END;
 /
+
+CREATE OR REPLACE FUNCTION ADFJ_CONTAR_MIEMBROS_ACTIVOS(
+    p_id_club IN NUMBER,
+    p_anio    IN NUMBER
+) RETURN NUMBER IS
+    v_fecha_corte DATE;
+    v_total NUMBER;
+BEGIN
+    v_fecha_corte := TO_DATE('31/12/' || TO_CHAR(p_anio), 'DD/MM/YYYY');
+    
+    SELECT COUNT(DISTINCT id_lector)
+    INTO v_total
+    FROM ADFJ_HIST_MEMBRESIAS
+    WHERE id_club = p_id_club
+      AND f_ing_club <= v_fecha_corte
+      AND (f_retiro IS NULL OR f_retiro > v_fecha_corte);
+
+    RETURN NVL(v_total, 0);
+END ADFJ_CONTAR_MIEMBROS_ACTIVOS;
+/
+
+CREATE OR REPLACE FUNCTION ADFJ_CRECIMIENTO_MIEMBROS(
+    p_id_club IN NUMBER,
+    p_anio    IN NUMBER
+) RETURN NUMBER IS
+    v_miembros_actual   NUMBER;
+    v_miembros_anterior NUMBER;
+BEGIN
+    IF p_anio > EXTRACT(YEAR FROM SYSDATE) THEN
+        RAISE_APPLICATION_ERROR(-20000, 
+            'ERROR. No puede calcular crecimiento para años futuros');
+    END IF;
+
+    v_miembros_actual   := ADFJ_CONTAR_MIEMBROS_ACTIVOS(p_id_club, p_anio);
+    v_miembros_anterior := ADFJ_CONTAR_MIEMBROS_ACTIVOS(p_id_club, p_anio - 1);
+
+    IF v_miembros_anterior = 0 THEN
+        RETURN NULL;
+    END IF;
+
+    RETURN ROUND(
+        ((v_miembros_actual - v_miembros_anterior) / v_miembros_anterior), 4);
+END ADFJ_CRECIMIENTO_MIEMBROS;
+/
+
+CREATE OR REPLACE FUNCTION ADFJ_INGRESOS_MEMBRESIA_ANUAL(
+    p_id_club IN NUMBER,
+    p_anio    IN NUMBER
+) RETURN NUMBER IS
+    v_pagos NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO v_pagos
+    FROM ADFJ_PAGOS_MEMBRESIA p, ADFJ_CLUBES c
+    WHERE c.id_club      = p.id_club
+      AND p.id_club      = p_id_club
+      AND c.cuota_membr  = 'S'
+      AND EXTRACT(YEAR FROM p.f_pago) = p_anio;
+
+    -- Cada pago equivale a $100 USD (monto fijo del enunciado)
+    RETURN NVL(v_pagos, 0) * 100;
+END ADFJ_INGRESOS_MEMBRESIA_ANUAL;
+/
+
+CREATE OR REPLACE FUNCTION ADFJ_CRECIMIENTO_ECONOMICO(
+    p_id_club IN NUMBER,
+    p_anio    IN NUMBER
+) RETURN NUMBER IS
+    v_ingresos_actual   NUMBER;
+    v_ingresos_anterior NUMBER;
+BEGIN
+    IF p_anio > EXTRACT(YEAR FROM SYSDATE) THEN
+        RAISE_APPLICATION_ERROR(-20000,
+            'ERROR. No puede calcular crecimiento para años futuros');
+    END IF;
+
+    v_ingresos_actual   := ADFJ_INGRESOS_MEMBRESIA_ANUAL(p_id_club, p_anio);
+    v_ingresos_anterior := ADFJ_INGRESOS_MEMBRESIA_ANUAL(p_id_club, p_anio - 1);
+
+    IF v_ingresos_anterior = 0 THEN
+        RETURN NULL;
+    END IF;
+
+    RETURN ROUND(((v_ingresos_actual - v_ingresos_anterior) / v_ingresos_anterior), 4);
+END ADFJ_CRECIMIENTO_ECONOMICO;
+/
+
+CREATE OR REPLACE VIEW ADFJ_V_CRECIMIENTO_MIEMBROS(pais, anio, id_club, club, act_actual, act_pasado, crecimiento) AS
+SELECT DISTINCT p.nombre AS pais, 
+    EXTRACT(YEAR FROM h.f_ing_club) AS anio,
+    c.id_club, 
+    c.nombre AS club,
+    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))     AS miembros_periodo_actual,
+    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club) - 1) AS miembros_periodo_pasado,
+    ADFJ_CRECIMIENTO_MIEMBROS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))        AS pct_crecimiento_miembros
+FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_HIST_MEMBRESIAS h
+WHERE p.id_pais  = c.id_pais
+    AND c.id_club = h.id_club
+    AND EXTRACT(YEAR FROM h.f_ing_club) >= 2024
+ORDER BY p.nombre, anio, 
+    pct_crecimiento_miembros DESC NULLS LAST, c.nombre;
+
+CREATE OR REPLACE VIEW ADFJ_V_CRECIMIENTO_ECONOMICO AS
+SELECT DISTINCT p.nombre AS pais,
+    EXTRACT(YEAR FROM pm.f_pago) AS anio,
+    c.id_club,
+    c.nombre AS club,
+    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago))     AS ingresos_periodo_actual,
+    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago) - 1) AS ingresos_periodo_pasado,
+    ADFJ_CRECIMIENTO_ECONOMICO(c.id_club, EXTRACT(YEAR FROM pm.f_pago))         AS pct_crecimiento_economico
+FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_PAGOS_MEMBRESIA pm
+WHERE p.id_pais      = c.id_pais
+    AND c.id_club     = pm.id_club
+    AND c.cuota_membr = 'S'
+    AND EXTRACT(YEAR FROM pm.f_pago) >= 2024
+ORDER BY p.nombre, anio,
+    pct_crecimiento_economico DESC NULLS LAST, c.nombre;
