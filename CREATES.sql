@@ -474,7 +474,7 @@ EXCEPTION
 END ADFJ_PCT_PARTICIPACION_MENSUAL_TIPO;
 /
 
-CREATE OR REPLACE FUNCTION ADFJ_F_PROMEDIO_PARTICIPACION(
+CREATE OR REPLACE FUNCTION ADFJ_PARTICIPACION_BIMESTRAL(
     p_idlector IN NUMBER,
     p_idclub   IN NUMBER,
     p_anio     IN NUMBER DEFAULT extract(year from sysdate),
@@ -521,5 +521,5 @@ BEGIN
     END;
     v_porcentaje := ROUND(((v_total_reuniones - v_total_inasistencias) / v_total_reuniones) * 100, 2);
     RETURN v_porcentaje;
-END;
+END ADFJ_PARTICIPACION_BIMESTRAL;
 /
