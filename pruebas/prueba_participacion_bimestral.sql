@@ -3,6 +3,8 @@
 FROM adfj_hist_membresias
 WHERE id_club = 1 AND id_lector = 34;*/
 
+--3 / 7
+
 SELECT * FROM adfj_v_inasistencias_bimestre;
 
 SELECT * FROM adfj_v_reuniones_bimestre;
