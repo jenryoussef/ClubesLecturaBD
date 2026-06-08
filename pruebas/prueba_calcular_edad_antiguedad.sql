@@ -1,6 +1,10 @@
+--Calculo de edad
+
 SELECT L.ID_LECTOR, to_char(L.F_NACIMIENTO, 'dd/mm/yyyy') fecha_nacimiento, ADFJ_calcular_edad_antiguedad(L.F_NACIMIENTO) EDAD
 FROM ADFJ_LECTORES L
 WHERE L.ID_LECTOR = &id_lector;
+
+--Calculo de antiguedad
 
 SELECT * FROM ADFJ_vista_miembros_activos;
 
