@@ -641,7 +641,7 @@ INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_ret
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (2,42,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,5,TO_DATE('05/03/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,6,TO_DATE('10/03/2023','DD/MM/YYYY'),NULL,TO_DATE('15/09/2025','DD/MM/YYYY'),'IN'); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,23,TO_DATE('15/03/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,23,TO_DATE('15/03/2023','DD/MM/YYYY'),TO_DATE('15/07/2025','DD/MM/YYYY'),TO_DATE('15/11/2025','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,19,TO_DATE('10/04/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,43,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (3,44,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
@@ -653,24 +653,24 @@ INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_ret
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,9,TO_DATE('12/02/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,11,TO_DATE('20/03/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,12,TO_DATE('25/04/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,21,TO_DATE('25/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('01/08/2024','DD/MM/YYYY'),'VO'); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,21,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('17/04/2024','DD/MM/YYYY'),TO_DATE('01/12/2024','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,26,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,49,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,10,TO_DATE('01/01/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,22,TO_DATE('15/02/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,22,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/07/2024','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,25,TO_DATE('20/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,50,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (6,51,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,13,TO_DATE('01/09/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,14,TO_DATE('10/09/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,15,TO_DATE('15/10/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,27,TO_DATE('20/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,28,TO_DATE('25/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,27,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('30/05/2024','DD/MM/YYYY'),TO_DATE('01/09/2024','DD/MM/YYYY'),'VO'); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,28,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('10/10/2024','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,31,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,52,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,16,TO_DATE('01/01/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
-INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,18,TO_DATE('15/02/2023','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,18,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/01/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,53,TO_DATE('20/01/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,54,TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (8,55,TO_DATE('15/01/2026','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
@@ -678,6 +678,7 @@ INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_ret
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,27,TO_DATE('01/09/2024','DD/MM/YYYY'),TO_DATE('01/04/2025','DD/MM/YYYY'),TO_DATE('01/05/2025','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,28,TO_DATE('10/10/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,23,TO_DATE('15/11/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (7,27,TO_DATE('01/05/2025','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (1,24,TO_DATE('01/06/2023','DD/MM/YYYY'),NULL,TO_DATE('15/03/2025','DD/MM/YYYY'),'DE'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,20,TO_DATE('01/08/2024','DD/MM/YYYY'),TO_DATE('01/04/2026','DD/MM/YYYY'),TO_DATE('01/05/2026','DD/MM/YYYY'),'VO'); COMMIT;
 INSERT INTO ADFJ_HIST_MEMBRESIAS(id_club,id_lector,f_ing_club,f_sol_retiro,f_retiro,motivo_retiro) VALUES (5,21,TO_DATE('01/12/2024','DD/MM/YYYY'),NULL,NULL,NULL); COMMIT;
@@ -759,54 +760,56 @@ INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,2,TO_DATE('20/01/2023','DD/MM/YYYY'),TO_DATE('20/01/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,3,TO_DATE('10/02/2023','DD/MM/YYYY'),TO_DATE('10/02/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,4,TO_DATE('25/02/2023','DD/MM/YYYY'),TO_DATE('25/02/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,4,1,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,3,1,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,4,1,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,4,1,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),TO_DATE('28/05/2026','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,5,1,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,4,1,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,4,1,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,46,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,3,4,45,TO_DATE('10/04/2023','DD/MM/YYYY'),TO_DATE('10/04/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,1,1,40,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,4,5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,4,5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('01/08/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,4,5,20,TO_DATE('01/08/2024','DD/MM/YYYY'),TO_DATE('01/08/2024','DD/MM/YYYY'),TO_DATE('01/05/2026','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (2,1,2,7,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (2,1,2,8,TO_DATE('20/02/2023','DD/MM/YYYY'),TO_DATE('20/02/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (2,1,2,41,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (2,1,2,42,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,5,TO_DATE('05/03/2023','DD/MM/YYYY'),TO_DATE('05/03/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,6,TO_DATE('10/03/2023','DD/MM/YYYY'),TO_DATE('10/03/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,23,TO_DATE('15/03/2023','DD/MM/YYYY'),TO_DATE('15/03/2023','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,23,TO_DATE('15/03/2023','DD/MM/YYYY'),TO_DATE('15/03/2023','DD/MM/YYYY'),TO_DATE('15/11/2025','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,19,TO_DATE('10/04/2024','DD/MM/YYYY'),TO_DATE('10/04/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,43,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (3,1,3,44,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,24,TO_DATE('01/04/2023','DD/MM/YYYY'),TO_DATE('01/04/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,45,TO_DATE('10/04/2023','DD/MM/YYYY'),TO_DATE('10/04/2023','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,45,TO_DATE('10/04/2023','DD/MM/YYYY'),TO_DATE('10/04/2023','DD/MM/YYYY'),TO_DATE('10/04/2023','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,47,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,48,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,9,TO_DATE('12/02/2023','DD/MM/YYYY'),TO_DATE('12/02/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,11,TO_DATE('20/03/2023','DD/MM/YYYY'),TO_DATE('20/03/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,12,TO_DATE('25/04/2023','DD/MM/YYYY'),TO_DATE('25/04/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,21,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('25/01/2024','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,21,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('01/12/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,21,TO_DATE('01/12/2024','DD/MM/YYYY'),TO_DATE('01/12/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,26,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,49,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,10,TO_DATE('01/01/2023','DD/MM/YYYY'),TO_DATE('01/01/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,22,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/02/2023','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,22,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/07/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,25,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,50,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (6,1,6,51,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,13,TO_DATE('01/09/2023','DD/MM/YYYY'),TO_DATE('01/09/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,14,TO_DATE('10/09/2023','DD/MM/YYYY'),TO_DATE('10/09/2023','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,15,TO_DATE('15/10/2023','DD/MM/YYYY'),TO_DATE('15/10/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,27,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,28,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('25/01/2024','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,27,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('01/09/2024','DD/MM/YYYY')); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,27,TO_DATE('01/05/2025','DD/MM/YYYY'),TO_DATE('01/05/2025','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,28,TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('25/01/2024','DD/MM/YYYY'),TO_DATE('10/10/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,31,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (7,1,7,52,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,16,TO_DATE('01/01/2023','DD/MM/YYYY'),TO_DATE('01/01/2023','DD/MM/YYYY'),NULL); COMMIT;
-INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,18,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/02/2023','DD/MM/YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,18,TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('15/02/2023','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,53,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,54,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (8,1,8,55,TO_DATE('15/01/2026','DD/MM/YYYY'),TO_DATE('15/01/2026','DD/MM/YYYY'),NULL); COMMIT;
@@ -905,7 +908,7 @@ VALUES (1,4,5944012351010,TO_DATE('10/04/2024','DD/MM/YYYY'),'S',1,1,4,17,TO_DAT
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,4,5944012351010,TO_DATE('17/04/2024','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),'Cartarescu construye un universo onírico y denso. El grupo destacó la riqueza literaria y filosófica de la obra.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301534748055,TO_DATE('24/04/2024','DD/MM/YYYY'),'S',1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),'Gass lleva la prosa al límite. El grupo debatió intensamente sobre la naturaleza del lenguaje y la memoria.',4,'S'); COMMIT;
+VALUES (1,5,1301534748055,TO_DATE('24/04/2024','DD/MM/YYYY'),'S',1,1,5,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),'Gass lleva la prosa al límite. El grupo debatió intensamente sobre la naturaleza del lenguaje y la memoria.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (5,4,1301417231212,TO_DATE('03/04/2024','DD/MM/YYYY'),'S',5,5,4,20,TO_DATE('20/01/2024','DD/MM/YYYY'),TO_DATE('20/01/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -919,21 +922,21 @@ VALUES (1,1,4617417231313,TO_DATE('18/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,1,4617417231313,TO_DATE('25/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),'Se hizo un análisis profundo sobre la complejidad moral y dualidad de los personajes de Dostoyevski.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('07/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('07/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('21/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('21/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,4,5944012351010,TO_DATE('28/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),'El realismo de la obra fue discutido en profundiad con todos sus matices.',4,'S'); COMMIT;
+VALUES (1,4,5944012351010,TO_DATE('28/05/2026','DD/MM/YYYY'),'S',1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),'El realismo de la obra fue discutido en profundiad con todos sus matices.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301417231212,TO_DATE('01/05/2026','DD/MM/YYYY'),'S',1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,5,1301417231212,TO_DATE('04/06/2026','DD/MM/YYYY'),'S',1,1,5,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301417231212,TO_DATE('08/05/2026','DD/MM/YYYY'),'S',1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,5,1301417231212,TO_DATE('11/06/2026','DD/MM/YYYY'),'S',1,1,5,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301417231212,TO_DATE('15/05/2026','DD/MM/YYYY'),'S',1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,5,1301417231212,TO_DATE('18/06/2026','DD/MM/YYYY'),'S',1,1,5,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,5,1301417231212,TO_DATE('22/05/2026','DD/MM/YYYY'),'S',1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),'Se produjo un intersante debate sobre la dicotomía entre el bien y el mal.',5,'S'); COMMIT;
+VALUES (1,5,1301417231212,TO_DATE('25/06/2026','DD/MM/YYYY'),'S',1,1,5,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('24/04/2024','DD/MM/YYYY'),'Se produjo un intersante debate sobre la dicotomía entre el bien y el mal.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('05/05/2026','DD/MM/YYYY'),'S',1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -943,13 +946,13 @@ VALUES (1,2,4581417235066,TO_DATE('19/05/2026','DD/MM/YYYY'),'S',1,1,2,30,TO_DAT
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('26/05/2026','DD/MM/YYYY'),'S',1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),'Se analizó la complejidad de la vida para los jóvenes adultos japoneses en el mundo contemporáneo.',4,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,3,4581417235088,TO_DATE('06/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,3,4581417235088,TO_DATE('04/06/2026','DD/MM/YYYY'),'S',1,1,3,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,3,4581417235088,TO_DATE('13/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,3,4581417235088,TO_DATE('11/06/2026','DD/MM/YYYY'),'S',1,1,3,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,3,4581417235088,TO_DATE('20/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
+VALUES (1,3,4581417235088,TO_DATE('18/06/2026','DD/MM/YYYY'),'S',1,1,3,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
-VALUES (1,3,4581417235088,TO_DATE('27/05/2026','DD/MM/YYYY'),'S',1,1,1,1,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),'Se valoró especialmente el valor de la amistad reflejado en el libro.',5,'S'); COMMIT;
+VALUES (1,3,4581417235088,TO_DATE('25/06/2026','DD/MM/YYYY'),'S',1,1,3,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),'Se valoró especialmente el valor de la amistad reflejado en el libro.',5,'S'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
 VALUES (1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY'),'S',1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),NULL,NULL,'N'); COMMIT;
 INSERT INTO ADFJ_CAL_REUNIONES(id_club,id_grupo,isbn,f_reunion,realizada,id_club_memb_mod,id_club_grupo_mod,id_grupo_mod,id_moderador,f_ing_club_mod,f_ing_grupo_mod,conclusiones,valoracion,ultima_reunion)
@@ -984,16 +987,10 @@ VALUES (1,1,1,3,TO_DATE('10/02/2023','DD/MM/YYYY'),TO_DATE('10/02/2023','DD/MM/Y
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,1,4,TO_DATE('25/02/2023','DD/MM/YYYY'),TO_DATE('25/02/2023','DD/MM/YYYY'),1,1,4617417231313,TO_DATE('11/05/2026','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY')); COMMIT;
-INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,4,18,TO_DATE('20/03/2024','DD/MM/YYYY'),TO_DATE('20/03/2024','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY')); COMMIT;
-INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,5,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('15/03/2024','DD/MM/YYYY'),1,5,1301417231212,TO_DATE('15/05/2026','DD/MM/YYYY')); COMMIT;
-INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,2,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY')); COMMIT;
+VALUES (1,1,4,17,TO_DATE('15/03/2024','DD/MM/YYYY'),TO_DATE('06/05/2026','DD/MM/YYYY'),1,4,5944012351010,TO_DATE('14/05/2026','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
 VALUES (1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('12/05/2026','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,2,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY')); COMMIT;
+VALUES (1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('02/06/2026','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_INASISTENCIAS(id_club_grupo,id_club_memb,id_grupo_asig,id_lector,f_ing_club,f_ing_grupo,id_club_cal,id_grupo_cal,isbn,f_reunion)
-VALUES (1,1,2,29,TO_DATE('15/01/2025','DD/MM/YYYY'),TO_DATE('15/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('09/06/2026','DD/MM/YYYY')); COMMIT;
+VALUES (1,1,2,30,TO_DATE('20/01/2025','DD/MM/YYYY'),TO_DATE('20/01/2025','DD/MM/YYYY'),1,2,4581417235066,TO_DATE('09/06/2026','DD/MM/YYYY')); COMMIT;

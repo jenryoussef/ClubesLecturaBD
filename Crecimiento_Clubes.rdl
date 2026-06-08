@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-07T03:09:55.6923942Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-07T14:35:14.9912636Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -89,7 +89,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT PAIS, ANIO, CLUB, PCT_CRECIMIENTO_ECONOMICO FROM ADFJ_V_CRECIMIENTO_ECONOMICO
+        <CommandText>SELECT ANIO, PAIS, CLUB, PCT_CRECIMIENTO_ECONOMICO FROM ADFJ_V_CRECIMIENTO_ECONOMICO
 WHERE anio = :AnioSeleccionado</CommandText>
       </Query>
       <Fields>
@@ -736,7 +736,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
                       <FontSize>26pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <TextDecoration>None</TextDecoration>
-                      <Color>#000000</Color>
+                      <Color>White</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -748,13 +748,13 @@ WHERE anio = :AnioSeleccionado</CommandText>
             <Top>0mm</Top>
             <Left>0mm</Left>
             <Height>19.75099mm</Height>
-            <Width>202.64754mm</Width>
+            <Width>233.98177mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <BackgroundColor>#ffdf8a</BackgroundColor>
+              <BackgroundColor>Navy</BackgroundColor>
               <VerticalAlign>Middle</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
@@ -779,7 +779,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
                           <FontSize>26pt</FontSize>
                           <FontWeight>Bold</FontWeight>
                           <TextDecoration>None</TextDecoration>
-                          <Color>#000000</Color>
+                          <Color>White</Color>
                         </Style>
                       </TextRun>
                     </TextRuns>
@@ -791,12 +791,12 @@ WHERE anio = :AnioSeleccionado</CommandText>
                 <Top>0mm</Top>
                 <Left>0mm</Left>
                 <Height>19.75099mm</Height>
-                <Width>202.64754mm</Width>
+                <Width>233.98177mm</Width>
                 <Style>
                   <Border>
                     <Style>None</Style>
                   </Border>
-                  <BackgroundColor>#ffdf8a</BackgroundColor>
+                  <BackgroundColor>Navy</BackgroundColor>
                   <VerticalAlign>Middle</VerticalAlign>
                   <PaddingLeft>2pt</PaddingLeft>
                   <PaddingRight>2pt</PaddingRight>
@@ -813,7 +813,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
             <Top>62.6385mm</Top>
             <Left>0mm</Left>
             <Height>19.75099mm</Height>
-            <Width>202.64754mm</Width>
+            <Width>233.98177mm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -1449,7 +1449,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
           </Border>
         </Style>
       </Body>
-      <Width>203.02552mm</Width>
+      <Width>233.98177mm</Width>
       <Page>
         <PageFooter>
           <Height>12.93544mm</Height>
@@ -1467,12 +1467,14 @@ WHERE anio = :AnioSeleccionado</CommandText>
                       <Value>Revisado el </Value>
                       <Style>
                         <FontSize>11pt</FontSize>
+                        <Color>White</Color>
                       </Style>
                     </TextRun>
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
                       <Style>
                         <FontSize>11pt</FontSize>
+                        <Color>White</Color>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1484,7 +1486,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
               <Top>2.63729mm</Top>
               <Left>0.37797mm</Left>
               <Height>9.78305mm</Height>
-              <Width>202.64754mm</Width>
+              <Width>221.43297mm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1501,7 +1503,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
             <Border>
               <Style>None</Style>
             </Border>
-            <BackgroundColor>#ffdf8a</BackgroundColor>
+            <BackgroundColor>Navy</BackgroundColor>
           </Style>
         </PageFooter>
         <PageHeight>29.7cm</PageHeight>

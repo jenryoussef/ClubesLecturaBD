@@ -624,7 +624,7 @@ WHERE p.id_pais  = c.id_pais
     AND EXTRACT(YEAR FROM h.f_ing_club) >= 2024
 ORDER BY p.nombre, anio, 
     pct_crecimiento_miembros DESC NULLS LAST, c.nombre;
-
+    
 CREATE OR REPLACE VIEW ADFJ_V_CRECIMIENTO_ECONOMICO AS
 SELECT DISTINCT p.nombre AS pais,
     EXTRACT(YEAR FROM pm.f_pago) AS anio,
