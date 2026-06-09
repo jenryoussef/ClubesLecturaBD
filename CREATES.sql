@@ -374,6 +374,12 @@ WHERE G.ID_CLUB   = H.ID_CLUB_GRUPO
     AND G.ID_GRUPO  = H.ID_GRUPO
     AND L.ID_LECTOR = H.ID_LECTOR
 ORDER BY G.ID_CLUB, G.TIPO, G.ID_GRUPO, L.ID_LECTOR;
+
+Create or replace view adfj_v_libros_autores(id_autor, nombre, apellido, isbn, titulo) as 
+    Select a.id_autor, a.nombre, a.apellido, l.isbn, l.titulo
+        from adfj_autores a, adfj_libros l, adfj_autorias x
+        where a.id_autor = x.id_autor
+            and l.isbn = x.isbn;
   
 CREATE OR REPLACE FUNCTION ADFJ_CONVERSION_MONETARIA(
     monto_local IN NUMBER,                               
