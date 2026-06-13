@@ -1,0 +1,1444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportID>25a510fb-97e2-4075-a3f4-171c9df2eadb</rd:ReportID>
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1818.92</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>PBIRB</am:Name>
+      <am:Version>15.7.1818.92</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2026-06-13T02:35:29.9548218Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="OracleDB">
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <ConnectionProperties>
+        <DataProvider>ORACLE</DataProvider>
+        <ConnectString>Data Source=localhost:1521/xe</ConnectString>
+        <Prompt>Especifique un nombre de usuario y una contraseña para el origen de datos OracleDB:</Prompt>
+      </ConnectionProperties>
+      <rd:DataSourceID>e6d46449-d5c7-4074-82a0-93f9a10da5ab</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DS_Datos_Base">
+      <Query>
+        <DataSourceName>OracleDB</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name=":ID">
+            <Value>=Parameters!ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT * FROM V_Lector_Base WHERE id_lector = :ID</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_LECTOR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="LECTOR">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LECTOR</DataField>
+        </Field>
+        <Field Name="EDAD">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>EDAD</DataField>
+        </Field>
+        <Field Name="REPRESENTANTE">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>REPRESENTANTE</DataField>
+        </Field>
+        <Field Name="GMAIL">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>GMAIL</DataField>
+        </Field>
+        <Field Name="NACIONALIDAD">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>NACIONALIDAD</DataField>
+        </Field>
+        <Field Name="HABLA">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>HABLA</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DS_Club_Actual">
+      <Query>
+        <DataSourceName>OracleDB</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name=":ID">
+            <Value>=Parameters!ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT * FROM V_Club_Actual WHERE id_lector = :ID</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_LECTOR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="ID_CLUB">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_CLUB</DataField>
+        </Field>
+        <Field Name="CLUB_ACTUAL">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CLUB_ACTUAL</DataField>
+        </Field>
+        <Field Name="ANTIGUEDAD_CLUB_ACTUAL">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ANTIGUEDAD_CLUB_ACTUAL</DataField>
+        </Field>
+        <Field Name="TIPO_GRUPO">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>TIPO_GRUPO</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DS_Trayectoria">
+      <Query>
+        <DataSourceName>OracleDB</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name=":ID">
+            <Value>=Parameters!ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT * FROM V_Club_Anterior WHERE id_lector = :ID</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_LECTOR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="ID_CLUB">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_CLUB</DataField>
+        </Field>
+        <Field Name="CLUB_ANTERIOR">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>CLUB_ANTERIOR</DataField>
+        </Field>
+        <Field Name="ANTIGUEDAD">
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <DataField>ANTIGUEDAD</DataField>
+        </Field>
+        <Field Name="MOTIVO_RETIRO">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>MOTIVO_RETIRO</DataField>
+        </Field>
+        <Field Name="LIBROS_ANALIZADOS">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LIBROS_ANALIZADOS</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DS_Preferidos">
+      <Query>
+        <DataSourceName>OracleDB</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name=":ID">
+            <Value>=Parameters!ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT * FROM V_Libros_Preferidos WHERE id_lector = :ID</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_LECTOR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="ORDEN_PREFERENCIA">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ORDEN_PREFERENCIA</DataField>
+        </Field>
+        <Field Name="LIBROS_PREFERIDOS">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LIBROS_PREFERIDOS</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DS_Libros_Analizados">
+      <Query>
+        <DataSourceName>OracleDB</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name=":ID">
+            <Value>=Parameters!ID.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT * FROM V_Libros_Analizados WHERE id_lector = :ID</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ID_LECTOR">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="ID_CLUB">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_CLUB</DataField>
+        </Field>
+        <Field Name="LIBROS_ANALIZADOS">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>LIBROS_ANALIZADOS</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox2">
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>nombre:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>nombre_lector</Label>
+                    <Value>=First(Fields!LECTOR.Value, "DS_Datos_Base")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>edad:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>edad_lector</Label>
+                    <Value>=First(Fields!EDAD.Value, "DS_Datos_Base")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>representante:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>representante_lector</Label>
+                    <Value>=First(Fields!REPRESENTANTE.Value, "DS_Datos_Base")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>gmail:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>gmail_lector</Label>
+                    <Value>=First(Fields!GMAIL.Value, "DS_Datos_Base")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>nacionalidad:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>pais_lector</Label>
+                    <Value>=First(Fields!NACIONALIDAD.Value, "DS_Datos_Base")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>idiomas hablados: </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>54.96496mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>56.0515mm</Height>
+            <Width>298.02667mm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <rd:DefaultName>Textbox4</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style />
+                  </TextRun>
+                  <TextRun>
+                    <Value>nombre del club actual: </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>club_actual</Label>
+                    <Value>=First(Fields!CLUB_ACTUAL.Value, "DS_Club_Actual")</Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve">        </Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value> tipo de grupo al que pertenece actualmente: </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>tipo_grupo_actual</Label>
+                    <Value>=First(Fields!TIPO_GRUPO.Value, "DS_Club_Actual")</Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>antiguedad: </Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>antiguedad_club_actual</Label>
+                    <Value>=First(Fields!ANTIGUEDAD_CLUB_ACTUAL.Value, "DS_Club_Actual")</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> años</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>145.87309mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>28.14083mm</Height>
+            <Width>298.02667mm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox1">
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>INFORMACION BASICA DEL LECTOR</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>36pt</FontSize>
+                      <Color>White</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>3.72533mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>16.43402mm</Height>
+            <Width>254.81411mm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BackgroundColor>Gold</BackgroundColor>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <rd:DefaultName>Textbox3</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>informacion personal</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>26pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>SeaGreen</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>39.78248mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>10.8547mm</Height>
+            <Width>226.32055mm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Color>SeaGreen</Color>
+                <Style>Solid</Style>
+                <Width>3pt</Width>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Rectangle Name="Rectangle2">
+            <ReportItems>
+              <Textbox Name="Textbox5">
+                <rd:DefaultName>Textbox1</rd:DefaultName>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>TRAYECTORIA EN CLUBES</Value>
+                        <Style>
+                          <FontFamily>Bell MT</FontFamily>
+                          <FontSize>36pt</FontSize>
+                          <Color>White</Color>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Center</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <Top>5.03391mm</Top>
+                <Left>0mm</Left>
+                <Height>16.43402mm</Height>
+                <Width>254.81411mm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <BackgroundColor>Gold</BackgroundColor>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <PageBreak>
+              <BreakLocation>Start</BreakLocation>
+            </PageBreak>
+            <Top>232.18204mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>26.59403mm</Height>
+            <Width>254.81411mm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Tablix Name="Tablix6">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>63.22864mm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>10.07051mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle12">
+                          <ReportItems>
+                            <Textbox Name="HABLA">
+                              <rd:DefaultName>HABLA</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Label>idioma_hablado</Label>
+                                      <Value>=Fields!HABLA.Value</Value>
+                                      <Style>
+                                        <FontFamily>Bell MT</FontFamily>
+                                        <FontSize>22pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0mm</Top>
+                              <Left>0mm</Left>
+                              <Height>10.07051mm</Height>
+                              <Width>63.22864mm</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Detalles3">
+                    <GroupExpressions>
+                      <GroupExpression>idioma_hablado</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DS_Datos_Base</DataSetName>
+            <Top>112.78035mm</Top>
+            <Left>57.69273mm</Left>
+            <Height>10.07051mm</Height>
+            <Width>63.22864mm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix16">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>89.56736mm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>18.23053mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox19">
+                          <rd:DefaultName>Textbox19</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Bell MT</FontFamily>
+                                    <FontSize>18pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>18.23053mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox17">
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Bell MT</FontFamily>
+                                    <FontSize>22pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Visibility>
+                    <Hidden>true</Hidden>
+                  </Visibility>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>57.71586mm</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox8">
+                        <rd:DefaultName>Textbox8</rd:DefaultName>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>club anterior</Value>
+                                <Style>
+                                  <FontFamily>Bell MT</FontFamily>
+                                  <FontSize>22pt</FontSize>
+                                  <FontWeight>Normal</FontWeight>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>57.71586mm</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox10">
+                            <rd:DefaultName>Textbox10</rd:DefaultName>
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>motivo retiro</Value>
+                                    <Style>
+                                      <FontFamily>Bell MT</FontFamily>
+                                      <FontSize>22pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>57.71586mm</Size>
+                            <CellContents>
+                              <Textbox Name="Textbox12">
+                                <rd:DefaultName>Textbox12</rd:DefaultName>
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>antiguedad</Value>
+                                        <Style>
+                                          <FontFamily>Bell MT</FontFamily>
+                                          <FontSize>22pt</FontSize>
+                                          <FontWeight>Bold</FontWeight>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <Style>
+                                  <Border>
+                                    <Color>LightGrey</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>57.71586mm</Size>
+                                <CellContents>
+                                  <Textbox Name="Textbox14">
+                                    <rd:DefaultName>Textbox14</rd:DefaultName>
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>libros  analizados</Value>
+                                            <Style>
+                                              <FontFamily>Bell MT</FontFamily>
+                                              <FontSize>18pt</FontSize>
+                                              <FontWeight>Bold</FontWeight>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember />
+                              </TablixMembers>
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="CLUB_ANTERIOR">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!CLUB_ANTERIOR.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!CLUB_ANTERIOR.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>57.71586mm</Size>
+                    <CellContents>
+                      <Textbox Name="CLUB_ANTERIOR1">
+                        <rd:DefaultName>CLUB_ANTERIOR1</rd:DefaultName>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Label>club</Label>
+                                <Value>=Fields!CLUB_ANTERIOR.Value</Value>
+                                <Style>
+                                  <FontFamily>Bell MT</FontFamily>
+                                  <FontSize>22pt</FontSize>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <Style>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="MOTIVO_RETIRO">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!MOTIVO_RETIRO.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!MOTIVO_RETIRO.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixHeader>
+                        <Size>57.71586mm</Size>
+                        <CellContents>
+                          <Textbox Name="MOTIVO_RETIRO1">
+                            <rd:DefaultName>MOTIVO_RETIRO1</rd:DefaultName>
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Label>motivo</Label>
+                                    <Value>=Fields!MOTIVO_RETIRO.Value</Value>
+                                    <Style>
+                                      <FontFamily>Bell MT</FontFamily>
+                                      <FontSize>22pt</FontSize>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <Style>
+                              <Border>
+                                <Color>LightGrey</Color>
+                                <Style>Solid</Style>
+                              </Border>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Group Name="ANTIGUEDAD">
+                            <GroupExpressions>
+                              <GroupExpression>=Fields!ANTIGUEDAD.Value</GroupExpression>
+                            </GroupExpressions>
+                          </Group>
+                          <SortExpressions>
+                            <SortExpression>
+                              <Value>=Fields!ANTIGUEDAD.Value</Value>
+                            </SortExpression>
+                          </SortExpressions>
+                          <TablixHeader>
+                            <Size>57.71586mm</Size>
+                            <CellContents>
+                              <Textbox Name="ANTIGUEDAD">
+                                <rd:DefaultName>ANTIGUEDAD</rd:DefaultName>
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Label>antiguedad</Label>
+                                        <Value>=Fields!ANTIGUEDAD.Value</Value>
+                                        <Style>
+                                          <FontFamily>Bell MT</FontFamily>
+                                          <FontSize>22pt</FontSize>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <Style>
+                                  <Border>
+                                    <Color>LightGrey</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <PaddingLeft>2pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                            </CellContents>
+                          </TablixHeader>
+                          <TablixMembers>
+                            <TablixMember>
+                              <Group Name="LIBROS_ANALIZADOS">
+                                <GroupExpressions>
+                                  <GroupExpression>=Fields!LIBROS_ANALIZADOS.Value</GroupExpression>
+                                </GroupExpressions>
+                              </Group>
+                              <SortExpressions>
+                                <SortExpression>
+                                  <Value>=Fields!LIBROS_ANALIZADOS.Value</Value>
+                                </SortExpression>
+                              </SortExpressions>
+                              <TablixHeader>
+                                <Size>57.71586mm</Size>
+                                <CellContents>
+                                  <Textbox Name="LIBROS_ANALIZADOS">
+                                    <rd:DefaultName>LIBROS_ANALIZADOS</rd:DefaultName>
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Label>libros</Label>
+                                            <Value>=Fields!LIBROS_ANALIZADOS.Value</Value>
+                                            <Style>
+                                              <FontFamily>Bell MT</FontFamily>
+                                              <FontSize>22pt</FontSize>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <Style>
+                                      <Border>
+                                        <Color>LightGrey</Color>
+                                        <Style>Solid</Style>
+                                      </Border>
+                                      <PaddingLeft>2pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                </CellContents>
+                              </TablixHeader>
+                              <TablixMembers>
+                                <TablixMember>
+                                  <Group Name="Detalles">
+                                    <GroupExpressions>
+                                      <GroupExpression>=Fields!LIBROS_ANALIZADOS.Value</GroupExpression>
+                                      <GroupExpression>=Fields!CLUB_ANTERIOR.Value</GroupExpression>
+                                    </GroupExpressions>
+                                  </Group>
+                                </TablixMember>
+                              </TablixMembers>
+                            </TablixMember>
+                          </TablixMembers>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DS_Trayectoria</DataSetName>
+            <Top>271.80171mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>36.46106mm</Height>
+            <Width>320.4308mm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Tablix Name="Tablix4">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>252.71698mm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>26.0513mm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle7">
+                          <ReportItems>
+                            <Textbox Name="LIBROS_PREFERIDOS">
+                              <rd:DefaultName>LIBROS_PREFERIDOS</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Label>libros_preferidos</Label>
+                                      <Value>=Fields!LIBROS_PREFERIDOS.Value</Value>
+                                      <Style>
+                                        <FontFamily>Bell MT</FontFamily>
+                                        <FontSize>22pt</FontSize>
+                                        <FontWeight>Normal</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>6.78417mm</Top>
+                              <Left>54.61272mm</Left>
+                              <Height>12.78421mm</Height>
+                              <Width>198.10426mm</Width>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="ORDEN_PREFERENCIA">
+                              <rd:DefaultName>ORDEN_PREFERENCIA</rd:DefaultName>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Label>orden_preferencia</Label>
+                                      <Value>=Fields!ORDEN_PREFERENCIA.Value</Value>
+                                      <Style>
+                                        <FontFamily>Bell MT</FontFamily>
+                                        <FontSize>22pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>8.3363mm</Top>
+                              <Left>9.39583mm</Left>
+                              <Height>11.23208mm</Height>
+                              <Width>32.86966mm</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Detalles1" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>DS_Preferidos</DataSetName>
+            <Top>189.77264mm</Top>
+            <Left>48.2969mm</Left>
+            <Height>26.0513mm</Height>
+            <Width>252.71698mm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+          <Textbox Name="Textbox118">
+            <rd:DefaultName>Textbox118</rd:DefaultName>
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>top 3 libros preferidos:</Value>
+                    <Style>
+                      <FontFamily>Bell MT</FontFamily>
+                      <FontSize>22pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>175.77781mm</Top>
+            <Left>2.98721mm</Left>
+            <Height>9.78865mm</Height>
+            <Width>87.10897mm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>314.8622mm</Height>
+        <Style>
+          <Border>
+            <Color>SeaGreen</Color>
+            <Style>Solid</Style>
+          </Border>
+          <TopBorder>
+            <Color>SeaGreen</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
+          <BottomBorder>
+            <Color>SeaGreen</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
+          <LeftBorder>
+            <Color>SeaGreen</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </LeftBorder>
+          <RightBorder>
+            <Color>SeaGreen</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </RightBorder>
+        </Style>
+      </Body>
+      <Width>323.41801mm</Width>
+      <Page>
+        <PageFooter>
+          <Height>79.37499mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>2cm</LeftMargin>
+        <RightMargin>2cm</RightMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ID_LECTOR">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+      <cl:ComponentMetadata>
+        <cl:HideUpdateNotifications>true</cl:HideUpdateNotifications>
+      </cl:ComponentMetadata>
+    </ReportParameter>
+    <ReportParameter Name="ID">
+      <DataType>String</DataType>
+      <Prompt>ID</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ID_LECTOR</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>ID</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+</Report>
