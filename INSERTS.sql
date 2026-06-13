@@ -29,6 +29,11 @@ INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellid
 INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'FIONA','APPLE','MCAFFE','MAGGART',2030040); COMMIT;
 INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'SOFIA','CARMINA',NULL,'COPPOLA',12120320); COMMIT;
 INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval, 'ELENA', 'RUIZ', 'MARIA', 'PAREDES', 28450123); COMMIT;
+INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'CARLOS','MENDOZA','ALBERTO','RUIZ',81001001); COMMIT;
+INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'MARIA','VEGA','ELENA','CASTRO',81001002); COMMIT;
+INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'JORGE','PAREDES',NULL,'LOPEZ',81001003); COMMIT;
+INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'ANA','NAVARRO','SOFIA','GIL',81001004); COMMIT;
+INSERT INTO ADFJ_REPRESENTANTES (id_representante, primer_nombre, primer_apellido, segundo_nombre, segundo_apellido, doc_identidad) VALUES (ADFJ_S_REPRESENTANTE.nextval,'LUIS','RAMIREZ',NULL,'ORTEGA',81001005); COMMIT;
 
 INSERT INTO ADFJ_INSTITUCIONES (id_institucion,nombre,tipo,descripcion) VALUES(ADFJ_S_INSTITUCION.nextval,'UCAB','UN','Es una universidad primera con sede en Caracas y Puerto Ordaz'); COMMIT;
 INSERT INTO ADFJ_INSTITUCIONES (id_institucion,nombre,tipo,descripcion) VALUES(ADFJ_S_INSTITUCION.nextval,'BNF','BI','La Blibioteca Nacional de Francia es el deposito nacional de todo lo publicado en Francia'); COMMIT;
@@ -99,6 +104,26 @@ INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apelli
 INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'SOFIA','HERRERA','CASTRO',TO_DATE('17/06/1980','DD/MM/YYYY'),'SOFIA.HERRERA@CORREO.COM',40110009,1,NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'ROSA','MENDEZ','FLORES',TO_DATE('10/05/2006','DD/MM/YYYY'),'ROSA.MENDEZ@CORREO.COM',40110010,1,NULL,NULL,NULL); COMMIT;
 INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'JORGE','CASTILLO','RAMIREZ',TO_DATE('28/12/2008','DD/MM/YYYY'),'JORGE.CASTILLO@CORREO.COM',40110011,1,'LUIS',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'EMILIA','RUIZ','NAVARRO',TO_DATE('14/08/2016','DD/MM/YYYY'),'EMILIA.RUIZ@CORREO.COM',50110001,1,'SOFIA',1,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'MATEO','GARCIA','PAREDES',TO_DATE('22/01/2018','DD/MM/YYYY'),'MATEO.GARCIA@CORREO.COM',50110002,1,NULL,NULL,2); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'VALENTINA','MENDOZA','FLORES',TO_DATE('09/11/2015','DD/MM/YYYY'),'VALENTINA.MENDOZA@CORREO.COM',50110003,3,'ISABEL',3,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'SEBASTIAN','LOPEZ','RAMIREZ',TO_DATE('03/05/2017','DD/MM/YYYY'),'SEBASTIAN.LOPEZ@CORREO.COM',50110004,4,NULL,NULL,4); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'PAULA','CASTRO','VEGA',TO_DATE('18/12/2014','DD/MM/YYYY'),'PAULA.CASTRO@CORREO.COM',50110005,2,'ELENA',5,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'RICARDO','MARTINEZ','ORTIZ',TO_DATE('15/02/1988','DD/MM/YYYY'),'RICARDO.MARTINEZ@CORREO.COM',60110001,1,'JAVIER',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'GABRIELA','HERRERA','MORA',TO_DATE('27/09/1985','DD/MM/YYYY'),'GABRIELA.HERRERA@CORREO.COM',60110002,2,'MARIA',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'FERNANDO','ALVAREZ','SOTO',TO_DATE('10/06/1979','DD/MM/YYYY'),'FERNANDO.ALVAREZ@CORREO.COM',60110003,3,NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'VERONICA','REYES','CAMPOS',TO_DATE('04/01/1991','DD/MM/YYYY'),'VERONICA.REYES@CORREO.COM',60110004,4,'PAOLA',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.NEXTVAL,'ESTEBAN','TORRES','BENITEZ',TO_DATE('19/03/1983','DD/MM/YYYY'),'ESTEBAN.TORRES@CORREO.COM',60110005,6,NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'GABRIEL','MORALES','PEREZ',TO_DATE('12/03/1980','DD/MM/YYYY'),'GABRIEL.MORALES@CORREO.COM',41120001,1,'ANTONIO',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'ANA','GUTIERREZ','SILVA',TO_DATE('25/07/1975','DD/MM/YYYY'),'ANA.GUTIERREZ@CORREO.COM',41120002,1,'LUCIA',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'PIERRE','DUPONT','LEBLANC',TO_DATE('08/11/1968','DD/MM/YYYY'),'PIERRE.DUPONT@CORREO.COM',41120003,2,NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'MARIE','BERNARD','GIRARD',TO_DATE('14/04/1983','DD/MM/YYYY'),'MARIE.BERNARD@CORREO.COM',41120004,2,'CLAIRE',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'MIGUEL','TORRES','VEGA',TO_DATE('30/09/1972','DD/MM/YYYY'),'MIGUEL.TORRES@CORREO.COM',41120005,3,NULL,NULL,NULL); COMMIT; 
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'CARMEN','IGLESIAS','NAVARRO',TO_DATE('17/02/1965','DD/MM/YYYY'),'CARMEN.IGLESIAS@CORREO.COM',41120006,3,'ROSA',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'ROBERT','HAYES','MORGAN',TO_DATE('05/06/1978','DD/MM/YYYY'),'ROBERT.HAYES@CORREO.COM',41120007,4,NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'PATRICIA','SCOTT','REED',TO_DATE('22/08/1970','DD/MM/YYYY'),'PATRICIA.SCOTT@CORREO.COM',41120008,4,'ANNE',NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'CAROLINA','VARGAS','SOTO',TO_DATE('03/12/1985','DD/MM/YYYY'),'CAROLINA.VARGAS@CORREO.COM',41120009,5,NULL,NULL,NULL); COMMIT;
+INSERT INTO ADFJ_LECTORES(id_lector,primer_nombre,primer_apellido,segundo_apellido,f_nacimiento,email,doc_identidad,id_pais,segundo_nombre,id_rep_ex,id_rep_in) VALUES(ADFJ_S_LECTOR.nextval,'WILLIAM','FLETCHER','GRANT',TO_DATE('19/05/1960','DD/MM/YYYY'),'WILLIAM.FLETCHER@CORREO.COM',41120010,7,NULL,NULL,NULL); COMMIT;
 
 INSERT INTO ADFJ_LIBROS (ISBN,titulo,ano_publicacion,n_paginas,sinopsis, tema,tipo_narrativa, id_pais,id_anterior)  VALUES (3783353412011,'LAS FLORES DEL MAL',TO_DATE('1857','YYYY'),236,'Las flores del mal es una colección de poemas de Charles Baudelaire, considerada su obra magna. Abarca casi la totalidad de su producción poética desde 1840 hasta la publicación de la colección.','RELATOS CORTOS DE TIPO SICOLOGICO','CU',2, NULL);  COMMIT;
 INSERT INTO ADFJ_LIBROS (ISBN,titulo,ano_publicacion,n_paginas,sinopsis, tema,tipo_narrativa, id_pais,id_anterior)  VALUES (1301534123022,'LOS LIMITES DE LA FUNDACION',TO_DATE('1982','YYYY'),536,'Los límites de la Fundación es una novela de la saga de la Fundación de Isaac Asimov. Es la primera de las dos secuelas de Fundación' ,'NOVELA DE CIENCIA FICCION','NO',4, NULL); COMMIT;
@@ -268,6 +293,66 @@ INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (38,3783353412011,3);
 INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,1301417231212,1); COMMIT;
 INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,5944012351010,2); COMMIT;
 INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (39,5024441735066,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (56,4581417235088,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (56,4581417235066,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (56,1301417231212,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (57,4617417231313,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (57,4581414095099,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (57,4581417235088,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (58,1301417231212,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (58,4581417235066,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (58,4617417231313,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (59,4581414095099,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (59,1301417231212,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (59,4581417235088,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (60,4581417235066,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (60,4617417231313,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (60,4581414095099,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (61,4581417235088,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (61,1301417231212,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (61,4617417231313,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (62,4581414095099,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (62,4581417235066,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (62,1301417231212,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (63,4617417231313,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (63,4581417235088,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (63,4581414095099,3); COMMIT; 
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (64,1301417231212,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (64,4581417235066,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (64,4617417231313,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (65,4581417235088,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (65,1301417231212,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (65,4581414095099,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (66,4617417231313,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (66,7805341235044,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (66,1301417231212,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (67,5944012351010,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (67,4617417231313,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (67,1301417231414,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (68,3783353412011,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (68,5024441735066,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (68,1301534748055,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (69,3783353412011,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (69,7805341235044,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (69,5944012351010,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (70,1301417231212,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (70,4617417231313,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (70,1301534123022,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (71,1301417231515,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (71,1301417231414,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (71,1301534748055,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (72,1301417235077,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (72,1301534123033,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (72,5024441735066,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (73,1301417235077,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (73,7805341235044,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (73,4581414095099,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (74,7805341235044,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (74,1301417231212,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (74,4617417231313,3); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (75,5024441735066,1); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (75,1301534748055,2); COMMIT;
+INSERT INTO ADFJ_PREFERENCIAS(id_lector,ISBN,orden) VALUES (75,4581414095099,3); COMMIT;
 
 INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,3,'Colaboración entre Spoilers Anónimos y Los Tapa Dura para intercambio de libros y lectores'); COMMIT;
 INSERT INTO ADFJ_ASOCIACIONES(id_club,id_socio,descripcion) VALUES (1,5,'Alianza entre Spoilers Anónimos y No Juzgues por la Portada para fomentar la lectura en español'); COMMIT;
@@ -327,6 +412,26 @@ INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VAL
 INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555010,38,NULL); COMMIT;
 INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555011,38,NULL); COMMIT;
 INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,414,5555012,39,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,212,7001001,56,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,212,7001002,57,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (34,911,7001003,58,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (52,551,7001004,59,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (57,412,7001005,60,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,212,7001006,61,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (54,011,7001007,62,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (34,931,7001008,63,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (57,601,7001009,64,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (52,555,7001010,65,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,412,4441001,66,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (58,416,4441002,67,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (33,6,4441003,68,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (33,7,4441004,69,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (34,6,4441005,70,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (34,91,4441006,71,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (1,212,4441007,72,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (1,415,4441008,73,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (56,2,4441009,74,NULL); COMMIT;
+INSERT INTO ADFJ_TELEFONOS(codigo_pais,codigo_area,numero,id_lector,id_club) VALUES (44,20,4441010,75,NULL); COMMIT;
 
 INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,1,NULL,1); COMMIT;
 INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,2,NULL,2); COMMIT;
@@ -363,32 +468,62 @@ INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,10,13,NUL
 INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,11,14,NULL); COMMIT;
 INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,12,15,NULL); COMMIT;
 INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,13,16,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (6,35,17,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,36,17,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,37,18,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,38,19,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,39,19,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (4,40,20,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,41,20,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,42,21,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,43,22,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,44,23,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,45,24,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,46,25,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,47,26,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,48,27,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,49,28,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,50,29,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,51,30,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,52,31,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,53,32,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,54,33,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,55,34,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,56,35,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,57,36,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,58,37,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,59,38,NULL); COMMIT;
-INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,60,39,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (6,1,17,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,14,17,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,15,18,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,16,19,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,16,19,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (4,1,20,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,17,20,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,16,21,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,18,22,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,8,23,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,9,24,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,17,25,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,18,26,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,19,27,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,20,28,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,19,29,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,20,30,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,21,31,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,22,32,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,23,33,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,24,34,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,25,35,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,26,36,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,27,37,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,28,38,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,29,39,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,30,56,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,10,56,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,31,57,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,21,58,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,32,58,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,33,59,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,11,60,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,34,60,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,35,61,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,12,61,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,36,62,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,22,63,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,37,63,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,38,64,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (4,2,64,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,39,65,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,13,65,NULL); COMMIT;
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,40,66,NULL); COMMIT; -- L66: ESP
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,23,66,NULL); COMMIT; -- L66: ING
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,41,67,NULL); COMMIT; -- L67: ESP
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,14,68,NULL); COMMIT; -- L68: FRA
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,24,68,NULL); COMMIT; -- L68: ING
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (2,15,69,NULL); COMMIT; -- L69: FRA
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,42,70,NULL); COMMIT; -- L70: ESP
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,25,70,NULL); COMMIT; -- L70: ING
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,43,71,NULL); COMMIT; -- L71: ESP
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,26,72,NULL); COMMIT; -- L72: ING
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,27,73,NULL); COMMIT; -- L73: ING
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (1,44,74,NULL); COMMIT; -- L74: ESP
+INSERT INTO ADFJ_HABLA(id_idioma,id_habla,id_lector,id_club) VALUES (3,28,75,NULL); COMMIT; -- L75: ING
 
 INSERT INTO ADFJ_GRUPOS_LECTURA(id_club,id_grupo,tipo,dia,hora,f_creacion) VALUES (1,1,'A',2,TO_DATE('18:00','HH24:MI'),TO_DATE('01/01/2023','DD/MM/YYYY')); COMMIT;
 INSERT INTO ADFJ_GRUPOS_LECTURA(id_club,id_grupo,tipo,dia,hora,f_creacion) VALUES (1,2,'J',3,TO_DATE('17:30','HH24:MI'),TO_DATE('01/01/2023','DD/MM/YYYY')); COMMIT;
