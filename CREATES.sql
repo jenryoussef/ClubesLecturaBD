@@ -342,7 +342,7 @@ GROUP BY HA.ID_CLUB_MEMB, C.nombre, HA.ID_LECTOR,
     CEIL(EXTRACT(MONTH FROM CR.F_REUNION)/2)
 ORDER BY ANIO, BIMESTRE, ID_LECTOR;
 
-CREATE OR REPLACE VIEW ADFJ_V_MIEMBROS_ACTIVOS (id_club, nombre_club, id_lector, nombre_lector, f_ing_club) AS
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_ACTIVOS (id_club, nombre_club, id_lector, nombre_lector, f_ing_club) AS
 SELECT 
     c.id_club, 
     c.nombre,
@@ -354,7 +354,7 @@ WHERE h.id_lector = l.id_lector
   AND h.id_club = c.id_club 
   AND h.f_retiro IS NULL;
   
-CREATE OR REPLACE VIEW ADFJ_V_MIEMBROS_RETIRADOS(id_club, nombre_club, id_lector, nombre_lector, f_ing_club, f_sol_retiro, f_retiro, motivo_retiro) AS 
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_RETIRADOS(id_club, nombre_club, id_lector, nombre_lector, f_ing_club, f_sol_retiro, f_retiro, motivo_retiro) AS 
 SELECT 
     c.id_club, 
     C.nombre,
@@ -406,7 +406,7 @@ GROUP BY G.ID_CLUB, C.nombre, G.ID_GRUPO, G.TIPO,
     TO_CHAR(I.F_REUNION,'YYYY')
 ORDER BY G.ID_CLUB, G.TIPO, ANIO, MES;
 
-CREATE OR REPLACE VIEW ADFJ_V_MIEMBROS_GRUPOS(id_club, nombre_club, id_grupo, tipo, id_lector, nombre_lector, f_ing_club, f_ing_grupo, f_fin_grupo) AS 
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_GRUPOS(id_club, nombre_club, id_grupo, tipo, id_lector, nombre_lector, f_ing_club, f_ing_grupo, f_fin_grupo) AS 
 SELECT 
     G.ID_CLUB, 
     C.Nombre,
@@ -435,18 +435,24 @@ CREATE OR REPLACE VIEW ADFJ_V_LECTORES_PUEDEN_PAGAR AS
 SELECT 
     hm.id_club,
     hm.id_lector,
+    l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido as nombre_lector,
     hm.f_ing_club,
     NVL(MAX(pm.id_pago), 0) + 1                              AS proximo_id_pago,
     ADD_MONTHS(hm.f_ing_club, NVL(MAX(pm.id_pago), 0) * 12) AS f_inicio_periodo,
     ADD_MONTHS(hm.f_ing_club, (NVL(MAX(pm.id_pago), 0) + 1) * 12) AS f_fin_periodo
-FROM ADFJ_HIST_MEMBRESIAS hm, ADFJ_CLUBES c, ADFJ_PAGOS_MEMBRESIA pm
+FROM ADFJ_HIST_MEMBRESIAS hm, ADFJ_CLUBES c, ADFJ_PAGOS_MEMBRESIA pm, adfj_lectores l
 WHERE hm.id_club      = c.id_club
     AND c.cuota_membr = 'S'
     AND hm.f_retiro   IS NULL
-    AND pm.id_club     = hm.id_club (+)
-    AND pm.id_lector   = hm.id_lector (+)
-    AND pm.f_ing_club  = hm.f_ing_club (+)
-GROUP BY hm.id_club, hm.id_lector, hm.f_ing_club
+    AND l.id_lector = hm.id_lector
+    AND pm.id_club     = hm.id_club 
+    AND pm.id_lector   = hm.id_lector 
+    AND pm.f_ing_club  = hm.f_ing_club 
+GROUP BY 
+    hm.id_club,
+    hm.id_lector, 
+    l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido,
+    hm.f_ing_club
 HAVING ADD_MONTHS(hm.f_ing_club, NVL(MAX(pm.id_pago), 0) * 12) <= SYSDATE
     AND ADD_MONTHS(hm.f_ing_club, (NVL(MAX(pm.id_pago), 0) + 1) * 12) > SYSDATE;
 
@@ -454,7 +460,7 @@ CREATE OR REPLACE VIEW ADFJ_V_Lectores_Deudores_Retiro AS
 SELECT 
     hm.id_lector,
     hm.id_club,
-    (SELECT l.primer_nombre || ' ' || l.primer_apellido 
+    (SELECT l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido
      FROM ADFJ_LECTORES l WHERE l.id_lector = hm.id_lector) AS lector,
     (SELECT c.nombre FROM ADFJ_CLUBES c WHERE c.id_club = hm.id_club) AS club,
     ADD_MONTHS(hm.f_ing_club, (NVL((SELECT MAX(pm.id_pago) 
@@ -761,7 +767,7 @@ Order by id_lector;
 
 Create or replace view adfj_v_grupos_disponibles(id_club, nombre_club, id_grupo, tipo_grupo) as 
     SELECT g.id_club, g.nombre_club, g.id_grupo, g.tipo
-        FROM adfj_v_miembros_grupos g, adfj_cal_reuniones c
+        FROM adfj_v_lectores_grupos g, adfj_cal_reuniones c
         Where g.id_club = c.id_club(+)    --outer join para mostrar clubes y grupos sin reuniones agendadas
             AND g.id_grupo = c.id_grupo(+)
         GROUP BY g.id_club, g.nombre_club, g.id_grupo, g.tipo
@@ -771,7 +777,7 @@ Create or replace view adfj_v_grupos_disponibles(id_club, nombre_club, id_grupo,
 
 CREATE OR REPLACE VIEW adfj_v_tamano_grupos AS
     SELECT g.id_club, g.nombre_club, g.id_grupo, g.tipo, COUNT(*) - COUNT(g.f_fin_grupo) AS tamano
-    FROM adfj_v_miembros_grupos g
+    FROM adfj_v_lectores_grupos g
     GROUP BY g.id_club, g.nombre_club, g.id_grupo, g.tipo
     ORDER BY g.id_club, g.id_grupo;
     
@@ -867,7 +873,7 @@ SELECT
 FROM 
     ADFJ_HIST_MEMBRESIAS h,
     ADFJ_CLUBES c,
-    ADFJ_V_MIEMBROS_GRUPOS t,
+    ADFJ_V_Lectores_GRUPOS t,
     ADFJ_V_Libros_Analizados la
 WHERE 
     h.id_club = c.id_club 
@@ -899,7 +905,7 @@ WHERE p.isbn = t.isbn;
 CREATE OR REPLACE VIEW ADFJ_V_Lectores_Inasistencia_Retiro AS
 SELECT 
     l.id_lector,
-    l.primer_nombre || ' ' || l.primer_apellido AS lector,
+    l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido as nombre_lector,
     hm.id_club,
     c.nombre AS club,
     ADFJ_PARTICIPACION_BIMESTRAL(l.id_lector, hm.id_club) AS porcentaje
@@ -990,7 +996,7 @@ begin
     End;
     
     Select Count(*) into v_ya_inscrito
-    from adfj_v_miembros_activos h
+    from adfj_v_lectores_activos h
     where h.id_lector = p_lector;
         
     if v_ya_inscrito >= 1 then
@@ -998,7 +1004,7 @@ begin
     end if;
     
     Select Count(*) into v_deuda 
-    from adfj_v_miembros_retirados h
+    from adfj_v_lectores_retirados h
     where h.id_lector = p_lector 
         and h.motivo_retiro = 'DE';
             
@@ -1007,7 +1013,7 @@ begin
     end if;
     
     Select Count(*) into v_inasistencia
-    from adfj_v_miembros_retirados h
+    from adfj_v_lectores_retirados h
     where h.id_lector = p_lector 
         and h.id_club = p_club 
         and h.motivo_retiro = 'IN';
@@ -1240,4 +1246,151 @@ begin
     
     DBMS_OUTPUT.PUT_LINE('Lector retirado por motivo: ' || v_motivo_real);
 end adfj_retirar_lector;
+/
+
+CREATE OR REPLACE VIEW ADFJ_V_MODERADORES_DISPONIBLES AS
+SELECT 
+    ha.ID_CLUB_MEMB,
+    ha.id_club_grupo,
+    C.nombre AS nombre_club,
+    ha.ID_GRUPO,
+    gl.TIPO,
+    ha.ID_LECTOR,
+    l.PRIMER_NOMBRE || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.PRIMER_APELLIDO || ' ' || l.segundo_apellido AS NOMBRE_MODERADOR,
+    hm.f_ing_club,
+    ha.f_ing_grupo
+FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_GRUPOS_LECTURA gl, ADFJ_HIST_MEMBRESIAS hm, ADFJ_LECTORES l, ADFJ_CLUBES C
+WHERE ha.ID_CLUB_GRUPO = gl.ID_CLUB
+    AND ha.ID_GRUPO    = gl.ID_GRUPO
+    AND hm.id_lector = l.id_lector
+    AND hm.id_club = c.id_club
+    AND gl.id_club = c.id_club
+    AND ha.id_club_memb = c.id_club
+    AND ha.id_lector = l.id_lector
+    AND ha.ID_CLUB_MEMB  = hm.ID_CLUB
+    AND ha.ID_LECTOR     = hm.ID_LECTOR
+    AND ha.F_ING_CLUB    = hm.F_ING_CLUB
+    AND ha.F_FIN_GRUPO   IS NULL
+    AND hm.F_RETIRO      IS NULL
+    AND gl.tipo <> 'N'
+    -- No está moderando ningún libro con reuniones pendientes
+    AND NOT EXISTS (
+        SELECT 1 
+        FROM ADFJ_CAL_REUNIONES cr
+        WHERE cr.ID_CLUB_MEMB_MOD = ha.ID_CLUB_MEMB
+            AND cr.ID_MODERADOR   = ha.ID_LECTOR
+            AND cr.REALIZADA      = 'N'
+    );
+
+CREATE OR REPLACE PROCEDURE ADFJ_AGENDAR_REUNIONES (
+    p_id_club       IN NUMBER,
+    p_id_grupo      IN NUMBER,
+    p_isbn          IN NUMBER,
+    p_cant_reuniones IN NUMBER
+) IS
+    v_tipo_grupo       VARCHAR2(1);
+    v_dia_semana_grupo NUMBER; 
+    v_hora_grupo       VARCHAR2(5);
+    v_id_mod           NUMBER;
+    v_id_club_memb_mod NUMBER;
+    v_id_club_g_mod    NUMBER;
+    v_id_grupo_mod     NUMBER;
+    v_f_ing_club_mod   DATE;
+    v_f_ing_grupo_mod  DATE;
+    v_fecha_base       DATE;
+    v_fecha_reunion    DATE;
+    v_ultima_reunion   VARCHAR2(1);
+    v_count_dias       NUMBER := 0;
+BEGIN
+    -- Validaciones iniciales
+    IF p_cant_reuniones NOT BETWEEN 1 AND 3 THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERROR: Solo se pueden asignar entre 1 y 3 reuniones.');
+    END IF;
+
+    -- Obtener datos del grupo
+    BEGIN
+        SELECT TIPO, DIA, TO_CHAR(HORA, 'HH24:MI')
+        INTO v_tipo_grupo, v_dia_semana_grupo, v_hora_grupo
+        FROM ADFJ_GRUPOS_LECTURA
+        WHERE ID_CLUB = p_id_club AND ID_GRUPO = p_id_grupo;
+        
+        -- Validar día de semana
+        IF v_dia_semana_grupo NOT BETWEEN 1 AND 7 THEN
+            RAISE_APPLICATION_ERROR(-20004, 'Día de semana inválido: ' || v_dia_semana_grupo);
+        END IF;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20002, 'ERROR: El grupo o club especificado no existe.');
+    END;
+
+    -- Buscar moderador disponible
+    BEGIN
+        SELECT ID_LECTOR, id_club_memb, id_club_grupo, ID_GRUPO, F_ING_CLUB, F_ING_GRUPO
+        INTO v_id_mod, v_id_club_memb_mod, v_id_club_g_mod, v_id_grupo_mod, 
+             v_f_ing_club_mod, v_f_ing_grupo_mod
+        FROM (
+            SELECT md.ID_LECTOR, md.id_club_memb, md.id_club_grupo, md.ID_GRUPO, 
+                   md.F_ING_CLUB, md.F_ING_GRUPO
+            FROM ADFJ_V_MODERADORES_DISPONIBLES md
+            WHERE md.id_club_memb = p_id_club
+                AND ((v_tipo_grupo IN ('A', 'J') AND md.ID_GRUPO = p_id_grupo)
+                     OR (v_tipo_grupo = 'N' AND md.TIPO = 'A'))
+            ORDER BY md.F_ING_GRUPO ASC
+        )
+        WHERE ROWNUM = 1;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20003, 'ERROR: No hay ningún moderador disponible para este grupo en este momento.');
+    END;
+
+    -- Obtener fecha base (última reunión o sysdate)
+    SELECT TRUNC(GREATEST(NVL(MAX(R_AGEN.F_REUNION), SYSDATE), SYSDATE))
+    INTO v_fecha_base
+    FROM ADFJ_CAL_REUNIONES R_AGEN
+    WHERE R_AGEN.ID_CLUB = p_id_club AND R_AGEN.ID_GRUPO = p_id_grupo;
+
+    -- Buscar primera fecha de reunión
+    v_count_dias := 1;
+    LOOP
+        v_fecha_reunion := v_fecha_base + v_count_dias;
+        EXIT WHEN TO_CHAR(v_fecha_reunion, 'D', 'NLS_DATE_LANGUAGE = AMERICAN') = v_dia_semana_grupo;
+        v_count_dias := v_count_dias + 1;
+    END LOOP;
+    
+    --fecha + hora
+    v_fecha_reunion := TO_DATE(TO_CHAR(TRUNC(v_fecha_reunion), 'YYYY-MM-DD') || ' ' || v_hora_grupo, 'YYYY-MM-DD HH24:MI');
+    
+    -- Insertar reuniones
+    FOR i IN 1..p_cant_reuniones LOOP
+    
+        -- Calcular fecha (primera reunión o sumar 7 días)
+        IF i > 1 THEN
+            v_fecha_reunion := v_fecha_reunion + 7;  -- CORREGIDO
+        END IF;
+                
+        -- Determinar si es última reunión
+        if i = p_cant_reuniones then
+            v_ultima_reunion := 'S';
+        else
+            v_ultima_reunion := 'N';
+        end if;
+    
+        INSERT INTO ADFJ_CAL_REUNIONES (
+            id_club, id_grupo, isbn, f_reunion, realizada,
+            id_club_memb_mod, id_club_grupo_mod, id_grupo_mod, id_moderador,
+            f_ing_club_mod, f_ing_grupo_mod, conclusiones, valoracion, ultima_reunion
+        ) VALUES (
+            p_id_club, p_id_grupo, p_isbn, v_fecha_reunion, 'N',
+            v_id_club_memb_mod, v_id_club_g_mod, v_id_grupo_mod, v_id_mod,
+            v_f_ing_club_mod, v_f_ing_grupo_mod, NULL, NULL, v_ultima_reunion
+        );
+    END LOOP;
+
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Se agendaron ' || p_cant_reuniones || ' reuniones con éxito.');
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20999, 'Error importante al ejecutar el programa: ' || SQLERRM);
+END ADFJ_AGENDAR_REUNIONES;
 /

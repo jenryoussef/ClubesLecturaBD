@@ -2,7 +2,7 @@
 Vistas útiles:
 I) Lectores_Sin_Club (elección de lector)
 II) Tamano_Grupos_Disponibles (elección de club)
-III) Miembros_Grupos (ver cierres (splits) y aperturas de hist_asignaciones). Preferiblemente filtrar por club y tipo de grupo
+III) Lectores_Grupos (ver cierres (splits) y aperturas de hist_asignaciones). Preferiblemente filtrar por club y tipo de grupo
 */
 
 --Inscripción normal

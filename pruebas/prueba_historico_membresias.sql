@@ -10,9 +10,9 @@ Execute adfj_registrar_pago(&id_club, &id_lector);
 Vistas útiles
 I) V_LECTORES_DEUDORES_RETIRO (elegir parámetros para motivo = 'DE')
 II) V_LECTORES_INASISTENCIA_RETIRO (elegir parámetros para motivo = 'IN')
-III) V_MIEMBROS_ACTIVOS (elegir parámetro para retiro voluntario)
-IV) V_MIEMBROS_GRUPOS para ver cierre del histórico del grupo
-V) V_MIEMBROS_RETIRADOS para ver cierre del histórico del club
+III) V_Lectores_ACTIVOS (elegir parámetro para retiro voluntario)
+IV) V_Lectores_GRUPOS para ver cierre del histórico del grupo
+V) V_Lectores_RETIRADOS para ver cierre del histórico del club
 */
 
 --retiro por deuda o por inasistencia; 

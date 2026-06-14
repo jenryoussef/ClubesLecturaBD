@@ -2,9 +2,9 @@ SELECT L.ID_LECTOR, L.F_NACIMIENTO, ADFJ_calcular_edad_antiguedad(L.F_NACIMIENTO
 FROM ADFJ_LECTORES L
 WHERE L.ID_LECTOR = &id_lector;
 
-SELECT * FROM ADFJ_vista_miembros_activos;
+SELECT * FROM ADFJ_v_lectores_activos;
 
-SELECT * FROM ADFJ_vista_miembros_retirados; 
+SELECT * FROM ADFJ_v_lectores_retirados; 
 
 SELECT L.ID_LECTOR, L.ID_CLUB, L.F_ING_CLUB, L.F_RETIRO, ADFJ_calcular_edad_antiguedad(L.F_ING_CLUB, L.F_RETIRO) ANTIGUEDAD 
 FROM ADFJ_HIST_MEMBRESIAS L 
