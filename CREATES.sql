@@ -822,7 +822,6 @@ WHERE ha.id_club_grupo = cr.id_club
         AND i.f_reunion = cr.f_reunion
   );
 
-
 CREATE OR REPLACE VIEW ADFJ_V_Club_Anterior AS
 SELECT DISTINCT 
   h.id_lector, 
