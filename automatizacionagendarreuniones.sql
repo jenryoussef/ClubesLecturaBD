@@ -18,13 +18,24 @@ CREATE OR REPLACE PROCEDURE ADFJ_AGENDAR_REUNIONES (
     v_fecha_reunion    DATE;
     v_ultima_reunion   VARCHAR2(1);
     v_count_dias       NUMBER := 0;
-    
+    v_existisbn        NUMBER;
 BEGIN
     
     IF p_cant_reuniones NOT BETWEEN 1 AND 3 THEN
         RAISE_APPLICATION_ERROR(-20001, 'ERROR: Solo se pueden asignar entre 1 y 3 reuniones.');
     END IF;
-
+    
+    BEGIN
+        SELECT 1 
+        INTO v_existisbn
+        FROM adfj_libros l
+        WHERE l.isbn = p_isbn;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20004, 'ERROR: El ISBN ingresado no se encuentra en la base de datos.');
+    
+    END;
+    
     -- con esto guardamos todos los datos necesarios del grupo
     BEGIN
         SELECT TIPO, DIA, TO_CHAR(HORA, 'HH24:MI')
