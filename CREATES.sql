@@ -579,7 +579,7 @@ EXCEPTION
 END ADFJ_PCT_PARTICIPACION_MENSUAL_TIPO;
 /
 
-CREATE OR REPLACE FUNCTION ADFJ_F_PROMEDIO_PARTICIPACION(
+CREATE OR REPLACE FUNCTION ADFJ_PARTICIPACION_BIMESTRAL(
     p_idlector IN NUMBER,
     p_idclub   IN NUMBER,
     p_anio     IN NUMBER DEFAULT extract(year from sysdate),
@@ -838,6 +838,24 @@ SELECT t.id_club,t.codigo_pais,t.codigo_area,t.numero
 FROM adfj_telefonos t,adfj_clubes c
 WHERE t.id_club = c.id_club AND t.id_lector IS NULL;
 
+CREATE OR REPLACE VIEW ADFJ_V_Libros_Analizados AS
+SELECT DISTINCT ha.id_lector, ha.id_club_grupo id_club, lib.titulo libros_analizados
+FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_CAL_REUNIONES cr, ADFJ_LIBROS lib
+WHERE ha.id_club_grupo = cr.id_club 
+  AND ha.id_grupo = cr.id_grupo 
+  AND cr.isbn = lib.isbn
+  AND cr.realizada = 'S' 
+  AND cr.f_reunion >= ha.f_ing_grupo 
+  AND (ha.f_fin_grupo IS NULL OR cr.f_reunion <= ha.f_fin_grupo)
+  AND NOT EXISTS (
+      SELECT 1 FROM ADFJ_INASISTENCIAS i
+      WHERE i.id_lector = ha.id_lector
+        AND i.id_club_cal = cr.id_club
+        AND i.id_grupo_cal = cr.id_grupo
+        AND i.isbn = cr.isbn
+        AND i.f_reunion = cr.f_reunion
+  );
+  
 CREATE OR REPLACE VIEW ADFJ_V_Club_Actual AS
 SELECT 
     h.id_lector, 
@@ -859,24 +877,6 @@ WHERE
     AND la.id_lector(+) = h.id_lector 
     AND la.id_club(+) = h.id_club;
 
-CREATE OR REPLACE VIEW ADFJ_V_Libros_Analizados AS
-SELECT DISTINCT ha.id_lector, ha.id_club_grupo id_club, lib.titulo libros_analizados
-FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_CAL_REUNIONES cr, ADFJ_LIBROS lib
-WHERE ha.id_club_grupo = cr.id_club 
-  AND ha.id_grupo = cr.id_grupo 
-  AND cr.isbn = lib.isbn
-  AND cr.realizada = 'S' 
-  AND cr.f_reunion >= ha.f_ing_grupo 
-  AND (ha.f_fin_grupo IS NULL OR cr.f_reunion <= ha.f_fin_grupo)
-  AND NOT EXISTS (
-      SELECT 1 FROM ADFJ_INASISTENCIAS i
-      WHERE i.id_lector = ha.id_lector
-        AND i.id_club_cal = cr.id_club
-        AND i.id_grupo_cal = cr.id_grupo
-        AND i.isbn = cr.isbn
-        AND i.f_reunion = cr.f_reunion
-  );
-
 CREATE OR REPLACE VIEW ADFJ_V_Club_Anterior AS
 SELECT DISTINCT 
   h.id_lector, 
@@ -895,6 +895,33 @@ CREATE OR REPLACE VIEW ADFJ_V_Libros_Preferidos AS
 SELECT p.id_lector, p.ORDEN orden_preferencia, t.titulo libros_preferidos
 FROM ADFJ_PREFERENCIAS p, ADFJ_LIBROS t 
 WHERE p.isbn = t.isbn;
+
+CREATE OR REPLACE VIEW ADFJ_V_Lectores_Inasistencia_Retiro AS
+SELECT 
+    l.id_lector,
+    l.primer_nombre || ' ' || l.primer_apellido AS lector,
+    hm.id_club,
+    c.nombre AS club,
+    ADFJ_PARTICIPACION_BIMESTRAL(l.id_lector, hm.id_club) AS porcentaje
+FROM 
+    ADFJ_LECTORES l,
+    ADFJ_HIST_MEMBRESIAS hm,
+    ADFJ_CLUBES c
+WHERE 
+    l.id_lector = hm.id_lector
+    AND hm.id_club = c.id_club
+    AND hm.f_retiro IS NULL
+    -- Solo lectores que  se han reunido 
+    AND EXISTS (
+        SELECT 1 
+        FROM ADFJ_V_REUNIONES_BIMESTRE r
+        WHERE r.id_lector = l.id_lector
+          AND r.id_club = hm.id_club
+          AND r.anio = EXTRACT(YEAR FROM SYSDATE)
+          AND r.bimestre = CEIL(EXTRACT(MONTH FROM SYSDATE)/2)
+    )
+    -- Y que tengan menos de 70% de participación
+    AND ADFJ_PARTICIPACION_BIMESTRAL(l.id_lector, hm.id_club) < 70;
 
 create or replace procedure adfj_hacer_split(p_club in number, p_grupo_viejo in number, p_grupo_nuevo in number, f_registro in date) is
     Cursor c_lectores is SELECT s.id_lector, s.f_ing_club, s.f_ing_grupo
@@ -1061,12 +1088,10 @@ CREATE OR REPLACE PROCEDURE ADFJ_PRC_REGISTRAR_PAGO (
     v_id_lector IN NUMBER
 ) IS
     v_cuota               VARCHAR2(1);
-    v_proximo_id          NUMBER;
+    v_proximo_id          NUMBER := 0;
     v_f_ing               DATE;
     v_f_proximo_aniv      DATE;
 BEGIN
-
-    -- Validar que el club exista y obtener cuota
     BEGIN
         SELECT cuota_membr INTO v_cuota
         FROM ADFJ_CLUBES
@@ -1076,24 +1101,10 @@ BEGIN
             RAISE_APPLICATION_ERROR(-20010, 'El club ingresado no está registrado en la Base de Datos');
     END;
 
-    -- Validar que el club cobre cuota de membresía
     IF v_cuota = 'N' THEN
         RAISE_APPLICATION_ERROR(-20010, 'Este club no cobra cuotas de membresía');
     END IF;
 
-    -- Validar que el lector exista
-    DECLARE
-        v_temp NUMBER;
-    BEGIN
-        SELECT 1 INTO v_temp
-        FROM ADFJ_LECTORES
-        WHERE id_lector = v_id_lector;
-    EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            RAISE_APPLICATION_ERROR(-20000, 'El lector ingresado no está registrado en la Base de Datos');
-    END;
-
-    -- Validar que el lector esté activo en el club
     BEGIN
         SELECT f_ing_club INTO v_f_ing
         FROM ADFJ_HIST_MEMBRESIAS
