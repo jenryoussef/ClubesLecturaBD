@@ -260,7 +260,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>nombre:</Value>
+                    <Value>Nombre:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -295,7 +295,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>edad:</Value>
+                    <Value>Edad:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -318,7 +318,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value xml:space="preserve"> </Value>
+                    <Value> años</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -330,7 +330,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>representante:</Value>
+                    <Value>Representante:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -346,7 +346,7 @@
                   </TextRun>
                   <TextRun>
                     <Label>representante_lector</Label>
-                    <Value>=First(Fields!REPRESENTANTE.Value, "DS_Datos_Base")</Value>
+                    <Value>=StrConv(First(Fields!REPRESENTANTE.Value, "DS_Datos_Base"), 3)</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -365,7 +365,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>gmail:</Value>
+                    <Value>Gmail:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -400,7 +400,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>nacionalidad:</Value>
+                    <Value>Nacionalidad:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -496,7 +496,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>informacion personal</Value>
+                    <Value>Informacion Personal</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>26pt</FontSize>
@@ -601,7 +601,7 @@
                                 <Paragraph>
                                   <TextRuns>
                                     <TextRun>
-                                      <Value>idiomas: </Value>
+                                      <Value>Idiomas: </Value>
                                       <Style>
                                         <FontFamily>Bell MT</FontFamily>
                                         <FontSize>22pt</FontSize>
@@ -831,10 +831,10 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>libros  analizados</Value>
+                                    <Value>Libros  Analizados</Value>
                                     <Style>
                                       <FontFamily>Bell MT</FontFamily>
-                                      <FontSize>18pt</FontSize>
+                                      <FontSize>22pt</FontSize>
                                       <FontWeight>Bold</FontWeight>
                                     </Style>
                                   </TextRun>
@@ -1081,7 +1081,7 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Label>libros_preferidos</Label>
-                                      <Value>=Fields!LIBROS_PREFERIDOS.Value</Value>
+                                      <Value>=StrConv(Fields!LIBROS_PREFERIDOS.Value, 3)</Value>
                                       <Style>
                                         <FontFamily>Bell MT</FontFamily>
                                         <FontSize>22pt</FontSize>
@@ -1187,7 +1187,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>top 3 libros preferidos:</Value>
+                    <Value>Libros preferidos:</Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
@@ -1221,7 +1221,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>teléfonos: </Value>
+                    <Value>Teléfonos: </Value>
                     <Style>
                       <FontFamily>Bell MT</FontFamily>
                       <FontSize>22pt</FontSize>
