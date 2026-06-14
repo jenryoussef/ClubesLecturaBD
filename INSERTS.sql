@@ -745,6 +745,7 @@ INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (2,1,2,76,TO_DATE('01-01-2013','DD-MM-YYYY'),TO_DATE('01-01-2013','DD-MM-YYYY'),TO_DATE('01-01-2015','DD-MM-YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (4,1,4,76,TO_DATE('01-01-2019','DD-MM-YYYY'),TO_DATE('01-01-2019','DD-MM-YYYY'),TO_DATE('01-01-2022','DD-MM-YYYY')); COMMIT;
 INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (5,1,5,76,TO_DATE('01-01-2023','DD-MM-YYYY'),TO_DATE('01-01-2023','DD-MM-YYYY'),NULL); COMMIT;
+INSERT INTO ADFJ_HIST_ASIGNACIONES(id_club_grupo,id_grupo,id_club_memb,id_lector,f_ing_club,f_ing_grupo,f_fin_grupo) VALUES (1,2,1,33,TO_DATE('15/01/2023','DD/MM/YYYY'),TO_DATE('15/01/2023','DD/MM/YYYY'),NULL); COMMIT;
 
 INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,1,'LA NOCHE DE LOS CRIMENES',90,'Adaptación teatral del libro Los Hermanos Karamazov','S',15); COMMIT;
 INSERT INTO ADFJ_OBRAS_ACTUADAS(id_club,id_obra,titulo,duracion_minutos,descripcion,activa,costo) VALUES (1,2,'EL ULTIMO MISTERIO',75,'Obra basada en el libro 2666 de Roberto Bolaño','N',10); COMMIT;

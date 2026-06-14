@@ -1083,7 +1083,7 @@ exception
 end adfj_inscribir_lector;
 /
 
-CREATE OR REPLACE PROCEDURE ADFJ_PRC_REGISTRAR_PAGO (
+CREATE OR REPLACE PROCEDURE ADFJ_REGISTRAR_PAGO (
     v_id_club   IN NUMBER, 
     v_id_lector IN NUMBER
 ) IS
@@ -1152,5 +1152,92 @@ BEGIN
 EXCEPTION
     WHEN OTHERS THEN
         RAISE_APPLICATION_ERROR(-20000, 'ERROR. ' || SQLERRM);
-END ADFJ_PRC_REGISTRAR_PAGO;
+END ADFJ_REGISTRAR_PAGO;
+/
+
+create or replace procedure adfj_retirar_lector(
+    p_club in number,
+    p_lector in number, 
+    p_f_sol in Date default null,
+    p_motivo in varchar2 default 'VO'
+) is
+    v_deudor number := 0;
+    v_inasistente number := 0;
+    v_f_retiro date := sysdate;
+    v_f_ing date;
+    v_motivo_real varchar2(2);
+    v_f_sol_real date;
+    v_aniversario date;
+begin
+    BEGIN
+        SELECT f_ing_club INTO v_f_ing
+        FROM ADFJ_HIST_MEMBRESIAS
+        WHERE id_lector = p_lector
+            AND id_club  = p_club
+            AND f_retiro IS NULL;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20000, 'El lector no está activo en el club ingresado');
+    END;
+    
+    if upper(p_motivo) not in ('VO', 'OT') then
+        RAISE_APPLICATION_ERROR(-20000, 'El motivo de retiro ingresado manualmente sólo puede ser "VO", "OT"');
+    End if;
+    
+    if p_f_sol > sysdate or p_f_sol < v_f_ing then
+        RAISE_APPLICATION_ERROR(-20000, 'La fecha de solicitud de retiro debe estar dentro del período del lector como miembro del club');
+    End if;
+    
+    select count(*) into v_deudor 
+    from adfj_v_lectores_deudores_retiro d
+    where d.id_club = p_club 
+        and d.id_lector = p_lector;
+        
+    select count(*) into v_inasistente
+    from adfj_v_lectores_inasistencia_retiro i
+    where i.id_club = p_club
+        and i.id_lector = p_lector;
+        
+    if v_deudor > 0 then
+        v_motivo_real := 'DE';
+        v_f_sol_real := Null;
+    elsif v_inasistente > 0 then
+        v_motivo_real := 'IN';
+        v_f_sol_real := Null; 
+    else
+        v_motivo_real := upper(p_motivo);
+        v_f_sol_real := p_f_sol;
+    end if;
+    
+    if v_motivo_real = 'VO' then
+        if v_f_sol_real is null then
+            raise_application_error(-20000, 'Para hacer retiros voluntarios debe ingresar la fecha de solicitud de retiro');
+        End if;
+            
+        v_aniversario := ADD_MONTHS(v_f_ing, (TRUNC(MONTHS_BETWEEN(SYSDATE, v_f_ing) / 12) + 1) * 12);
+        if v_f_sol_real > add_months(v_aniversario, -1) then
+            RAISE_APPLICATION_ERROR(-20000, 'ERROR. Debe avisar al menos un mes antes de su fecha de renovación. Podrá ser retirado luego de pagar el siguiente período');
+        End if;
+    End if;
+    
+    update adfj_hist_asignaciones
+    set f_fin_grupo = v_f_retiro
+    where id_club_memb = p_club
+        and id_lector = p_lector
+        and f_ing_club = v_f_ing
+        and f_fin_grupo is null;
+        
+    update adfj_hist_membresias
+    set f_retiro = v_f_retiro,
+        motivo_retiro = v_motivo_real,
+        f_sol_retiro = v_f_sol_real
+    where id_club = p_club
+        and id_lector = p_lector
+        and f_ing_club = v_f_ing
+        and f_retiro is null;
+    
+    Commit;
+    
+    DBMS_OUTPUT.PUT_LINE('Lector retirado por motivo: ' || v_motivo_real);
+end adfj_retirar_lector;
 /
