@@ -10,3 +10,4 @@ Execute adfj_inscribir_lector(&id_lector, &id_club);
 
 --Inscripción con split
 Execute adfj_inscribir_lector(&id_lector, &id_club, &dia, TO_DATE('&hora_militar', 'HH24:MI'));
+

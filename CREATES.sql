@@ -430,6 +430,48 @@ Select a.id_autor, a.nombre || ' ' || a.apellido, l.isbn, l.titulo nombre_autor
 from adfj_autores a, adfj_libros l, adfj_autorias x
 where a.id_autor = x.id_autor
     and l.isbn = x.isbn;
+    
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_PUEDEN_PAGAR AS
+SELECT 
+    hm.id_club,
+    hm.id_lector,
+    hm.f_ing_club,
+    NVL(MAX(pm.id_pago), 0) + 1                              AS proximo_id_pago,
+    ADD_MONTHS(hm.f_ing_club, NVL(MAX(pm.id_pago), 0) * 12) AS f_inicio_periodo,
+    ADD_MONTHS(hm.f_ing_club, (NVL(MAX(pm.id_pago), 0) + 1) * 12) AS f_fin_periodo
+FROM ADFJ_HIST_MEMBRESIAS hm, ADFJ_CLUBES c, ADFJ_PAGOS_MEMBRESIA pm
+WHERE hm.id_club      = c.id_club
+    AND c.cuota_membr = 'S'
+    AND hm.f_retiro   IS NULL
+    AND pm.id_club     = hm.id_club (+)
+    AND pm.id_lector   = hm.id_lector (+)
+    AND pm.f_ing_club  = hm.f_ing_club (+)
+GROUP BY hm.id_club, hm.id_lector, hm.f_ing_club
+HAVING ADD_MONTHS(hm.f_ing_club, NVL(MAX(pm.id_pago), 0) * 12) <= SYSDATE
+    AND ADD_MONTHS(hm.f_ing_club, (NVL(MAX(pm.id_pago), 0) + 1) * 12) > SYSDATE;
+
+CREATE OR REPLACE VIEW ADFJ_V_Lectores_Deudores_Retiro AS
+SELECT 
+    hm.id_lector,
+    hm.id_club,
+    (SELECT l.primer_nombre || ' ' || l.primer_apellido 
+     FROM ADFJ_LECTORES l WHERE l.id_lector = hm.id_lector) AS lector,
+    (SELECT c.nombre FROM ADFJ_CLUBES c WHERE c.id_club = hm.id_club) AS club,
+    ADD_MONTHS(hm.f_ing_club, (NVL((SELECT MAX(pm.id_pago) 
+         FROM ADFJ_PAGOS_MEMBRESIA pm 
+         WHERE pm.id_club = hm.id_club 
+           AND pm.id_lector = hm.id_lector 
+           AND pm.f_ing_club = hm.f_ing_club), 0) + 1) * 12) AS fecha_vencimiento
+FROM 
+    ADFJ_HIST_MEMBRESIAS hm
+WHERE 
+    hm.f_retiro IS NULL
+    AND EXISTS (SELECT 1 FROM ADFJ_CLUBES c WHERE c.id_club = hm.id_club AND c.cuota_membr = 'S')
+    AND ADD_MONTHS(hm.f_ing_club, (NVL((SELECT MAX(pm.id_pago) 
+         FROM ADFJ_PAGOS_MEMBRESIA pm 
+         WHERE pm.id_club = hm.id_club 
+           AND pm.id_lector = hm.id_lector 
+           AND pm.f_ing_club = hm.f_ing_club), 0) + 1) * 12) <= SYSDATE;
   
 Create or replace function conversion_monetaria(p_monto in number, p_tasa in number, p_pais in number) return number is
     v_resultado number := 0;
@@ -797,12 +839,25 @@ FROM adfj_telefonos t,adfj_clubes c
 WHERE t.id_club = c.id_club AND t.id_lector IS NULL;
 
 CREATE OR REPLACE VIEW ADFJ_V_Club_Actual AS
-SELECT h.id_lector, h.id_club, c.nombre club_actual, ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, h.f_retiro) antiguedad_club_actual ,DECODE(t.tipo, 'A', 'adultos', 'J', 'jovenes', 'N', 'niños', t.tipo) tipo_grupo
-FROM ADFJ_HIST_MEMBRESIAS h, ADFJ_CLUBES c, ADFJ_V_MIEMBROS_GRUPOS t
-WHERE h.id_club = c.id_club AND 
-h.f_retiro IS NULL AND 
-t.id_club = c.id_club AND 
-t.id_lector = h.id_lector;
+SELECT 
+    h.id_lector, 
+    h.id_club, 
+    c.nombre AS club_actual, 
+    ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, NULL) AS antiguedad_club_actual,
+    DECODE(t.tipo, 'A', 'adultos', 'J', 'jovenes', 'N', 'niños', t.tipo) AS tipo_grupo,
+    la.libros_analizados
+FROM 
+    ADFJ_HIST_MEMBRESIAS h,
+    ADFJ_CLUBES c,
+    ADFJ_V_MIEMBROS_GRUPOS t,
+    ADFJ_V_Libros_Analizados la
+WHERE 
+    h.id_club = c.id_club 
+    AND h.f_retiro IS NULL 
+    AND t.id_club = c.id_club 
+    AND t.id_lector = h.id_lector
+    AND la.id_lector(+) = h.id_lector 
+    AND la.id_club(+) = h.id_club;
 
 CREATE OR REPLACE VIEW ADFJ_V_Libros_Analizados AS
 SELECT DISTINCT ha.id_lector, ha.id_club_grupo id_club, lib.titulo libros_analizados
@@ -1000,3 +1055,4 @@ exception
         raise_application_error(-20000, 'ERROR. ' || SQLERRM); 
 end adfj_inscribir_lector;
 /
+
