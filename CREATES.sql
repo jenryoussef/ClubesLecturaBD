@@ -1056,3 +1056,90 @@ exception
 end adfj_inscribir_lector;
 /
 
+CREATE OR REPLACE PROCEDURE ADFJ_PRC_REGISTRAR_PAGO (
+    v_id_club   IN NUMBER, 
+    v_id_lector IN NUMBER
+) IS
+    v_cuota               VARCHAR2(1);
+    v_proximo_id          NUMBER;
+    v_f_ing               DATE;
+    v_f_proximo_aniv      DATE;
+BEGIN
+
+    -- Validar que el club exista y obtener cuota
+    BEGIN
+        SELECT cuota_membr INTO v_cuota
+        FROM ADFJ_CLUBES
+        WHERE id_club = v_id_club;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20010, 'El club ingresado no está registrado en la Base de Datos');
+    END;
+
+    -- Validar que el club cobre cuota de membresía
+    IF v_cuota = 'N' THEN
+        RAISE_APPLICATION_ERROR(-20010, 'Este club no cobra cuotas de membresía');
+    END IF;
+
+    -- Validar que el lector exista
+    DECLARE
+        v_temp NUMBER;
+    BEGIN
+        SELECT 1 INTO v_temp
+        FROM ADFJ_LECTORES
+        WHERE id_lector = v_id_lector;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20000, 'El lector ingresado no está registrado en la Base de Datos');
+    END;
+
+    -- Validar que el lector esté activo en el club
+    BEGIN
+        SELECT f_ing_club INTO v_f_ing
+        FROM ADFJ_HIST_MEMBRESIAS
+        WHERE id_lector = v_id_lector
+            AND id_club  = v_id_club
+            AND f_retiro IS NULL;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20000, 'El lector no está activo en el club ingresado');
+    END;
+    
+    SELECT NVL(MAX(id_pago), 0) + 1 INTO v_proximo_id
+    FROM ADFJ_PAGOS_MEMBRESIA
+    WHERE id_club    = v_id_club
+        AND id_lector  = v_id_lector
+        AND f_ing_club = v_f_ing;
+    
+    DECLARE
+        v_f_inicio_periodo DATE;
+        v_f_fin_periodo    DATE;
+    BEGIN
+        v_f_inicio_periodo := ADD_MONTHS(v_f_ing, (v_proximo_id - 1) * 12);
+        v_f_fin_periodo    := ADD_MONTHS(v_f_ing, v_proximo_id * 12);
+    
+        -- Verificar que el lector no esté al día
+        IF SYSDATE < v_f_inicio_periodo THEN
+            RAISE_APPLICATION_ERROR(-20010,
+                'Aún no ha llegado la fecha de renovación. Puede pagar desde el ' ||
+                TO_CHAR(v_f_inicio_periodo, 'DD/MM/YYYY'));
+        END IF;
+        
+        --Verificar que el lector no tenga una deuda de un período completo (motivo de retiro)
+        IF SYSDATE >= v_f_fin_periodo THEN
+            RAISE_APPLICATION_ERROR(-20010,
+                'El período de pago ya venció el ' ||
+                TO_CHAR(v_f_fin_periodo, 'DD/MM/YYYY') ||
+                '. El lector debió ser retirado por deuda');
+        END IF;
+    END;
+
+    -- Registrar el pago
+    INSERT INTO ADFJ_PAGOS_MEMBRESIA(id_club, id_lector, f_ing_club, id_pago, f_pago) VALUES (v_id_club, v_id_lector, v_f_ing, v_proximo_id, SYSDATE);
+    COMMIT;
+    
+EXCEPTION
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20000, 'ERROR. ' || SQLERRM);
+END ADFJ_PRC_REGISTRAR_PAGO;
+/
