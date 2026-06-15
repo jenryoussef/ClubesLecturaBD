@@ -1084,7 +1084,7 @@ exception
         raise_application_error(-20000, 'ERROR. El lector no puede reincorporarse a este club, debido a una expulsión por inasistencias');
         
     when grupos_ocupados then
-        raise_application_error(-20000, 'ERROR. No se puede registrar, ya que todos los grupos del club se encuentran en medio de una lectura');
+        raise_application_error(-20000, 'ERROR. No se puede registrar, ya que no hay grupos de ese tipo disponibles');
     
     when datos_faltantes then
         raise_application_error(-20000, 'ERROR. Se requiere hacer un split y no se suministraron los valores de día de reunión y hora de reunión del nuevo grupo');
