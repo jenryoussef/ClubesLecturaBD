@@ -1152,7 +1152,7 @@ BEGIN
             RAISE_APPLICATION_ERROR(-20010,
                 'El período de pago ya venció el ' ||
                 TO_CHAR(v_f_fin_periodo, 'DD/MM/YYYY') ||
-                '. El lector debió ser retirado por deuda');
+                '. El lector debe ser retirado por deuda');
         END IF;
     END;
 
