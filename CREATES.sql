@@ -406,7 +406,7 @@ GROUP BY G.ID_CLUB, C.nombre, G.ID_GRUPO, G.TIPO,
     TO_CHAR(I.F_REUNION,'YYYY')
 ORDER BY G.ID_CLUB, G.TIPO, ANIO, MES;
 
-CREATE OR REPLACE VIEW ADFJ_V_LECTORES_GRUPOS(id_club, nombre_club, id_grupo, tipo, id_lector, nombre_lector, f_ing_club, f_ing_grupo, f_fin_grupo) AS 
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_GRUPOS(id_club, nombre_club, id_grupo, tipo, id_lector, nombre_lector, cedula, f_ing_club, f_ing_grupo, f_fin_grupo) AS 
 SELECT 
     G.ID_CLUB, 
     C.Nombre,
@@ -414,6 +414,7 @@ SELECT
     G.TIPO, 
     L.ID_LECTOR,
     L.primer_nombre || ' ' || NVL(L.segundo_nombre, '') || ' ' || L.primer_apellido || ' ' || L.segundo_apellido,
+    L.doc_identidad,
     H.F_Ing_club,
     H.F_ING_GRUPO, 
     H.F_FIN_GRUPO
@@ -424,12 +425,6 @@ WHERE G.ID_CLUB   = H.ID_CLUB_GRUPO
     And C.id_club = G.id_club
     AND C.id_cluB = h.id_club_grupo
 ORDER BY G.ID_CLUB, G.TIPO, G.ID_GRUPO, L.ID_LECTOR;
-
-Create or replace view adfj_v_libros_autores(id_autor, nombre_autor, isbn, titulo) as 
-Select a.id_autor, a.nombre || ' ' || a.apellido, l.isbn, l.titulo nombre_autor
-from adfj_autores a, adfj_libros l, adfj_autorias x
-where a.id_autor = x.id_autor
-    and l.isbn = x.isbn;
     
 CREATE OR REPLACE VIEW ADFJ_V_LECTORES_PUEDEN_PAGAR AS
 SELECT 
@@ -458,8 +453,8 @@ HAVING ADD_MONTHS(hm.f_ing_club, NVL(MAX(pm.id_pago), 0) * 12) <= SYSDATE
 
 CREATE OR REPLACE VIEW ADFJ_V_Lectores_Deudores_Retiro AS
 SELECT 
-    hm.id_lector,
     hm.id_club,
+    hm.id_lector,
     (SELECT l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido
      FROM ADFJ_LECTORES l WHERE l.id_lector = hm.id_lector) AS lector,
     (SELECT c.nombre FROM ADFJ_CLUBES c WHERE c.id_club = hm.id_club) AS club,
@@ -479,12 +474,65 @@ WHERE
            AND pm.id_lector = hm.id_lector 
            AND pm.f_ing_club = hm.f_ing_club), 0) + 1) * 12) <= SYSDATE;
            
-CREATE OR REPLACE VIEW  ADFJ_V_CLUBES_IDIOMAS AS 
-Select c.id_club, c.nombre nombre_club, i.id_idioma, i.nombre nombre_idioma
-from adfj_idiomas i, adfj_clubes c, adfj_habla h
-where i.id_idioma = h.id_idioma and c.id_club = h.id_club;
-  
-Create or replace function conversion_monetaria(p_monto in number, p_tasa in number, p_pais in number) return number is
+CREATE OR REPLACE VIEW ADFJ_V_TAMANO_GRUPOS_DISPONIBLES AS
+SELECT 
+    g.id_club,
+    c.nombre nombre_club,
+    g.id_grupo,
+    g.tipo tipo_grupo,
+    (SELECT COUNT(*) - COUNT(ha.f_fin_grupo)
+     FROM ADFJ_HIST_ASIGNACIONES ha
+     WHERE ha.id_club_grupo = g.id_club
+         AND ha.id_grupo    = g.id_grupo) AS tamano
+FROM ADFJ_GRUPOS_LECTURA g, ADFJ_CLUBES c
+WHERE g.id_club = c.id_club
+    -- Solo grupos sin reuniones activas (disponibles)
+    AND (
+        NOT EXISTS (
+            SELECT 1 FROM ADFJ_CAL_REUNIONES cr
+            WHERE cr.id_club  = g.id_club
+                AND cr.id_grupo = g.id_grupo
+        )
+        OR
+        (SELECT MAX(cr.f_reunion) 
+         FROM ADFJ_CAL_REUNIONES cr
+         WHERE cr.id_club  = g.id_club
+             AND cr.id_grupo = g.id_grupo) < SYSDATE
+    )
+ORDER BY g.id_club, g.id_grupo;
+
+CREATE OR REPLACE VIEW ADFJ_V_MODERADORES_DISPONIBLES AS
+SELECT 
+    ha.ID_CLUB_MEMB,
+    ha.id_club_grupo,
+    C.nombre AS nombre_club,
+    ha.ID_GRUPO,
+    gl.TIPO,
+    ha.ID_LECTOR,
+    l.PRIMER_NOMBRE || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.PRIMER_APELLIDO || ' ' || l.segundo_apellido AS NOMBRE_MODERADOR,
+    hm.f_ing_club,
+    ha.f_ing_grupo
+FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_GRUPOS_LECTURA gl, ADFJ_HIST_MEMBRESIAS hm, ADFJ_LECTORES l, ADFJ_CLUBES C
+WHERE ha.ID_CLUB_GRUPO = gl.ID_CLUB AND ha.ID_GRUPO = gl.ID_GRUPO
+    AND hm.id_lector = l.id_lector 
+    AND hm.id_club = c.id_club
+    AND gl.id_club = c.id_club
+    AND ha.id_club_memb = c.id_club 
+    AND ha.id_lector = l.id_lector 
+    AND ha.ID_CLUB_MEMB = hm.ID_CLUB AND ha.ID_LECTOR = hm.ID_LECTOR AND ha.F_ING_CLUB = hm.F_ING_CLUB
+    AND ha.F_FIN_GRUPO   IS NULL
+    AND hm.F_RETIRO      IS NULL
+    AND gl.tipo <> 'N'
+    -- No está moderando ningún libro con reuniones pendientes
+    AND NOT EXISTS (
+        SELECT 1 
+        FROM ADFJ_CAL_REUNIONES cr
+        WHERE cr.ID_CLUB_MEMB_MOD = ha.ID_CLUB_MEMB
+            AND cr.ID_MODERADOR   = ha.ID_LECTOR
+            AND cr.REALIZADA      = 'N'
+    );
+           
+Create or replace function ADFJ_conversion_monetaria(p_monto in number, p_tasa in number, p_pais in number) return number is
     v_resultado number := 0;
     v_moneda varchar2(3);
 Begin
@@ -509,7 +557,7 @@ Begin
     
     v_resultado := Round(p_monto / p_tasa, 2);
     return v_resultado;
-End conversion_monetaria;
+End;
 /
 
 CREATE OR REPLACE FUNCTION ADFJ_CALCULAR_EDAD_ANTIGUEDAD(
@@ -591,8 +639,8 @@ END ADFJ_PCT_PARTICIPACION_MENSUAL_TIPO;
 /
 
 CREATE OR REPLACE FUNCTION ADFJ_PARTICIPACION_BIMESTRAL(
-    p_idlector IN NUMBER,
     p_idclub   IN NUMBER,
+    p_idlector IN NUMBER,
     p_anio     IN NUMBER DEFAULT extract(year from sysdate),
     p_bimestre IN NUMBER DEFAULT ceil(extract(month from sysdate)/2)
 ) RETURN NUMBER IS
@@ -726,214 +774,6 @@ BEGIN
 END ADFJ_CRECIMIENTO_ECONOMICO;
 /
 
-CREATE OR REPLACE VIEW ADFJ_V_CRECIMIENTO_MIEMBROS(pais, anio, id_club, club, act_actual, act_pasado, crecimiento) AS
-SELECT DISTINCT p.nombre AS pais, 
-    EXTRACT(YEAR FROM h.f_ing_club) AS anio,
-    c.id_club, 
-    c.nombre AS club,
-    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))     AS miembros_periodo_actual,
-    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club) - 1) AS miembros_periodo_pasado,
-    ADFJ_CRECIMIENTO_MIEMBROS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))        AS pct_crecimiento_miembros
-FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_HIST_MEMBRESIAS h
-WHERE p.id_pais  = c.id_pais
-    AND c.id_club = h.id_club
-    AND EXTRACT(YEAR FROM h.f_ing_club) >= 2024
-ORDER BY p.nombre, anio, 
-    pct_crecimiento_miembros DESC NULLS LAST, c.nombre;
-    
-CREATE OR REPLACE VIEW ADFJ_V_CRECIMIENTO_ECONOMICO AS
-SELECT DISTINCT p.nombre AS pais,
-    EXTRACT(YEAR FROM pm.f_pago) AS anio,
-    c.id_club,
-    c.nombre AS club,
-    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago))     AS ingresos_periodo_actual,
-    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago) - 1) AS ingresos_periodo_pasado,
-    ADFJ_CRECIMIENTO_ECONOMICO(c.id_club, EXTRACT(YEAR FROM pm.f_pago))         AS pct_crecimiento_economico
-FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_PAGOS_MEMBRESIA pm
-WHERE p.id_pais      = c.id_pais
-    AND c.id_club     = pm.id_club
-    AND c.cuota_membr = 'S'
-    AND EXTRACT(YEAR FROM pm.f_pago) >= 2024
-ORDER BY p.nombre, anio,
-    pct_crecimiento_economico DESC NULLS LAST, c.nombre;
-
-Create or replace view adfj_v_lectores_edad(id_lector, nombre, edad, tipo) as Select 
-    id_lector,
-    L.primer_nombre || ' ' || NVL(L.segundo_nombre, '') || ' ' || L.primer_apellido || ' ' || L.segundo_apellido,
-    adfj_calcular_edad_antiguedad(L.f_nacimiento),
-    Case
-        When adfj_calcular_edad_antiguedad(L.f_nacimiento) between 6 and 12 then 'Niño'
-        When adfj_calcular_edad_antiguedad(L.f_nacimiento) between 13 and 25 then 'Jóven'
-        When adfj_calcular_edad_antiguedad(L.f_nacimiento) > 25 then 'Adulto'
-        Else 'Menor que la edad permitida'
-    End
-From adfj_lectores L
-Order by id_lector;
-
-Create or replace view adfj_v_grupos_disponibles(id_club, nombre_club, id_grupo, tipo_grupo) as 
-    SELECT g.id_club, g.nombre_club, g.id_grupo, g.tipo
-        FROM adfj_v_lectores_grupos g, adfj_cal_reuniones c
-        Where g.id_club = c.id_club(+)    --outer join para mostrar clubes y grupos sin reuniones agendadas
-            AND g.id_grupo = c.id_grupo(+)
-        GROUP BY g.id_club, g.nombre_club, g.id_grupo, g.tipo
-        HAVING MAX(c.f_reunion) IS NULL      --Max para los grupos sin reuniones devuelve Null
-            OR MAX(c.f_reunion) < SYSDATE
-        Order by g.id_club, g.id_grupo;
-
-CREATE OR REPLACE VIEW adfj_v_tamano_grupos AS
-    SELECT g.id_club, g.nombre_club, g.id_grupo, g.tipo, COUNT(*) - COUNT(g.f_fin_grupo) AS tamano
-    FROM adfj_v_lectores_grupos g
-    GROUP BY g.id_club, g.nombre_club, g.id_grupo, g.tipo
-    ORDER BY g.id_club, g.id_grupo;
-    
-Create or replace view adfj_v_tamano_grupos_disponibles as 
-SELECT g.id_club, 
-       g.nombre_club, 
-       g.id_grupo, 
-       g.tipo_grupo, 
-       (SELECT t.tamano
-            FROM adfj_v_tamano_grupos t
-            WHERE t.id_club = g.id_club
-              AND t.id_grupo = g.id_grupo) AS tamano
-FROM adfj_v_grupos_disponibles g
-ORDER BY g.id_club, g.id_grupo;
-
-CREATE OR REPLACE VIEW ADFJ_V_LECTORES_SIN_CLUB AS
-SELECT *
-FROM ADFJ_V_LECTORES_EDAD
-WHERE id_lector NOT IN (
-    SELECT id_lector 
-    FROM ADFJ_HIST_MEMBRESIAS 
-    WHERE f_retiro IS NULL)
-Order by id_lector;
-
-CREATE OR REPLACE VIEW ADFJ_V_Lector_Base AS
-SELECT 
-  l.id_lector,
-  l.primer_nombre || ' ' || l.primer_apellido lector,
-  ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) edad,
-  NVL(NVL(ext.nombre, inter.nombre), 'No tiene') representante,
-  l.email gmail,
-  p.NACIONALIDAD nacionalidad,
-  habla.nombre_idioma habla
-FROM 
-  ADFJ_LECTORES l,
-  ADFJ_PAISES p,
-  
-  (SELECT id_representante id_rep_ext, primer_nombre nombre 
-  FROM ADFJ_REPRESENTANTES) ext,
-  (SELECT id_lector id_rep_int, primer_nombre nombre 
-  FROM ADFJ_LECTORES) inter,
-(SELECT h.id_lector, d.nombre nombre_idioma
- FROM ADFJ_HABLA h, ADFJ_IDIOMAS d
- WHERE h.id_idioma = d.id_idioma AND h.id_lector IS NOT NULL) habla
-
-WHERE 
-  l.id_pais = p.id_pais AND
-  l.id_rep_ex = ext.id_rep_ext(+) AND
-  l.id_rep_in = inter.id_rep_int(+) AND
-   l.id_lector = habla.id_lector(+);
-   
-create or replace view adfj_v_lectores_idiomas as 
-Select l.id_lector, i.id_idioma, i.nombre
-from adfj_idiomas i, adfj_lectores l, adfj_habla h
-where i.id_idioma = h.id_idioma and l.id_lector = h.id_lector;
-
-CREATE OR REPLACE VIEW ADFJ_V_TELEFONOS_LECTORES AS
-SELECT t.id_lector,t.codigo_pais,t.codigo_area,t.numero
-FROM adfj_telefonos t,adfj_lectores l
-WHERE t.id_lector = l.id_lector AND t.id_club IS NULL;
-    
-CREATE OR REPLACE VIEW ADFJ_V_TELEFONOS_CLUBES AS
-SELECT c.nombre, t.id_club,t.codigo_pais,t.codigo_area,t.numero
-FROM adfj_telefonos t,adfj_clubes c
-WHERE t.id_club = c.id_club AND t.id_lector IS NULL;
-
-CREATE OR REPLACE VIEW ADFJ_V_Libros_Analizados AS
-SELECT DISTINCT ha.id_lector, ha.id_club_grupo id_club, lib.titulo libros_analizados
-FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_CAL_REUNIONES cr, ADFJ_LIBROS lib
-WHERE ha.id_club_grupo = cr.id_club 
-  AND ha.id_grupo = cr.id_grupo 
-  AND cr.isbn = lib.isbn
-  AND cr.realizada = 'S' 
-  AND cr.f_reunion >= ha.f_ing_grupo 
-  AND (ha.f_fin_grupo IS NULL OR cr.f_reunion <= ha.f_fin_grupo)
-  AND NOT EXISTS (
-      SELECT 1 FROM ADFJ_INASISTENCIAS i
-      WHERE i.id_lector = ha.id_lector
-        AND i.id_club_cal = cr.id_club
-        AND i.id_grupo_cal = cr.id_grupo
-        AND i.isbn = cr.isbn
-        AND i.f_reunion = cr.f_reunion
-  );
-  
-CREATE OR REPLACE VIEW ADFJ_V_Club_Actual AS
-SELECT 
-    h.id_lector, 
-    h.id_club, 
-    c.nombre AS club_actual, 
-    ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, NULL) AS antiguedad_club_actual,
-    DECODE(t.tipo, 'A', 'adultos', 'J', 'jovenes', 'N', 'niños', t.tipo) AS tipo_grupo,
-    la.libros_analizados
-FROM 
-    ADFJ_HIST_MEMBRESIAS h,
-    ADFJ_CLUBES c,
-    ADFJ_V_Lectores_GRUPOS t,
-    ADFJ_V_Libros_Analizados la
-WHERE 
-    h.id_club = c.id_club 
-    AND h.f_retiro IS NULL 
-    AND t.id_club = c.id_club 
-    AND t.id_lector = h.id_lector
-    AND la.id_lector(+) = h.id_lector 
-    AND la.id_club(+) = h.id_club;
-
-CREATE OR REPLACE VIEW ADFJ_V_Club_Anterior AS
-SELECT DISTINCT 
-  h.id_lector, 
-  h.id_club, 
-  c.nombre club_anterior, 
-  ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, h.f_retiro) antiguedad, 
-  DECODE(h.motivo_retiro, 'VO', 'voluntario', 'IN', 'inasistencia', 'DE', 'deuda', 'OT', 'otros', h.motivo_retiro) motivo_retiro,
-  la.libros_analizados libros_analizados
-FROM ADFJ_HIST_MEMBRESIAS h, ADFJ_CLUBES c, ADFJ_V_Libros_Analizados la
-WHERE h.id_club = c.id_club 
-  AND h.f_retiro IS NOT NULL
-  AND h.id_lector = la.id_lector(+)
-  AND h.id_club = la.id_club(+);
-
-CREATE OR REPLACE VIEW ADFJ_V_Libros_Preferidos AS
-SELECT p.id_lector, p.ORDEN orden_preferencia, t.titulo libros_preferidos
-FROM ADFJ_PREFERENCIAS p, ADFJ_LIBROS t 
-WHERE p.isbn = t.isbn;
-
-CREATE OR REPLACE VIEW ADFJ_V_Lectores_Inasistencia_Retiro AS
-SELECT 
-    l.id_lector,
-    l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido as nombre_lector,
-    hm.id_club,
-    c.nombre AS club,
-    ADFJ_PARTICIPACION_BIMESTRAL(l.id_lector, hm.id_club) AS porcentaje
-FROM 
-    ADFJ_LECTORES l,
-    ADFJ_HIST_MEMBRESIAS hm,
-    ADFJ_CLUBES c
-WHERE 
-    l.id_lector = hm.id_lector
-    AND hm.id_club = c.id_club
-    AND hm.f_retiro IS NULL
-    -- Solo lectores que  se han reunido 
-    AND EXISTS (
-        SELECT 1 
-        FROM ADFJ_V_REUNIONES_BIMESTRE r
-        WHERE r.id_lector = l.id_lector
-          AND r.id_club = hm.id_club
-          AND r.anio = EXTRACT(YEAR FROM SYSDATE)
-          AND r.bimestre = CEIL(EXTRACT(MONTH FROM SYSDATE)/2)
-    )
-    -- Y que tengan menos de 70% de participación
-    AND ADFJ_PARTICIPACION_BIMESTRAL(l.id_lector, hm.id_club) < 70;
-
 create or replace procedure adfj_hacer_split(p_club in number, p_grupo_viejo in number, p_grupo_nuevo in number, f_registro in date) is
     Cursor c_lectores is SELECT s.id_lector, s.f_ing_club, s.f_ing_grupo
     FROM (
@@ -962,7 +802,7 @@ begin
 End adfj_hacer_split;
 /
 
-create or replace procedure adfj_inscribir_lector(p_lector in number, p_club in number, p_dia in number default null, p_hora in date default null) is
+create or replace procedure adfj_inscribir_lector(p_club in number, p_lector in number, p_dia in number default null, p_hora in date default null) is
     v_ya_inscrito number := 0;
     v_deuda number := 0;
     v_inasistencia number := 0;
@@ -1036,7 +876,7 @@ begin
     End if;
         
     Select count(*) into v_grupos_disponibles
-    from adfj_v_grupos_disponibles g
+    from adfj_v_tamano_grupos_disponibles g
     where g.id_club = p_club
         and g.tipo_grupo = v_tipo_grupo;
         
@@ -1152,7 +992,7 @@ BEGIN
             RAISE_APPLICATION_ERROR(-20010,
                 'El período de pago ya venció el ' ||
                 TO_CHAR(v_f_fin_periodo, 'DD/MM/YYYY') ||
-                '. El lector debió ser retirado por deuda');
+                '. El lector debe ser retirado por deuda');
         END IF;
     END;
 
@@ -1165,6 +1005,33 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20000, 'ERROR. ' || SQLERRM);
 END ADFJ_REGISTRAR_PAGO;
 /
+
+CREATE OR REPLACE VIEW ADFJ_V_Lectores_Inasistencia_Retiro AS
+SELECT 
+    c.id_club,
+    c.nombre AS club,
+    l.id_lector,
+    l.primer_nombre || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido as nombre_lector,
+    ADFJ_PARTICIPACION_BIMESTRAL(c.id_club, l.id_lector) AS porcentaje
+FROM 
+    ADFJ_LECTORES l,
+    ADFJ_HIST_MEMBRESIAS hm,
+    ADFJ_CLUBES c
+WHERE 
+    l.id_lector = hm.id_lector
+    AND hm.id_club = c.id_club
+    AND hm.f_retiro IS NULL
+    -- Solo lectores que  se han reunido 
+    AND EXISTS (
+        SELECT 1 
+        FROM ADFJ_V_REUNIONES_BIMESTRE r
+        WHERE r.id_lector = l.id_lector
+          AND r.id_club = hm.id_club
+          AND r.anio = EXTRACT(YEAR FROM SYSDATE)
+          AND r.bimestre = CEIL(EXTRACT(MONTH FROM SYSDATE)/2)
+    )
+    -- Y que tengan menos de 70% de participación
+    AND ADFJ_PARTICIPACION_BIMESTRAL(c.id_club, l.id_lector) < 70;
 
 create or replace procedure adfj_retirar_lector(
     p_club in number,
@@ -1252,40 +1119,6 @@ begin
     DBMS_OUTPUT.PUT_LINE('Lector retirado por motivo: ' || v_motivo_real);
 end adfj_retirar_lector;
 /
-
-CREATE OR REPLACE VIEW ADFJ_V_MODERADORES_DISPONIBLES AS
-SELECT 
-    ha.ID_CLUB_MEMB,
-    ha.id_club_grupo,
-    C.nombre AS nombre_club,
-    ha.ID_GRUPO,
-    gl.TIPO,
-    ha.ID_LECTOR,
-    l.PRIMER_NOMBRE || ' ' || nvl(l.segundo_nombre, '') || ' ' || l.PRIMER_APELLIDO || ' ' || l.segundo_apellido AS NOMBRE_MODERADOR,
-    hm.f_ing_club,
-    ha.f_ing_grupo
-FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_GRUPOS_LECTURA gl, ADFJ_HIST_MEMBRESIAS hm, ADFJ_LECTORES l, ADFJ_CLUBES C
-WHERE ha.ID_CLUB_GRUPO = gl.ID_CLUB
-    AND ha.ID_GRUPO    = gl.ID_GRUPO
-    AND hm.id_lector = l.id_lector
-    AND hm.id_club = c.id_club
-    AND gl.id_club = c.id_club
-    AND ha.id_club_memb = c.id_club
-    AND ha.id_lector = l.id_lector
-    AND ha.ID_CLUB_MEMB  = hm.ID_CLUB
-    AND ha.ID_LECTOR     = hm.ID_LECTOR
-    AND ha.F_ING_CLUB    = hm.F_ING_CLUB
-    AND ha.F_FIN_GRUPO   IS NULL
-    AND hm.F_RETIRO      IS NULL
-    AND gl.tipo <> 'N'
-    -- No está moderando ningún libro con reuniones pendientes
-    AND NOT EXISTS (
-        SELECT 1 
-        FROM ADFJ_CAL_REUNIONES cr
-        WHERE cr.ID_CLUB_MEMB_MOD = ha.ID_CLUB_MEMB
-            AND cr.ID_MODERADOR   = ha.ID_LECTOR
-            AND cr.REALIZADA      = 'N'
-    );
 
 CREATE OR REPLACE PROCEDURE ADFJ_AGENDAR_REUNIONES (
     p_id_club       IN NUMBER,
@@ -1561,3 +1394,203 @@ BEGIN
     COMMIT;
 END;
 /
+
+CREATE OR REPLACE VIEW ADFJ_V_LECTORES_SIN_CLUB AS
+SELECT 
+    l.id_lector,
+    l.primer_nombre || ' ' || NVL(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido nombre,
+    ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) edad,
+    CASE
+        WHEN ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) BETWEEN 6  AND 12 THEN 'Niño'
+        WHEN ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) BETWEEN 13 AND 25 THEN 'Jóven'
+        WHEN ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) > 25              THEN 'Adulto'
+        ELSE 'Menor que la edad permitida'
+    END tipo
+FROM ADFJ_LECTORES l
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM ADFJ_HIST_MEMBRESIAS hm
+    WHERE hm.id_lector = l.id_lector
+        AND hm.f_retiro IS NULL
+)
+ORDER BY l.id_lector;
+
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_Libros_Analizados AS
+SELECT DISTINCT ha.id_lector, ha.id_club_grupo id_club, lib.titulo libros_analizados
+FROM ADFJ_HIST_ASIGNACIONES ha, ADFJ_CAL_REUNIONES cr, ADFJ_LIBROS lib
+WHERE ha.id_club_grupo = cr.id_club 
+  AND ha.id_grupo = cr.id_grupo 
+  AND cr.isbn = lib.isbn
+  AND cr.realizada = 'S' 
+  AND cr.f_reunion >= ha.f_ing_grupo 
+  AND (ha.f_fin_grupo IS NULL OR cr.f_reunion <= ha.f_fin_grupo)
+  AND NOT EXISTS (
+      SELECT 1 FROM ADFJ_INASISTENCIAS i
+      WHERE i.id_lector = ha.id_lector
+        AND i.id_club_cal = cr.id_club
+        AND i.id_grupo_cal = cr.id_grupo
+        AND i.isbn = cr.isbn
+        AND i.f_reunion = cr.f_reunion
+  );
+
+Create or replace view reporte_adfj_v_libros_autores(id_autor, nombre_autor, isbn, titulo) as 
+Select a.id_autor, a.nombre || ' ' || a.apellido, l.isbn, l.titulo
+from adfj_autores a, adfj_libros l, adfj_autorias x
+where a.id_autor = x.id_autor
+    and l.isbn = x.isbn;
+    
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_Libros_Preferidos AS
+SELECT p.id_lector, p.ORDEN orden_preferencia, t.titulo libros_preferidos
+FROM ADFJ_PREFERENCIAS p, ADFJ_LIBROS t 
+WHERE p.isbn = t.isbn;
+
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_Club_Anterior AS
+SELECT DISTINCT 
+  h.id_lector, 
+  h.id_club, 
+  c.nombre club_anterior, 
+  ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, h.f_retiro) antiguedad, 
+  DECODE(h.motivo_retiro, 'VO', 'voluntario', 'IN', 'inasistencia', 'DE', 'deuda', 'OT', 'otros', h.motivo_retiro) motivo_retiro,
+  la.libros_analizados libros_analizados
+FROM ADFJ_HIST_MEMBRESIAS h, ADFJ_CLUBES c, REPORTE_ADFJ_V_Libros_Analizados la
+WHERE h.id_club = c.id_club 
+  AND h.f_retiro IS NOT NULL
+  AND h.id_lector = la.id_lector(+)
+  AND h.id_club = la.id_club(+);
+  
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_CRECIMIENTO_MIEMBROS(pais, anio, id_club, club, act_actual, act_pasado, crecimiento) AS
+SELECT DISTINCT p.nombre AS pais, 
+    EXTRACT(YEAR FROM h.f_ing_club) AS anio,
+    c.id_club, 
+    c.nombre AS club,
+    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))     AS miembros_periodo_actual,
+    ADFJ_CONTAR_MIEMBROS_ACTIVOS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club) - 1) AS miembros_periodo_pasado,
+    ADFJ_CRECIMIENTO_MIEMBROS(c.id_club, EXTRACT(YEAR FROM h.f_ing_club))        AS pct_crecimiento_miembros
+FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_HIST_MEMBRESIAS h
+WHERE p.id_pais  = c.id_pais
+    AND c.id_club = h.id_club
+    AND EXTRACT(YEAR FROM h.f_ing_club) >= 2024
+ORDER BY p.nombre, anio, 
+    pct_crecimiento_miembros DESC NULLS LAST, c.nombre;
+    
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_CRECIMIENTO_ECONOMICO AS
+SELECT DISTINCT p.nombre AS pais,
+    EXTRACT(YEAR FROM pm.f_pago) AS anio,
+    c.id_club,
+    c.nombre AS club,
+    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago))     AS ingresos_periodo_actual,
+    ADFJ_INGRESOS_MEMBRESIA_ANUAL(c.id_club, EXTRACT(YEAR FROM pm.f_pago) - 1) AS ingresos_periodo_pasado,
+    ADFJ_CRECIMIENTO_ECONOMICO(c.id_club, EXTRACT(YEAR FROM pm.f_pago))         AS pct_crecimiento_economico
+FROM ADFJ_CLUBES c, ADFJ_PAISES p, ADFJ_PAGOS_MEMBRESIA pm
+WHERE p.id_pais      = c.id_pais
+    AND c.id_club     = pm.id_club
+    AND c.cuota_membr = 'S'
+    AND EXTRACT(YEAR FROM pm.f_pago) >= 2024
+ORDER BY p.nombre, anio,
+    pct_crecimiento_economico DESC NULLS LAST, c.nombre;
+    
+CREATE OR REPLACE VIEW  reporte_ADFJ_V_CLUBES_IDIOMAS AS 
+Select c.id_club, c.nombre nombre_club, i.id_idioma, i.nombre nombre_idioma
+from adfj_idiomas i, adfj_clubes c, adfj_habla h
+where i.id_idioma = h.id_idioma and c.id_club = h.id_club;
+
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_Lector_Base AS
+SELECT 
+  l.id_lector,
+  l.primer_nombre || ' ' || l.primer_apellido lector,
+  ADFJ_CALCULAR_EDAD_ANTIGUEDAD(l.f_nacimiento) edad,
+  NVL(NVL(ext.nombre, inter.nombre), 'No tiene') representante,
+  l.email gmail,
+  p.NACIONALIDAD nacionalidad,
+  habla.nombre_idioma habla
+FROM 
+  ADFJ_LECTORES l,
+  ADFJ_PAISES p,
+  
+  (SELECT id_representante id_rep_ext, primer_nombre nombre 
+  FROM ADFJ_REPRESENTANTES) ext,
+  (SELECT id_lector id_rep_int, primer_nombre nombre 
+  FROM ADFJ_LECTORES) inter,
+(SELECT h.id_lector, d.nombre nombre_idioma
+ FROM ADFJ_HABLA h, ADFJ_IDIOMAS d
+ WHERE h.id_idioma = d.id_idioma AND h.id_lector IS NOT NULL) habla
+
+WHERE 
+  l.id_pais = p.id_pais AND
+  l.id_rep_ex = ext.id_rep_ext(+) AND
+  l.id_rep_in = inter.id_rep_int(+) AND
+   l.id_lector = habla.id_lector(+);
+   
+create or replace view reporte_adfj_v_lectores_idiomas as 
+Select l.id_lector, i.id_idioma, i.nombre
+from adfj_idiomas i, adfj_lectores l, adfj_habla h
+where i.id_idioma = h.id_idioma and l.id_lector = h.id_lector;
+    
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_TELEFONOS_CLUBES AS
+SELECT c.nombre, t.id_club,t.codigo_pais,t.codigo_area,t.numero
+FROM adfj_telefonos t,adfj_clubes c
+WHERE t.id_club = c.id_club AND t.id_lector IS NULL;
+  
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_Club_Actual AS
+SELECT 
+    h.id_lector, 
+    h.id_club, 
+    c.nombre AS club_actual, 
+    ADFJ_CALCULAR_EDAD_ANTIGUEDAD(h.f_ing_club, NULL) AS antiguedad_club_actual,
+    DECODE(t.tipo, 'A', 'adultos', 'J', 'jovenes', 'N', 'niños', t.tipo) AS tipo_grupo,
+    la.libros_analizados
+FROM 
+    ADFJ_HIST_MEMBRESIAS h,
+    ADFJ_CLUBES c,
+    ADFJ_V_Lectores_GRUPOS t,
+    REPORTE_ADFJ_V_Libros_Analizados la
+WHERE 
+    h.id_club = c.id_club 
+    AND h.f_retiro IS NULL 
+    AND t.id_club = c.id_club 
+    AND t.id_lector = h.id_lector
+    AND la.id_lector(+) = h.id_lector 
+    AND la.id_club(+) = h.id_club;
+    
+Create or replace view REPORTE_ADFJ_V_CLUB_BASE AS
+SELECT 
+    g.id_grupo AS NRO_GRUPO,
+    g.tipo AS TIPO,
+    g.dia AS DIA,
+    TO_CHAR(g.hora, 'HH24:MI') AS HORA,
+    g.id_club AS ID_CLUB,
+    c.nombre AS NOMBRE,
+    c.direccion AS DIRECCION,
+    c.cod_postal AS ZONA_POSTAL,
+    ciu.nombre AS CIUDAD,
+    p.nombre AS PAIS
+FROM 
+    ADFJ_Grupos_Lectura g,
+    ADFJ_Clubes c,
+    ADFJ_Ciudades ciu,
+    ADFJ_Paises p
+WHERE 
+    g.id_club = c.id_club
+    AND c.id_pais   = ciu.id_pais (+)
+    AND c.id_ciudad = ciu.id_ciudad (+)
+    AND c.id_pais   = p.id_pais (+);
+
+Create or replace view reporte_adfj_v_libros_clubes as    
+SELECT 
+    c.id_club,
+    c.nombre,
+    l.titulo AS TITULO_LIBRO,
+    AVG(r.valoracion) AS VALORACION_PROMEDIO
+FROM 
+    ADFJ_Cal_Reuniones r,
+    ADFJ_Libros l,
+    ADFJ_Clubes C
+WHERE 
+    r.ISBN = l.ISBN
+    AND r.id_club = c.id_club
+    AND r.realizada = 'S'
+    AND r.valoracion is not null
+GROUP BY 
+    c.id_club, c.nombre, l.titulo
+ORDER BY 
+    VALORACION_PROMEDIO DESC

@@ -6,7 +6,7 @@ III) V_Lectores_Grupos (ver cierres (splits) y aperturas de hist_asignaciones). 
 */
 
 --Inscripción normal
-Execute adfj_inscribir_lector(&id_lector, &id_club);
+Execute adfj_inscribir_lector(&id_club, &id_lector);
 
 --Inscripción con split
-Execute adfj_inscribir_lector(&id_lector, &id_club, &dia, TO_DATE('&hora_militar', 'HH24:MI'));
+Execute adfj_inscribir_lector(&id_club, &id_lector, &dia, TO_DATE('&hora_militar', 'HH24:MI'));

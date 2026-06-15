@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-13T22:24:32.0385125Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-15T22:45:09.1554961Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -35,7 +35,7 @@
             <Value>=Parameters!ID.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT * FROM ADFJ_V_Lector_Base WHERE id_lector = :ID</CommandText>
+        <CommandText>SELECT * FROM REPORTE_ADFJ_V_Lector_Base WHERE id_lector = :ID</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -77,7 +77,7 @@
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT * FROM ADFJ_V_Club_Actual WHERE id_lector = :ID</CommandText>
+        <CommandText>SELECT * FROM REPORTE_ADFJ_V_Club_Actual WHERE id_lector = :ID</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -115,7 +115,7 @@
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT * FROM ADFJ_V_Club_Anterior WHERE id_lector = :ID</CommandText>
+        <CommandText>SELECT * FROM REPORTE_ADFJ_V_Club_Anterior WHERE id_lector = :ID</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -152,7 +152,7 @@
             <Value>=Parameters!ID.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT * FROM ADFJ_V_Libros_Preferidos WHERE id_lector = :ID order by orden_preferencia</CommandText>
+        <CommandText>SELECT * FROM REPORTE_ADFJ_V_Libros_Preferidos WHERE id_lector = :ID order by orden_preferencia</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -169,31 +169,6 @@
         </Field>
       </Fields>
     </DataSet>
-    <DataSet Name="DS_Libros_Analizados">
-      <Query>
-        <DataSourceName>OracleDB</DataSourceName>
-        <QueryParameters>
-          <QueryParameter Name=":ID">
-            <Value>=Parameters!ID.Value</Value>
-          </QueryParameter>
-        </QueryParameters>
-        <CommandText>SELECT * FROM ADFJ_V_Libros_Analizados WHERE id_lector = :ID</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="ID_LECTOR">
-          <rd:TypeName>System.Int16</rd:TypeName>
-          <DataField>ID_LECTOR</DataField>
-        </Field>
-        <Field Name="ID_CLUB">
-          <rd:TypeName>System.Int16</rd:TypeName>
-          <DataField>ID_CLUB</DataField>
-        </Field>
-        <Field Name="LIBROS_ANALIZADOS">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>LIBROS_ANALIZADOS</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
     <DataSet Name="Idiomas">
       <Query>
         <DataSourceName>OracleDB</DataSourceName>
@@ -204,12 +179,16 @@
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT ID_LECTOR, NOMBRE FROM ADFJ_V_LECTORES_IDIOMAS WHERE id_lector = :ID</CommandText>
+        <CommandText>Select * from REPORTE_adfj_v_lectores_idiomas where id_lector = :ID</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
           <rd:TypeName>System.Int16</rd:TypeName>
           <DataField>ID_LECTOR</DataField>
+        </Field>
+        <Field Name="ID_IDIOMA">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_IDIOMA</DataField>
         </Field>
         <Field Name="NOMBRE_IDIOMA">
           <rd:TypeName>System.String</rd:TypeName>
@@ -221,12 +200,15 @@
       <Query>
         <DataSourceName>OracleDB</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name=":id">
+          <QueryParameter Name=":ID">
+            <rd:UserDefined>true</rd:UserDefined>
             <Value>=Parameters!ID.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>Select * from adfj_v_telefonos_lectores where id_lector = :id</CommandText>
+        <CommandText>SELECT t.id_lector,t.codigo_pais,t.codigo_area,t.numero
+FROM adfj_telefonos t
+WHERE t.id_club IS NULL AND t.id_lector = :ID</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -1049,7 +1031,7 @@
             <Top>189.25171mm</Top>
             <Left>9.33721mm</Left>
             <Height>36.46106mm</Height>
-            <Width>285.78926mm</Width>
+            <Width>285.78927mm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -1488,7 +1470,7 @@
             <Top>226.96353mm</Top>
             <Left>10.13096mm</Left>
             <Height>18.23053mm</Height>
-            <Width>284.20176mm</Width>
+            <Width>284.20177mm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>

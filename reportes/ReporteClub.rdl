@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-15T04:48:57.8731144Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-15T22:46:18.4908023Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -36,32 +36,7 @@
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT 
-    g.id_grupo AS NRO_GRUPO,
-    g.tipo AS TIPO,
-    g.dia AS DIA,
-    TO_CHAR(g.hora, 'HH24:MI') AS HORA,
-    g.id_club AS ID_CLUB,
-    c.nombre AS NOMBRE,
-    c.direccion AS DIRECCION,
-    c.cod_postal AS ZONA_POSTAL,
-    ciu.nombre AS CIUDAD,
-    p.nombre AS PAIS,
-    (SELECT NVL(LISTAGG(i.nombre, ', ') WITHIN GROUP (ORDER BY i.nombre), 'No especificado')
-     FROM ADFJ_Habla h, ADFJ_Idiomas i
-     WHERE h.id_idioma = i.id_idioma
-       AND h.id_club = c.id_club) AS IDIOMAS_CLUB
-FROM 
-    ADFJ_Grupos_Lectura g,
-    ADFJ_Clubes c,
-    ADFJ_Ciudades ciu,
-    ADFJ_Paises p
-WHERE 
-    c.nombre = :nombre
-    AND g.id_club = c.id_club
-    AND c.id_pais   = ciu.id_pais (+)
-    AND c.id_ciudad = ciu.id_ciudad (+)
-    AND c.id_pais   = p.id_pais (+)</CommandText>
+        <CommandText>SELECT * from reporte_adfj_v_club_base where nombre = :nombre</CommandText>
       </Query>
       <Fields>
         <Field Name="NRO_GRUPO">
@@ -104,10 +79,6 @@ WHERE
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>PAIS</DataField>
         </Field>
-        <Field Name="IDIOMAS_CLUB">
-          <rd:TypeName>System.String</rd:TypeName>
-          <DataField>IDIOMAS_CLUB</DataField>
-        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="LIBROS_CLUBES">
@@ -119,28 +90,20 @@ WHERE
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT 
-    l.titulo AS TITULO_LIBRO,
-    AVG(r.valoracion) AS VALORACION_PROMEDIO
-FROM 
-    ADFJ_Cal_Reuniones r,
-    ADFJ_Libros l,
-    ADFJ_Clubes C
-WHERE 
-    r.ISBN = l.ISBN
-    AND r.id_club = c.id_club
-    AND c.nombre = :nombre
-    AND r.realizada = 'S'
-    AND r.valoracion is not null
-GROUP BY 
-    l.titulo
-ORDER BY 
-    VALORACION_PROMEDIO DESC</CommandText>
+        <CommandText>SELECT * FROM reporte_adfj_v_libros_clubes WHERE nombre = :nombre</CommandText>
       </Query>
       <Fields>
+        <Field Name="ID_CLUB">
+          <rd:TypeName>System.Int16</rd:TypeName>
+          <DataField>ID_CLUB</DataField>
+        </Field>
         <Field Name="TITULO_LIBRO">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>TITULO_LIBRO</DataField>
+        </Field>
+        <Field Name="NOMBRE">
+          <rd:TypeName>System.String</rd:TypeName>
+          <DataField>NOMBRE</DataField>
         </Field>
         <Field Name="VALORACION_PROMEDIO">
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -152,35 +115,17 @@ ORDER BY
       <Query>
         <DataSourceName>ClubesDeLectura</DataSourceName>
         <QueryParameters>
-          <QueryParameter Name=":NOMBRE">
+          <QueryParameter Name=":nombre">
             <Value>=Parameters!PARAMETRO1.Value</Value>
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>SELECT 
-    m.id_lector AS ID_LECTOR,
-    l.doc_identidad AS CEDULA,
-    l.primer_nombre || ' ' || NVL(l.segundo_nombre, '') || ' ' || l.primer_apellido || ' ' || l.segundo_apellido AS NOMBRE_COMPLETO,
-    m.f_ing_club AS FECHA_INGRESO,
-    g.tipo,
-    g.id_grupo
-FROM 
-    ADFJ_CLUBES c,
-    ADFJ_HIST_MEMBRESIAS m,
-    ADFJ_LECTORES l,
-    adfj_grupos_lectura g,
-    adfj_hist_asignaciones h
-WHERE 
-    c.id_club = m.id_club
-    AND m.id_lector = l.id_lector
-    AND h.id_lector = l.id_lector
-    AND h.id_club_memb = c.id_club
-    AND h.id_grupo = g.id_grupo
-    AND g.id_club = c.id_club
-    AND c.nombre = :NOMBRE
-    AND H.F_FIN_GRUPO is NULL
+        <CommandText>Select id_lector, cedula, nombre_lector, f_ing_club, tipo, id_grupo
+FROM ADFJ_V_LECTORES_GRUPOS
+Where F_FIN_GRUPO is NULL
+	AND nombre_club = :nombre
 ORDER BY 
-    g.tipo, g.id_grupo, NOMBRE_COMPLETO</CommandText>
+    tipo, id_grupo, nombre_lector</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_LECTOR">
@@ -191,17 +136,17 @@ ORDER BY
           <rd:TypeName>System.Int32</rd:TypeName>
           <DataField>CEDULA</DataField>
         </Field>
-        <Field Name="NOMBRE_COMPLETO">
+        <Field Name="NOMBRE_LECTOR">
           <rd:TypeName>System.String</rd:TypeName>
-          <DataField>NOMBRE_COMPLETO</DataField>
+          <DataField>NOMBRE_LECTOR</DataField>
+        </Field>
+        <Field Name="F_ING_CLUB">
+          <rd:TypeName>System.DateTime</rd:TypeName>
+          <DataField>F_ING_CLUB</DataField>
         </Field>
         <Field Name="TIPO">
           <rd:TypeName>System.String</rd:TypeName>
           <DataField>TIPO</DataField>
-        </Field>
-        <Field Name="FECHA_INGRESO">
-          <rd:TypeName>System.DateTime</rd:TypeName>
-          <DataField>FECHA_INGRESO</DataField>
         </Field>
         <Field Name="ID_GRUPO">
           <rd:TypeName>System.Int16</rd:TypeName>
@@ -232,7 +177,7 @@ ORDER BY
           </QueryParameter>
         </QueryParameters>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>Select * from adfj_v_telefonos_CLUBES where nombre = :nombre</CommandText>
+        <CommandText>Select * from REPORTE_adfj_v_telefonos_CLUBES where nombre = :nombre</CommandText>
       </Query>
       <Fields>
         <Field Name="NOMBRE">
@@ -266,7 +211,7 @@ ORDER BY
             <Value>=Parameters!PARAMETRO1.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>Select * from adfj_v_clubes_idiomas where nombre_club = :nombre</CommandText>
+        <CommandText>Select * from REPORTE_adfj_v_clubes_idiomas where nombre_club = :nombre</CommandText>
       </Query>
       <Fields>
         <Field Name="ID_CLUB">
@@ -341,6 +286,7 @@ VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.
                     <Style>
                       <FontSize>16pt</FontSize>
                       <FontWeight>Bold</FontWeight>
+                      <Color>White</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -358,7 +304,7 @@ VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.
               <Border>
                 <Style>None</Style>
               </Border>
-              <BackgroundColor>Tomato</BackgroundColor>
+              <BackgroundColor>Brown</BackgroundColor>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -816,7 +762,7 @@ VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.
                                         </Style>
                                       </TextRun>
                                       <TextRun>
-                                        <Value xml:space="preserve">                          </Value>
+                                        <Value xml:space="preserve">                                                </Value>
                                         <Style>
                                           <FontFamily>Arial</FontFamily>
                                         </Style>
