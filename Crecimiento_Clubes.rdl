@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-09T18:44:06.2554229Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-15T02:48:44.1629303Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -67,7 +67,7 @@ WHERE anio = :AnioSeleccionado</CommandText>
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
-        <CommandText>Select distinct anio from ADFJ_V_CRECIMIENTO_MIEMBROS</CommandText>
+        <CommandText>Select distinct anio from ADFJ_V_CRECIMIENTO_MIEMBROS order by anio</CommandText>
       </Query>
       <Fields>
         <Field Name="ANIO">

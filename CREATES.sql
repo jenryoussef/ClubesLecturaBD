@@ -1051,7 +1051,7 @@ begin
     
     insert into adfj_hist_membresias(id_club, id_lector, f_ing_club) values(p_club, p_lector, f_registro);
     
-    if v_tamano >= 3 then   
+    if v_tamano >= 4 then   
         if p_hora is null or p_dia is null then
             raise datos_faltantes;
         End if;
