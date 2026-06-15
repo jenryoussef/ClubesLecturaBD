@@ -478,6 +478,11 @@ WHERE
          WHERE pm.id_club = hm.id_club 
            AND pm.id_lector = hm.id_lector 
            AND pm.f_ing_club = hm.f_ing_club), 0) + 1) * 12) <= SYSDATE;
+           
+CREATE OR REPLACE VIEW  V_CLUBES_IDIOMAS AS 
+Select c.id_club, c.nombre nombre_club, i.id_idioma, i.nombre nombre_idioma
+from adfj_idiomas i, adfj_clubes c, adfj_habla h
+where i.id_idioma = h.id_idioma and c.id_club = h.id_club;
   
 Create or replace function conversion_monetaria(p_monto in number, p_tasa in number, p_pais in number) return number is
     v_resultado number := 0;
@@ -840,7 +845,7 @@ FROM adfj_telefonos t,adfj_lectores l
 WHERE t.id_lector = l.id_lector AND t.id_club IS NULL;
     
 CREATE OR REPLACE VIEW ADFJ_V_TELEFONOS_CLUBES AS
-SELECT t.id_club,t.codigo_pais,t.codigo_area,t.numero
+SELECT c.nombre, t.id_club,t.codigo_pais,t.codigo_area,t.numero
 FROM adfj_telefonos t,adfj_clubes c
 WHERE t.id_club = c.id_club AND t.id_lector IS NULL;
 
