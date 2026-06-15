@@ -1301,6 +1301,7 @@ CREATE OR REPLACE PROCEDURE ADFJ_AGENDAR_REUNIONES (
     v_fecha_reunion    DATE;
     v_ultima_reunion   VARCHAR2(1);
     v_count_dias       NUMBER := 0;
+    v_existisbn        NUMBER;
 BEGIN
     -- Validaciones iniciales
     IF p_cant_reuniones NOT BETWEEN 1 AND 3 THEN
@@ -1404,7 +1405,6 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20999, 'Error importante al ejecutar el programa: ' || SQLERRM);
 END ADFJ_AGENDAR_REUNIONES;
 /
-<<<<<<< HEAD
 
 CREATE OR REPLACE PROCEDURE ADFJ_REGISTRAR_INASISTENCIA (
     p_id_club  IN NUMBER,
@@ -1417,6 +1417,10 @@ CREATE OR REPLACE PROCEDURE ADFJ_REGISTRAR_INASISTENCIA (
     v_f_ing_grupo    DATE;
     v_isbn Number;
     v_retiro Number;
+    -- Variables añadidas para integridad referencial
+    v_id_club_grupo  NUMBER;
+    v_id_club_memb   NUMBER;
+    v_id_grupo_asig  NUMBER;
 BEGIN
     -- 1. Validar integridad de la reunión en el calendario
     Begin
@@ -1438,8 +1442,8 @@ BEGIN
 
     -- 3. Extraer la asignación histórica activa
     Begin
-        SELECT f_ing_club, f_ing_grupo
-        INTO v_f_ing_club, v_f_ing_grupo
+        SELECT id_club_grupo, id_club_memb, id_grupo, f_ing_club, f_ing_grupo
+        INTO v_id_club_grupo, v_id_club_memb, v_id_grupo_asig, v_f_ing_club, v_f_ing_grupo
         FROM ADFJ_HIST_ASIGNACIONES
         WHERE id_club_grupo = p_id_club 
           AND id_grupo = p_id_grupo
@@ -1460,13 +1464,12 @@ BEGIN
       AND f_reunion = p_f_reunion 
       AND id_lector = p_id_lector;
 
-    -- 5. Bifurcación de acciones
     IF v_existe_falta = 0 THEN
         INSERT INTO ADFJ_INASISTENCIAS (
             id_club_grupo, id_club_memb, id_grupo_asig, id_lector, f_ing_club, f_ing_grupo,
             id_club_cal, id_grupo_cal, isbn, f_reunion
         ) VALUES (
-            p_id_club, p_id_club, p_id_grupo, p_id_lector, v_f_ing_club, v_f_ing_grupo,
+            v_id_club_grupo, v_id_club_memb, v_id_grupo_asig, p_id_lector, v_f_ing_club, v_f_ing_grupo,
             p_id_club, p_id_grupo, v_isbn, p_f_reunion
         );
     Else
