@@ -1307,6 +1307,16 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001, 'ERROR: Solo se pueden asignar entre 1 y 3 reuniones.');
     END IF;
 
+    BEGIN
+        SELECT 1 
+        INTO v_existisbn
+        FROM adfj_libros l
+        WHERE l.isbn = p_isbn;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RAISE_APPLICATION_ERROR(-20004, 'ERROR: El ISBN ingresado no se encuentra en la base de datos.');
+    END;
+
     -- Obtener datos del grupo
     BEGIN
         SELECT TIPO, DIA, TO_CHAR(HORA, 'HH24:MI')
@@ -1394,6 +1404,7 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20999, 'Error importante al ejecutar el programa: ' || SQLERRM);
 END ADFJ_AGENDAR_REUNIONES;
 /
+<<<<<<< HEAD
 
 CREATE OR REPLACE PROCEDURE ADFJ_REGISTRAR_INASISTENCIA (
     p_id_club  IN NUMBER,
@@ -1542,3 +1553,5 @@ BEGIN
     COMMIT;
 END;
 /
+=======
+>>>>>>> 44366cff2fa33e6024ae1786a92dcb846f106e32
