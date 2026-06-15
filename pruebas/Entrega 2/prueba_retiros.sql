@@ -1,13 +1,5 @@
 /*
 Vistas útiles
-I) V_LECTORES_PUEDEN_PAGAR (seleccionar parámetro)
-II) PAGOS_MEMBRESIA (tabla) para ver resultados
-*/
-
-Execute adfj_registrar_pago(&id_club, &id_lector);
-
-/*
-Vistas útiles
 I) V_LECTORES_DEUDORES_RETIRO (elegir parámetros para motivo = 'DE')
 II) V_LECTORES_INASISTENCIA_RETIRO (elegir parámetros para motivo = 'IN')
 III) V_Lectores_ACTIVOS (elegir parámetro para retiro voluntario)

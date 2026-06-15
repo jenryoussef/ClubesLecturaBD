@@ -270,7 +270,7 @@ CREATE TABLE ADFJ_CAL_REUNIONES (
     f_ing_club_mod DATE NOT NULL,
     f_ing_grupo_mod DATE NOT NULL,
     conclusiones VARCHAR2(400),
-    valoracion NUMBER(1) CONSTRAINT CHECK_REUNION_VALORACION CHECK(valoracion >= 1 AND valoracion <= 5),
+    valoracion NUMBER(3,2) CONSTRAINT CHECK_REUNION_VALORACION CHECK(valoracion >= 1 AND valoracion <= 5),
     ultima_reunion VARCHAR2(1) CONSTRAINT CHECK_ULTIMA__REUNION CHECK(ultima_reunion = 'S' OR ultima_reunion = 'N'),
     CONSTRAINT FK_GRUPO_CALENDARIO FOREIGN KEY(ID_CLUB, ID_GRUPO) REFERENCES ADFJ_GRUPOS_LECTURA(ID_CLUB, ID_GRUPO),
     CONSTRAINT FK_LIBRO_CALENDARIO FOREIGN KEY(ISBN) REFERENCES ADFJ_LIBROS(ISBN),
@@ -1393,4 +1393,152 @@ EXCEPTION
     WHEN OTHERS THEN
         RAISE_APPLICATION_ERROR(-20999, 'Error importante al ejecutar el programa: ' || SQLERRM);
 END ADFJ_AGENDAR_REUNIONES;
+/
+
+CREATE OR REPLACE PROCEDURE ADFJ_REGISTRAR_INASISTENCIA (
+    p_id_club  IN NUMBER,
+    p_id_grupo IN NUMBER,
+    p_id_lector    IN NUMBER,
+    p_f_reunion    IN DATE
+) AS
+    v_existe_falta  NUMBER;
+    v_f_ing_club     DATE;
+    v_f_ing_grupo    DATE;
+    v_isbn Number;
+    v_retiro Number;
+BEGIN
+    -- 1. Validar integridad de la reunión en el calendario
+    Begin
+        SELECT isbn INTO v_isbn 
+        FROM ADFJ_CAL_REUNIONES 
+        WHERE id_club = p_id_club
+          AND id_grupo = p_id_grupo
+          AND f_reunion = p_f_reunion
+          AND realizada = 'S';
+    Exception
+        When no_data_found then
+            raise_application_error(-20000, 'ERROR. La reunión no está como realizada en el calendario');
+    End;
+
+    -- 2. Regla de negocio: No se puede modificar asistencia de reuniones en el futuro
+    IF p_f_reunion > TRUNC(SYSDATE) THEN
+        RAISE_APPLICATION_ERROR(-20001, 'ERROR: No se puede tomar asistencia para una reunión futura.');
+    END IF;
+
+    -- 3. Extraer la asignación histórica activa
+    Begin
+        SELECT f_ing_club, f_ing_grupo
+        INTO v_f_ing_club, v_f_ing_grupo
+        FROM ADFJ_HIST_ASIGNACIONES
+        WHERE id_club_grupo = p_id_club 
+          AND id_grupo = p_id_grupo
+          AND id_lector = p_id_lector
+          AND f_ing_grupo <= p_f_reunion
+          AND (f_fin_grupo IS NULL OR f_fin_grupo >= p_f_reunion);
+    Exception
+        When no_data_found then
+            raise_application_error(-20000, 'ERROR. El lector no estaba en el grupo especificado el día de la reunión');
+    End;
+
+    -- 4. Verificar si ya existe previamente reportada la inasistencia
+    SELECT COUNT(*) INTO v_existe_falta 
+    FROM ADFJ_INASISTENCIAS 
+    WHERE id_club_cal = p_id_club
+      AND id_grupo_cal = p_id_grupo
+      AND isbn = v_isbn 
+      AND f_reunion = p_f_reunion 
+      AND id_lector = p_id_lector;
+
+    -- 5. Bifurcación de acciones
+    IF v_existe_falta = 0 THEN
+        INSERT INTO ADFJ_INASISTENCIAS (
+            id_club_grupo, id_club_memb, id_grupo_asig, id_lector, f_ing_club, f_ing_grupo,
+            id_club_cal, id_grupo_cal, isbn, f_reunion
+        ) VALUES (
+            p_id_club, p_id_club, p_id_grupo, p_id_lector, v_f_ing_club, v_f_ing_grupo,
+            p_id_club, p_id_grupo, v_isbn, p_f_reunion
+        );
+    Else
+        raise_application_error(-20000, 'ERROR. La inasistencia del lector ya estaba registrada');
+    END IF;
+    COMMIT;
+    
+    Select Count(*) into v_retiro
+    from adfj_v_lectores_inasistencia_retiro
+    where id_lector = p_id_lector
+        and id_club = p_id_club;
+        
+    if v_retiro > 0 then
+        dbms_output.put_line('ALERTA. El lector excedió el límite permitido de inasistencias, se recomienda retirarlo lo antes posible');
+    End if;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        Raise_application_error(-20000, 'ERROR. ' || SQLERRM);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE ADFJ_ACTUALIZAR_ESTADO_REUNION (
+    p_id_club       IN NUMBER,
+    p_id_grupo      IN NUMBER,
+    p_f_reunion     IN DATE,
+    p_conclusiones  IN VARCHAR2 DEFAULT NULL,
+    p_valoracion    IN NUMBER DEFAULT NULL
+) AS
+    v_realizada VARCHAR2(1);
+    v_ultima VARCHAR2(1);
+    v_isbn number;
+BEGIN
+    if p_f_reunion > sysdate then 
+        raise_application_error(-20000, 'ERROR. No puede ingresar una fecha futura');
+    End if;
+
+    Begin 
+        SELECT realizada, ultima_reunion, isbn INTO v_realizada, v_ultima, v_isbn
+        FROM ADFJ_CAL_REUNIONES
+        WHERE id_club = p_id_club 
+          AND id_grupo = p_id_grupo 
+          AND f_reunion = p_f_reunion;
+    Exception 
+        When no_data_found then
+            raise_application_error(-20000, 'ERROR. La reunión ingresada no está en el calendario');
+    End;
+
+    IF v_realizada = 'S' THEN
+        RAISE_APPLICATION_ERROR(-20006, 'ERROR: Esta reunión ya fue completada y cerrada previamente');
+    END IF;
+    
+
+    DBMS_OUTPUT.PUT_LINE('Reunión marcada como realizada');
+    
+    if v_ultima = 'S' then
+        IF p_conclusiones IS NULL OR LENGTH(TRIM(p_conclusiones)) = 0 THEN
+            RAISE_APPLICATION_ERROR(-20008, 'ERROR: No puede cerrar una discusión sin ingresar una minuta de conclusiones válida.');
+        END IF;
+        
+        If p_valoracion is null then
+            raise_application_error(-20000, 'ERROR. No puede cerrar una discusión sin ingresar una valoración');
+        End if;
+    
+        -- 3. Modificar la tupla de la reunión marcándola como realizada
+        UPDATE ADFJ_CAL_REUNIONES
+        SET realizada = 'S',
+            conclusiones = p_conclusiones,
+            valoracion = p_valoracion
+        WHERE id_club = p_id_club 
+          AND id_grupo = p_id_grupo 
+          AND isbn = v_isbn 
+          AND f_reunion = p_f_reunion;
+        DBMS_OUTPUT.PUT_LINE('Cierre de discusión concretado');
+    Else
+        UPDATE ADFJ_CAL_REUNIONES
+        SET realizada = 'S'
+        WHERE id_club = p_id_club 
+          AND id_grupo = p_id_grupo 
+          AND isbn = v_isbn 
+          AND f_reunion = p_f_reunion;
+    End if;
+    
+    COMMIT;
+END;
 /
