@@ -1365,7 +1365,7 @@ BEGIN
     
     if v_ultima = 'S' then
         IF p_conclusiones IS NULL OR LENGTH(TRIM(p_conclusiones)) = 0 THEN
-            RAISE_APPLICATION_ERROR(-20008, 'ERROR: No puede cerrar una discusión sin ingresar una minuta de conclusiones válida.');
+            RAISE_APPLICATION_ERROR(-20008, 'ERROR: No puede cerrar una discusión sin ingresar conclusión válida.');
         END IF;
         
         If p_valoracion is null then
