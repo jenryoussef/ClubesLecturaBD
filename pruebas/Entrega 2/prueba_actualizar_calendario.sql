@@ -3,6 +3,8 @@ Vistas importantes
 CAL_REUNIONES (tabla) para elegir club, grupo y día. También para ver cambios
 */
 
+--Vista de Freddy: V_REUNIONES_CERRADAS
+
 --sólo marcar como realizada (no es última)
 --probar  con (1, 5, 05/06/2026)
 set serveroutput on;
