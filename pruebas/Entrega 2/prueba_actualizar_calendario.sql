@@ -1,5 +1,3 @@
-
-
 /*
 Vistas importantes
 CAL_REUNIONES (tabla) para elegir club, grupo y día. También para ver cambios

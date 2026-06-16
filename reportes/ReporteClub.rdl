@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-16T03:30:00.4483463Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-16T06:22:28.9998252Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -961,7 +961,9 @@ IIF(IsNothing(First(Fields!PAIS.Value, "CLUBES")), "", " - " &amp; StrConv(REPLA
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!VALORACION_PROMEDIO.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <Format>n2</Format>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style>

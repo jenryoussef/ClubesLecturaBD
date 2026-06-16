@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-15T22:45:09.1554961Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-16T06:22:21.8401484Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -910,7 +910,7 @@ WHERE t.id_club IS NULL AND t.id_lector = :ID</CommandText>
                                 </Style>
                               </TextRun>
                               <TextRun>
-                                <Value xml:space="preserve"> </Value>
+                                <Value>  años</Value>
                                 <Style>
                                   <FontFamily>Bell MT</FontFamily>
                                   <FontSize>22pt</FontSize>
@@ -1363,7 +1363,7 @@ WHERE t.id_club IS NULL AND t.id_lector = :ID</CommandText>
                                 </Style>
                               </TextRun>
                               <TextRun>
-                                <Value xml:space="preserve"> </Value>
+                                <Value>  años</Value>
                                 <Style>
                                   <FontFamily>Bell MT</FontFamily>
                                   <FontSize>22pt</FontSize>

@@ -817,7 +817,7 @@ BEGIN
 END ADFJ_CRECIMIENTO_ECONOMICO;
 /
 
-CREATE OR REPLACE NONEDITIONABLE FUNCTION ADFJ_CALIFICACION_AVGLIBRO (
+CREATE OR REPLACE FUNCTION ADFJ_CALIFICACION_AVGLIBRO (
     R_ISBN NUMBER
 ) RETURN NUMBER IS
 
@@ -1661,66 +1661,51 @@ GROUP BY
 ORDER BY 
     VALORACION_PROMEDIO DESC;
     
-CREATE OR REPLACE VIEW reporte_adfj_v_grupos_libros_analizados AS
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_GRUPOS_LIBROS_ANALIZADOS AS
 SELECT 
-      c.nombre AS "NOMBRE DEL CLUB",
-      g.id_grupo AS "ID DEL GRUPO",
-      DECODE(g.tipo, 'N','Niños', 'J','Jóvenes','A','Adultos') AS "TIPO DE GRUPOS",
-      TO_CHAR(cal.f_reunion, 'DD-MM-YYYY') AS "FECHA DE REUNION",
-      cal.isbn AS "ISBN",
-      cal.conclusiones AS "CONCLUSIONES",
-      cal.valoracion AS "PUNTUACION"
-FROM  adfj_clubes c, adfj_grupos_lectura g, adfj_cal_reuniones cal
-WHERE c.id_club = g.id_club AND
-      g.id_club = cal.id_club AND
-      g.id_grupo = cal.id_grupo AND
-     
-      cal.ultima_reunion = 'S' AND
-      cal.f_reunion = (
-      SELECT MAX(sub_cal.f_reunion)
-      FROM adfj_cal_reuniones sub_cal
-      WHERE sub_cal.id_club = cal.id_club
-        AND sub_cal.id_grupo = cal.id_grupo
-        AND sub_cal.isbn = cal.isbn
-        AND sub_cal.ultima_reunion = 'S'
-      )
-ORDER BY 
-      cal.f_reunion desc;
+    c.nombre                                                    AS "NOMBRE DEL CLUB",
+    g.id_grupo                                                  AS "ID DEL GRUPO",
+    DECODE(g.tipo, 'N','Niños', 'J','Jóvenes','A','Adultos')   AS "TIPO DE GRUPOS",
+    TO_CHAR(cal.f_reunion, 'DD-MM-YYYY')                       AS "FECHA DE REUNION",
+    cal.isbn                                                    AS "ISBN",
+    cal.conclusiones                                            AS "CONCLUSIONES",
+    cal.valoracion                                              AS "PUNTUACION"
+FROM ADFJ_CLUBES c, ADFJ_GRUPOS_LECTURA g, ADFJ_CAL_REUNIONES cal
+WHERE c.id_club    = g.id_club
+    AND g.id_club  = cal.id_club
+    AND g.id_grupo = cal.id_grupo
+    AND cal.ultima_reunion = 'S'
+    AND cal.realizada      = 'S'
+ORDER BY cal.f_reunion DESC;
 
-CREATE OR REPLACE VIEW reporte_adfj_v_libros_grupos AS
-SELECT l.isbn AS "ISBN",
-       l.titulo AS "TITULO",
-       l.n_paginas AS "NUMERO DE PAGINAS",
-       p.nombre AS "PAIS",
-       TO_CHAR(l.ano_publicacion, 'YYYY') AS "AÑO DE PUBLICACION",
-       NVL(a.nombre || ' ' || a.apellido, a.seudonimo) AS AUTOR,
-       l.tema AS GENERO,
-       l.sinopsis AS SINOPSIS,
-       adfj_calificacion_avglibro(l.isbn)  AS "CALIFICACION", 
-       c.nombre AS "NOMBRE CLUB",
-       g.id_grupo AS "GRUPO",
-       DECODE(g.tipo, 'N','Niños', 'J','Jóvenes','A','Adultos') AS "TIPO DE GRUPO",
-       TO_CHAR(cal.f_reunion, 'DD-MM-YYYY') AS "FECHA DE REUNION",
-       cal.conclusiones AS "CONCLUSIONES",
-       cal.valoracion AS "PUNTUACION DE GRUPO" 
-FROM adfj_paises p, adfj_libros l, adfj_autorias au, adfj_autores a, adfj_cal_reuniones cal, adfj_grupos_lectura g, adfj_clubes c
-WHERE p.id_pais = l.id_pais AND
-      l.isbn = au.isbn AND
-      au.id_autor = a.id_autor AND
-      l.isbn = cal.isbn AND
-      g.id_club = cal.id_club AND
-      g.id_grupo = cal.id_grupo AND
-      g.id_club = c.id_club AND
-      cal.realizada = 'S'
-  AND cal.ultima_reunion = 'S'
-  AND cal.f_reunion = (
-      SELECT MAX(sub_cal.f_reunion)
-      FROM adfj_cal_reuniones sub_cal
-      WHERE sub_cal.id_club = cal.id_club
-        AND sub_cal.id_grupo = cal.id_grupo
-        AND sub_cal.isbn = cal.isbn
-        AND sub_cal.ultima_reunion = 'S'
-  )
-  ORDER BY 
-     l.titulo ASC, 9 desc, cal.f_reunion desc;
-     
+CREATE OR REPLACE VIEW REPORTE_ADFJ_V_LIBROS_GRUPOS AS
+SELECT 
+    c.id_club,
+    c.nombre AS nombre_club,
+    g.id_grupo,
+    DECODE(g.tipo, 'N','Niños', 'J','Jóvenes','A','Adultos')       AS tipo_grupo,
+    TO_CHAR(cal.f_reunion, 'DD-MM-YYYY')                           AS "FECHA DE REUNION",
+    cal.conclusiones                                                AS "CONCLUSIONES",
+    cal.valoracion                                                  AS "PUNTUACION DE GRUPO",
+    l.isbn                                                          AS "ISBN",
+    l.titulo                                                        AS "TITULO",
+    l.n_paginas                                                     AS "NUMERO DE PAGINAS",
+    p.nombre                                                        AS "PAIS",
+    TO_CHAR(l.ano_publicacion, 'YYYY')                             AS "AÑO DE PUBLICACION",
+    NVL(a.nombre || ' ' || a.apellido, a.seudonimo)                AS "AUTOR",
+    Decode(l.tipo_narrativa, 'NO', 'Novela', 'CU', 'Cuento', 'MI', 'Mito', 'FA', 'Fabula', 'LE', 'Leyenda', 'EP', 'Epopeya') AS tipo_narrativa, 
+    l.tema                                                          AS "GENERO",
+    l.sinopsis                                                      AS "SINOPSIS",
+    ADFJ_CALIFICACION_AVGLIBRO(l.isbn)                             AS "CALIFICACION"
+FROM ADFJ_PAISES p, ADFJ_LIBROS l, ADFJ_AUTORIAS au, ADFJ_AUTORES a,
+     ADFJ_CAL_REUNIONES cal, ADFJ_GRUPOS_LECTURA g, ADFJ_CLUBES c
+WHERE p.id_pais    = l.id_pais
+    AND l.isbn     = au.isbn
+    AND au.id_autor = a.id_autor
+    AND l.isbn     = cal.isbn
+    AND g.id_club  = cal.id_club
+    AND g.id_grupo = cal.id_grupo
+    AND g.id_club  = c.id_club
+    AND cal.realizada      = 'S'
+    AND cal.ultima_reunion = 'S'
+ORDER BY c.id_club, g.id_grupo, cal.f_reunion desc, l.titulo ASC, ADFJ_CALIFICACION_AVGLIBRO(l.isbn) DESC;

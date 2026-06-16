@@ -32,3 +32,14 @@ BEGIN
     END LOOP;
 END;
 /
+
+BEGIN
+    FOR f IN (
+        SELECT object_name
+        FROM user_objects
+        WHERE object_type = 'PROCEDURE'
+    ) LOOP
+        EXECUTE IMMEDIATE 'DROP PROCEDURE ' || f.object_name;
+    END LOOP;
+END;
+/
