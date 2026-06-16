@@ -825,7 +825,7 @@ CREATE OR REPLACE FUNCTION ADFJ_CALIFICACION_AVGLIBRO (
 
 BEGIN
 
-    SELECT AVG(valoracion)
+    SELECT ROUND(AVG(valoracion), 2)
     INTO promedio_cali
     FROM ADFJ_CAL_REUNIONES
     WHERE isbn = R_ISBN
@@ -1646,7 +1646,7 @@ SELECT
     c.id_club,
     c.nombre,
     l.titulo AS TITULO_LIBRO,
-    AVG(r.valoracion) AS VALORACION_PROMEDIO
+    Round(AVG(r.valoracion), 2) AS VALORACION_PROMEDIO
 FROM 
     ADFJ_Cal_Reuniones r,
     ADFJ_Libros l,

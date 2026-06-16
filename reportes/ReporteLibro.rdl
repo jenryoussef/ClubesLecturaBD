@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-16T05:34:54.6435530Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-16T18:30:30.1251326Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -255,7 +255,23 @@ ORDER SIBLINGS BY ano_publicacion</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Ficha del Libro</Value>
+                    <Value>Ficha del Libro: </Value>
+                    <Style>
+                      <FontSize>28pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>White</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value>=First(Fields!TITULO.Value, "ds_gruposanalisis")</Value>
+                    <Style>
+                      <FontSize>28pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <Color>White</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
                     <Style>
                       <FontSize>28pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -305,7 +321,7 @@ ORDER SIBLINGS BY ano_publicacion</CommandText>
             <Top>0.80083in</Top>
             <Left>0.19681in</Left>
             <Height>0.3264in</Height>
-            <Width>2.045in</Width>
+            <Width>4.245in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
