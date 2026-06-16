@@ -11,7 +11,7 @@
       <am:Name>PBIRB</am:Name>
       <am:Version>15.7.1816.327</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2026-06-15T22:46:18.4908023Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2026-06-16T03:30:00.4483463Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -248,8 +248,7 @@ ORDER BY
                     <Value>="Ubicación: " &amp; First(Fields!DIRECCION.Value, "CLUBES") &amp; 
 ", Zona Postal: " &amp; StrConv(First(Fields!ZONA_POSTAL.Value, "CLUBES"), 3) &amp; 
 ", " &amp; StrConv(First(Fields!CIUDAD.Value, "CLUBES"), 3) &amp; 
-IIF(IsNothing(First(Fields!PAIS.Value, "CLUBES")), "", " - " &amp; StrConv(REPLACE(First(Fields!PAIS.Value, "CLUBES"), "ESPA?A", "ESPAÑA"), 3)) &amp; 
-VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.Value, "CLUBES"), "ESPA?OL", "ESPAÑOL"), 3)</Value>
+IIF(IsNothing(First(Fields!PAIS.Value, "CLUBES")), "", " - " &amp; StrConv(REPLACE(First(Fields!PAIS.Value, "CLUBES"), "ESPA?A", "ESPAÑA"), 3))</Value>
                     <Style>
                       <FontSize>12pt</FontSize>
                     </Style>
@@ -1230,16 +1229,11 @@ VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.
                           </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="NOMBRE_COMPLETO">
+                              <Group Name="Lector">
                                 <GroupExpressions>
-                                  <GroupExpression>=Fields!NOMBRE_COMPLETO.Value</GroupExpression>
+                                  <GroupExpression>=Fields!NOMBRE_LECTOR.Value</GroupExpression>
                                 </GroupExpressions>
                               </Group>
-                              <SortExpressions>
-                                <SortExpression>
-                                  <Value>=Fields!NOMBRE_COMPLETO.Value</Value>
-                                </SortExpression>
-                              </SortExpressions>
                               <TablixHeader>
                                 <Size>135.75562mm</Size>
                                 <CellContents>
@@ -1251,7 +1245,7 @@ VbCrLf &amp; "Idioma oficial: " &amp; StrConv(REPLACE(First(Fields!IDIOMAS_CLUB.
                                       <Paragraph>
                                         <TextRuns>
                                           <TextRun>
-                                            <Value>=StrConv(Fields!NOMBRE_COMPLETO.Value, 3)</Value>
+                                            <Value>=StrConv(Fields!NOMBRE_LECTOR.Value, 3)</Value>
                                             <Style>
                                               <FontWeight>Normal</FontWeight>
                                             </Style>
